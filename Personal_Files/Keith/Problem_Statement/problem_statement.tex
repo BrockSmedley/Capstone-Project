@@ -44,34 +44,92 @@
 \maketitle
 \begin{abstract}
 
-Creating complex engineered systems with high cost-to-benefit ratios can be difficult to sell to customers that operate and maintain a multi-billion dollar industry. When passengers purchase their plane tickets, they’re most likely cause for a delay to their final destination is weather delays. However the airline industry is capable of overlooking this causation due to the passenger’s agreement upon the completion of their plane ticket. As passengers in any situation we can only plan our trip, but unfortunately not the weather…… (more)\\
+Providing quality avionics and information technology systems for the airline industry 
+is a task that Rockwell Collins has been capable of doing since its start. However, 
+the research and development of these industry specific systems results in costly 
+solutions. More....\\
 
 \end{abstract}
 
 \section{Problem}
 
-Rockwell Collins currently offers a head-up display (HUD) for airlines, which is a transparent display for pilots to navigate safely during take off and when landing at airports. These HUDs play a vital role for pilots as it allows them to navigate through weather conditions that were once never considered because of its images and indications. The HUD’s transparent screen aligns with and provides images of geographic and man-made features that the pilot may not be capable of seeing on the ground during inclement conditions, and the images and indications on the HUD enhances the visibility for the pilot. The downside of the HUD’s system is the cost to commercial airlines, and their unwillingness to pay regardless of the benefit the HUD provides operationally. Rockwell Collins is needs a HUD in which its system is affordable for commercial airlines.  \\
-
+Rockwell Collins is looking for an economic solution regarding a flight deck product 
+that they currently offer for their clients in the aviation industry. The product is 
+a head-up display (HUD) that is transparent, and assists pilots during low visibility 
+conditions during the day, night, and inclement weather during all phases of flight. 
+When lowered in the pilot’s forward field-of-view (FOV), the HUD displays a variety 
+of indications from on-board sensors and databases, and real-time images taken from 
+on-board cameras. Specifically, Rockwell Collins has requested that our project focuses
+ on duplicating the Enhanced Vision System (EVS) of their HUD, which uses input from 
+ three detection channels of the electromagnetic spectrum to display images that are 
+ beyond human vision. The output from the channels provide thermal images of the 
+ landscape and various types of lighting, for example incandescent, halogen, and LED 
+ lights, which help guide pilots during critical, low altitude stages of flight. The 
+ in-house development and custom manufacturing of this system is very costly, and 
+ therefore the company is unable to attract all customers from the public and private 
+ airline industries.\\
+ 
 \section{Proposed Solution}
 
-A HUD that has a system composed of affordable hardware that reduces the total cost for commercial airlines. The major components providing an output for the HUD are a processor core, camera interface board, and cameras. To maintain a reduction in cost for these components cannot be custom engineered and produced in-house by Rockwell Collins, and therefore will be a pre-made, off the shelf, system on a chip and mass-produced products available to the public. Once these three major components are capable of being integrated and are communicating successfully, a fused image from two or more camera inputs will be our final major milestone to prove that a HUD system can be economically made. \\
+An EVS that has system hardware composed of affordable off-the-shelf hardware, which 
+reduces the total cost of the HUD for the airline industry customers of Rockwell 
+Collins. For multiple camera and spectral band image processing and the added 
+constraint of the project’s size, weight, power, and cost (SWAP-C) limitations, the 
+EHS will needs to be deployed with the use of a system on a chip (SoC) or a system on 
+a module (SOM). These SoCs and SOMs integrate systems that typically would plug into 
+the motherboard of a personal computer with the motherboard. For example, the 
+motherboard and video card are combined as one. Due to our project requiring image 
+processing our SoC or SOM must have a graphics processing unit (GPU), and the perfect 
+example of a product would be the NVIDIA Jetson TX1 and TX2. With the latest being the 
+TX2, internal real-time processing is one of its many capabilities that make this an 
+attractive solution, in addition to the Camera Serial Interface (CSI) being capable of 
+supporting six cameras simultaneously. The TX2 also supports High Efficiency Video 
+Encoding (HEVC) or H.265, which is the new video compression standard capable of 
+providing double the compression efficiency that the previous standard was capable 
+of. To allow for future compatibility of future cameras, a camera interface board is 
+a likely solution, and is required to be compatible with the SoC or SOM. Another 
+limitation that must follow the project’s SWAP-C is the need for the system to run 
+independent of a development kit or external computer.\\
 
 \section{Performance Metrics}
 
-The following is a list of metrics that must be met in order for the project to be deemed a success.\\
+The following is a list of metrics that must be met in order for the project to be 
+deemed a success.\\
 
 \subsection{System Research}
 
-The processor core, camera interface board, and cameras must be capable of being integrated for the system to produce an output to a screen. Researching compatible components for system integration will be the first major step to producing an output to screen. These components must also meet size, weight, power, and cost (SWAP-C) requirements due to the application for the HUD. \\
+The GPU, camera interface board, and cameras must be capable of being integrated for 
+the system to produce an output to a screen. Researching compatible components for 
+system integration will be the first major step, and most specifically a camera 
+interface board capable of communicating with the GPU. The is potential that the 
+camera interface board may require minor modifications to meet full requirements of 
+the project. These components must also meet size, weight, power, and cost (SWAP-C) 
+requirements due to the application for the EVS. Due to a Jetson TX2 being readily 
+available, research and tinkering will also occur during this process to gain better 
+understanding of its software.\\
 
-\subsection{System Integration}
-Once the system components are finalized, purchased, and in-hand system integration is required for the major components to communicate. 
+\subsection{System Integration and System Output with One Camera}
 
-\subsection{System Output with One Camera}
+Once the system components are finalized, purchased and in-hand, system integration 
+is required for the major components to communicate. This may be capable of being 
+confirmed without an output display and signal input from a camera, but until more 
+information is capable of being gathered on the hardware this metric will be confirmed 
+by such. All desired wavelengths that provide input to the existing EVS utilize will 
+be tested for output.\\
 
 \subsection{System Output with Two or More Cameras}
 
-\subsection{System Output with up to Six Cameras}
+Due to the EVS requiring input from multiple cameras, the next goal for the project 
+will be to have two camera inputs being fused together on an output display. At a 
+minimum, the three wavelengths that provide input to the existing EVS will be tested 
+for a fused output.\\
 
+\subsection{Overall and Stretch Goals}
+
+The system should be capable of being integrated for a quality video output 
+near-real-time. Different conditions of input to the types of cameras will be tested, 
+and the recording and plotting of data will be expected. Once two camera inputs are 
+capable of being fused on an output screen more camera inputs will be added one at a 
+time and tested.\\
 
 \end{document}
