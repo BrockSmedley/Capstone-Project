@@ -1,0 +1,47 @@
+\documentclass[10pt,letterpaper,draftclsnofoot,onecolumn]{report}
+\usepackage[margin=0.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Brock Smedley}
+\title{Problem Statement}
+\date{CS461: Tu/Th\\
+Fall Term}
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+
+This project aims to create a system that uses multiple cameras to combine their respective images in real time to provide a near-real-time composite video feed. In order to complete this project, my group and I will have to learn certain computational techniques including parallel programming, image-processing operations, intermediate-level operations, and matrix-vector operations, as well as any software needed to program and interface with the system.
+The project will use Nvidia Jetson TX2 modules to perform the computations on the video signals. This module will provide us with the processing power we need to perform the necessary computations on our video feeds.
+\end{abstract}
+
+\section*{Problem Definition}
+The problem we are attempting to solve is to combine multiple images from different cameras into one image, using multiple cameras that operate on different spectral bands including visible light, infrared, and others.
+\\*\\
+This project is an attempt to create an affordable multi-spectral imaging solution for use in avionics. Currently, Rockwell Collins has an existing solution, but it costs approximately half a million dollars. The price of our solution should lie in the low thousands-of-dollars range.
+\\*\\
+Our first iteration of the project will be able to use two cameras to achieve this, but the end goal is to be able to use more cameras that detect different electromagnetic frequencies such as infrared and ultraviolet. Combining the images from multiple cameras operating on different spectral bands will allow us to create a composite image that allows the user to visualize the environment in situations where it would otherwise be difficult using only one spectral band (visible light).
+
+\section*{Proposed Solution}
+Our solution will use the Nvidia Jetson TX2 system to interface with the cameras and perform the computations that allow us to create the composite images. The TX2 is an embedded computing device; it's described as a 7.5-Watt supercomputer on a module and includes 8GB of memory and 59.7 GB/s of memory bandwidth. 
+\\*\\
+The TX2 has enough processing power to run AI and deep learning algorithms so it should be enough to perform near-real-time video processing. Specifically, it has 8GB of memory, a quad-core ARM processor, 59.7 GB/s memory bandwidth, and draws only 7.5 Watts. It also has a PCI Express v2 port, a 6-camera (2-lane) Camera Serial Interface (CSI), and a USB 3.0 port that we can interface with for high-speed data transmission. The system runs proprietary software on ARM (CPU) and Nvidia Pascal (GPU) architecture. To write software for this platform, we will use Nvidia's Jetpack development kit.
+\\*\\
+Once we have a system that is able to process video feeds from multiple cameras, we will use the video feed data from each camera to create composite images in near-real-time. Our first iteration will simply create a composite of two images using visible-light cameras. Once we have a working proof of concept, we will then explore the integration of cameras that operate on other spectral bands and attempt to create composite images using all cameras involved.
+
+\section*{Performance Metrics}
+Our project will have satisfactorily met the requirements when it is able to use two cameras connected to the TX2 to create a composite image. It must also meet SWaP-C requirements in order to be able to be used on unmanned aerial vehicles (UAVs). These are the baseline requirements for the project but we may have time to expand the project to include more features.
+\\*\\
+Introducing more cameras, as we plan to do, should add some complexity to the system, but the computational requirements should scale linearly provided that the cameras all capture the same resolution. If they do not, we can scale resolution per camera first, if necessary, to meet design requirements.
+\\*\\
+The proposed feature-rich system requires that the TX2 finish image processing and computation of one temporal frame's images before the next frame is captured. 
+If a video is captured at $f$ frames per second, then each computation must be done in $\tau$ seconds, given \begin{center}
+$f = \frac{1}{\tau}$
+\end{center}
+\\*\\
+As for SWaP-C, the entire system must be lightweight and resilient to vibration, altitude, extreme temperatures, and probably some environment moisture. The Nvidia Jetson TX2 can be held in one hand, and each camera will be similarly sized, so the whole module should me contained within  approximately one cubic foot or less.
+
+\end{document}
