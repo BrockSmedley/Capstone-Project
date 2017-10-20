@@ -1,0 +1,157 @@
+\documentclass[letterpaper,10pt,serif,draftclsnofoot,onecolumn,compsoc,titlepage]{IEEEtran}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+\usepackage{cite}
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+
+\usepackage{geometry}
+\geometry{margin=.75in}
+\usepackage{hyperref}
+%\usetikzlibrary{shapes, positioning, calc}
+\usepackage{caption}
+\usepackage{listings}
+%\usepackage[utf8]{inputenc}
+%pull in the necessary preamble matter for pygments output
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+   colorlinks = true,
+   citecolor = black,
+   linkcolor = black,
+   urlcolor = black,
+   pdfauthor = {Shu-Ping Chien, Brock Smedley, and W Keith Striby Jr},
+   pdfkeywords = {CS461 "Senior Project" Problem Statement},
+   pdftitle = {CS 461 Problem Statement},
+   pdfsubject = {CS 461 Problem Statement},
+   pdfpagemode = UseNone
+}
+
+\parindent = 0.0 in
+\parskip = 0.1 in
+\title{Problem Statement: Multi-Camera, System-on-Chip (SoC) Based, Real-Time Video Processing for UAS and VR/AR Applications}
+\author{Group 51: Shu-Ping Chien, Brock Smedley, and W Keith Stirby Jr \\ 19 October 2017 \\ CS-461, Senior Software Engineering Project, Fall 2017}
+\begin{document}
+\begin{titlepage}
+\maketitle
+\begin{abstract}
+
+This project aims to recreate a system that uses multiple cameras to combine their 
+respective images in real time to provide a near-real-time composite video feed. Our 
+client’s industry-specific solution is too costly for all of their customers in the 
+aviation industry. The solution is composed of three main pieces of off-the-shelf 
+hardware, and when integrated the input from multiple cameras will be fused together 
+and displayed on an output screen. Our initial goal will be to integrate all parts of 
+the system and create an output of one camera, and eventually fuse the input from 
+multiple cameras. \\
+
+\end{abstract}
+\end{titlepage}
+\newpage
+
+
+\section{Introduction}
+
+Rockwell Collins is looking for an economic solution regarding a flight deck product 
+that they currently offer for their clients in the aviation industry. The product is 
+a head-up display (HUD) that is transparent, and assists pilots during low visibility 
+conditions during the day, night, and inclement weather for all phases of flight. When 
+lowered in the pilots forward field-of-view (FOV), the HUD displays a variety of 
+indications, from on-board sensors and databases to real-time images taken from 
+on-board cameras. Specifically, Rockwell Collins has focused on duplicating the 
+Enhanced Vision System (EVS) of their HUD, which uses input from three detection 
+channels of the electromagnetic spectrum to display images that are beyond human 
+vision. The output from the channels provide thermal images of the landscape and 
+various types of lighting, for example incandescent, halogen, and LED lights, 
+etcetera. \\
+
+\section{Problem}
+
+The in-house development and custom manufacturing of this system is very costly, and 
+therefore the company is unable to attract all customers from public and private 
+airline industries. Since a HUD device costs almost half million dollars, it will not 
+be used for the realistic case, so the issue is to find a way to cut down the cost.  
+An idea to solve the problem is to build a multispectral camera system based on the 
+same features as transparent display device. This project will figure out a way to 
+create a system from the off the shelf components and achieves real-time image and 
+video processing. The desired outcomes will be a stand-alone system, which is a 
+development platform using a visual computing module, to communicate with an interface 
+board. Due to the size limitation, we do not use DevKit or other larger interface 
+board. The stand-alone device is required to provide a data stream that can be 
+analysed without being connected to a computer. A suggestion product to deal with 
+graphic processing is NVIDIA Jetson TX1 and TX2, which supports up to six cameras 
+and can build a video processor and display/recording system suitable as a UV/light 
+air vehicle payload. This project also requires the device to provide attractive size, 
+weight, power and cost (SWaP-C) for this application. \\
+ 
+\section{Proposed Solution}
+
+An EVS that has system hardware composed of affordable off-the-shelf hardware, which 
+reduces the total cost of the HUD for airline industry customers of Rockwell Collins. 
+For multiple cameras and spectral band image processing and the added size, weight, 
+power, and cost (SWAP-C) constrained due the projects application, the EVS will need 
+to be deployed with the use of a system-on-chip (SoC) or a system on a module (SOM). 
+These SoCs and SOMs integrate systems that typically would plug into the motherboard 
+of a personal computer. Due to our project requiring image processing our SoC or SOM 
+must have a graphics processing unit (GPU), and the perfect example of a product would 
+be the NVIDIA Jetson TX1 and TX2. With the latest being the TX2, internal real-time 
+processing is one of its many capabilities that make this an attractive solution. In 
+addition to the Camera Serial Interface (CSI) of the TX2 being capable of supporting 
+six cameras simultaneously. The TX2 also supports High Efficiency Video Encoding 
+(HEVC) or H.265, which is the new video compression standard capable of providing 
+double the compression efficiency than the previous standard. To allow for future 
+compatibility of future cameras, a camera interface board is a likely solution, and 
+is required to be compatible with the SoC or SOM selected for the project. Another 
+limitation that must follow the projects SWAP-C constrained is the need for the system 
+to run independent of a development kit or external computer. The cameras selected 
+to attach to the camera interface board simultaneously must include the desired bands 
+of the electromagnetic spectrum to mimic the current EVS output. \\
+
+To reach the goal, the first work in this project we will do is system research. The 
+GPU, camera interface board, and cameras must be capable of being integrated for the 
+system to produce an output to a screen. Researching compatible components for system 
+integration will be the first major step, and most specifically a camera interface 
+board capable of communicating with the GPU. This is potential that the camera 
+interface board may require minor modifications to meet full requirements of the 
+project. These components must also meet size, weight, power, and cost (SWAP-C) 
+requirements due to the application for the EVS. With a Jetson TX2 currently 
+available, research and tinkering will occur during this process to gain better 
+understanding of it. Once the system components are narrowed or finalized, purchased 
+and in-hand, system integration is required for the major components to communicate. 
+This may be capable of being confirmed without an output display and signal input from 
+a camera, but until more information is gathered on the hardware this metric will be 
+confirmed by such. All desired wavelengths that provide input to the existing EVS 
+utilize will be tested for output. \\
+
+\section{Performance Metrics}
+
+The system should be capable integrating the GPU, camera board, and cameras for a 
+video output near-real-time. The EVS will generate a visible image to help the pilot 
+see the runway and surrounding environments during inclement weather. The price of 
+our EVS is estimated be around four to five thousand dollars total, and may change 
+due to our final hardware selected. \\
+
+Initial system integration will be established upon the output of one camera to an 
+output display. The EVS requires input from multiple cameras, and the goal for the 
+project will be to have at least two camera inputs fused together on an output 
+display. Three wavelengths that provide input to the existing EVS will be tested for 
+a fused output. Completion of this step will be verified once all cameras have been 
+tested for output, and that multiple combinations of camera outputs are capable of 
+being fused together. \\
+
+Since the EVS’s primary benefit during flight is low visibility conditions, different 
+conditions will be tested with the cameras, and the recording and plotting of data 
+will be expected. Additional camera inputs will be added one at a time and fused 
+together on an output screen. Once the fused output is tested satisfactorily this 
+will be repeated for up to six total camera inputs. \\
+
+\end{document}
