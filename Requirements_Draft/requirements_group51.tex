@@ -1,5 +1,6 @@
 \documentclass[]{report}
-
+\usepackage{graphicx}
+\graphicspath{ {images/} }
 
 % Title Page
 \title{Capstone Project Requirements}
@@ -70,7 +71,12 @@ The images we produce will be 2D representations of our collective image capture
 \subsection{Product Perspective}
 The system will consist of three parts: one Nvidia TX1/2, one CSI board, and at least two cameras. The cameras connect to the CSI board, which is connected to the Nvidia device. The Nvidia device is responsible for decoding the serial data retrieved by the CSI board from the cameras. The Nvidia device will then be used to execute the software for image processing and combining images from multiple cameras.
 
-<DIAGRAM HERE>
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{diagram}
+    \caption{System Diagram}
+    \label{fig:mesh1}
+\end{figure}
 
 \subsection{Production Functions}
 The EVS will be able to capture images from different spectral bands to create the clearest possible image in situations where visible light does not provide enough clarity. These images will be relayed in near-real time so that it can be used as a video feed. One use case would be for a pilot to be able to see the ground when landing in low-visibility conditions.
