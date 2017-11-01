@@ -1,13 +1,6 @@
-
-Personal_Files/.DS_Store
-Personal_Files/Brock/problem_statement.pdf
-Personal_Files/Brock/problem_statement.synctex.gz
-Personal_Files/Brock/problem_statement.aux
-Personal_Files/Brock/problem_statement.log
-.DS_Store
-.DS_Store
+*.aux
+*/.DS_Store
 *.pdf
 *.gz
-Requirements_Draft/requirements_group51.pdf
-Requirements_Draft/requirements_group51.log
 *.log
+.DS_Store
