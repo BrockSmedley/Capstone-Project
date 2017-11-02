@@ -78,7 +78,7 @@ The product outlined in this requirements document will be the multi-camera, SoC
 
 The software products that will be produced include software for a stitched video output 
 from the NVIDIA TX1/2, receiving the input from two visible band cameras. 
-The video output is expected to be near-real-time, and the latency from the camera 
+The video output is expected to be near real-time, and the latency from the camera 
 input to the video output is expected to be improved upon throughout the project. Video 
 output stretch goals is to have software that fuses the video output from the input of 
 three, four, five, and six cameras, and have up to four infrared band inputs.\\
@@ -99,9 +99,12 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 
 \begin{description}
 	\item[geolocate imagery] - 
+	\item[low visibility] - 
 	\item[multiple cameras] - At least two cameras, but a maximum of six cameras for 
 	video input.
-	\item[NVIDIA TX1/2] - NVIDIA GPUs, the Jetson TX1 or the Jetson TX2.  
+	\item[Near real-time] -
+	\item[NVIDIA TX1/2] - NVIDIA GPUs, the Jetson TX1 or the Jetson TX2.
+	\item[spectral bands] - 
 \end{description}
 
 \subsubsection{Acronyms}
@@ -157,14 +160,14 @@ Virtual Reality & VR\\
 \subsection{Overview}
 
 This project aims to create a device that is capable of combining the video input from 
-two or more cameras and produce and output at near-real time. Our proposed solution 
+two or more cameras and produce and output at near real-time. Our proposed solution 
 will use an NVIDIA Jetson device, which we will use for its integrated GPU.\\
 
 We need this GPU to combine the images from multiple cameras. The end goal is to have 
-a system that uses the input from multiple cameras that operate on different bands of 
-the electromagnetic spectrum; infrared, ultraviolet, and visible light, among others. 
- By using these varying bands, we should be able to produce an image that can be used 
- to see in low-visibility situations, such as landing a UAV in fog.\\
+a system that uses the input from multiple cameras that operate on the infrared and 
+visible light spectral bands. By using these spectral bands, we should be able to 
+produce an image that can be used to see in low-visibility situations, such as landing 
+a UAV in fog.\\
 
 The images we produce will be 2D representations of our collective image captures. In 
 other words, we do not aim to create a 3D image or a dynamic focus image. This is 
@@ -190,25 +193,25 @@ execute the software for image processing and combining images from multiple cam
 	\caption{Product Block Diagram \label{overflow}}
 \end{figure}
 
-\subsection{Production Functions}
+\subsection{Product Functions}
 
-The EVS will be able to capture images from different spectral bands to create the 
-clearest possible image in situations where visible light does not provide enough 
-clarity. These images will be relayed in near-real time so that it can be used as a 
-video feed. One use case would be for a pilot to be able to see the ground when landing 
-in low-visibility conditions.\\
+The basic functionality of the product will be to produce stitched images on a video 
+output that is provided by multiple camera inputs capable of sensing visible and 
+infrared spectral bands. These images will be relayed in near real-time so that it 
+can be used as a video feed for the pilot of a UAS during low visibility flight 
+conditions. \\
 
-Since the EVS will be able to provide near to all weather operations, the images from 
-the system will be analyzed and combined in several modes. The mode of equivalent 
-vision can display images shot by cameras directly in normal visibilities condition 
-such as clear daytime. The mode of synthetic vision will display images from the 
-channels provide thermal images of the landscape and various types of lighting, for 
-example incandescent, halogen, and LED lights, etcetera. Then the view on the display 
-device will be real images combined with light structure.\\
+A functional stretch goal for video output provided by camera input is to fuse the 
+input from the visible and spectral bands, which will overlay the two types of output 
+and enhance the vision for a UAS pilot. \\
+
+Output display functional stretch goals will be to provide indications from IMU data, 
+orientation tracking data, GPS data, and geolocate imagery and have them displayed 
+with the video output provided by the camera input. \\
 
 \subsection{Constraints}
 
-The system must operate in near-real time. In other words, the camera feed(s) must be 
+The system must operate in near real-time. In other words, the camera feed(s) must be 
 processed quickly enough for the user to make snap decisions based on the feed. The 
 NVIDIA board should process each frame before the next one arrives to be processed. 
 If we’re recording at 30 frames per second (fps), then each output frame should be 
@@ -243,19 +246,10 @@ THIS NEEDS TO BE IN PARAGRAPH FORM, WITH SECTIONS FROM THE IEEE STD 830-1998\\
 		\subitem UV
 		\subitem ...\\
 
-\newpage
-	\section{Development Schedule}
 
-	%See gantt chart, figure 2 on page 7.\\
-	%still in under construction\\
-	%\begin{figure}
-	%\centering
-	%\begin{tikzpicture}
-	%\begin{pgfinterruptboundingbox}
-	\begin{rotate}{270}
-	%\section{Development Schedule}
-    \begin{ganttchart}
-    	[x unit=1.0mm, time slot format=isodate]
+\section{Development Schedule}
+	\begin{ganttchart}
+    	[hgrid, x unit=0.77mm, y unit chart=9.0mm, title label font=\normalsize, time slot format=isodate]
     	{2017-11-01}{2018-05-31}
     	\gantttitlecalendar{year, month=name}\\
     	\ganttbar{Task 1}{2017-11-01}{2017-11-30}\\
@@ -265,28 +259,10 @@ THIS NEEDS TO BE IN PARAGRAPH FORM, WITH SECTIONS FROM THE IEEE STD 830-1998\\
     	\ganttbar{Task 5}{2018-03-01}{2018-03-31}\\
     	\ganttbar{Task 6}{2018-04-01}{2018-04-30}\\
     	\ganttbar{Task 7}{2018-05-01}{2018-05-31}\\
-    \end{ganttchart}
-    \newline
-    \newline
-    \newline
-    \newline
-    \newline
-    \newline
-    \newline
-    \newline
+	\end{ganttchart}
+\begin{center}
 	Fig. 2: Project Schedule
-	\newline
-	%\endcentering
-    \end{rotate}
-    %\end{pgfinterruptboundingbox}
-%\useasboundingbox (frame.south west) rectangle (frame.north east);    
-%\end{tikzpicture}
-%\caption Fig. 2: Project Schedule
-%\end{figure}
-\newpage	
-\newpage
-\newpage
-	
+\end{center}	
 
 \subsection{Development Schedule Tasks}
 Task 1: Have hardware procured and assembled.\\
@@ -300,9 +276,5 @@ geolocate imagery into the video output (stretch goals).\\
 Task 6: Package the system hardware for flight (stretch goal).\\
 Task 7: Produce a software interface for the system to accomodate higher 
 quality cameras (stretch goal).\\
-
-%\newpage
-
-
 
 \end{document}
