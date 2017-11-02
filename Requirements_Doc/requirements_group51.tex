@@ -77,56 +77,73 @@ The product outlined in this requirements document will be the multi-camera, SoC
  product that is already offered to their customers.\\
 
 The software products that will be produced include software for a stitched video output 
-from the NVIDIA Jetson TX1 or TX2, receiving the input from two visible band cameras. 
+from the NVIDIA TX1/2, receiving the input from two visible band cameras. 
 The video output is expected to be near-real-time, and the latency from the camera 
 input to the video output is expected to be improved upon throughout the project. Video 
 output stretch goals is to have software that fuses the video output from the input of 
 three, four, five, and six cameras, and have up to four infrared band inputs.\\
 
-Output display stretch goals will be to incorporate inertial measurement unit (IMU) 
-data, orientation tracking data, GPS data, and geolocate imagery. Two final stretch 
-goals are packaging the hardware for flight, and interfacing the system to support
-the client's desired cameras for flight use.\\
+Output display stretch goals will be to incorporate IMU data, orientation tracking 
+data, GPS data, and geolocate imagery. Two final stretch goals are packaging the 
+hardware for flight, and interfacing the system to support the client's desired 
+cameras for flight use.\\
 
 The goal of the software is to contribute to a project that will assist pilots during 
 low visibility conditions during the day, night, and inclement weather for all phases 
 of flight. The video input from infrared and visible band cameras combined with 
-on-board sensor input, and databases will enhance a pilot vision for an unmanned and 
-manned aerial vehicle.\\
+on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 
 \subsection{Definitions, Acronyms, Abbreviations}
 
-...
-
 \subsubsection{Definitions}
 
-multiple cameras - at least two cameras, but a maximum of six cameras for video input.
+\begin{description}
+	\item[multiple cameras] - At least two cameras, but a maximum of six cameras for 
+	video input.
+	\item[NVIDIA TX1/2] - NVIDIA GPUs, the Jetson TX1 or the Jetson TX2.  
+\end{description}
 
 \subsubsection{Acronyms}
 
-MAKE THIS INTO A TABLE\\
-Term
-Acronym\\
-CSI
-Camera Serial Interface\\
-EVS
-Enhanced Vision System\\
-GPU
-Graphic Processing Unit\\
-ISP
-Image Signal Processors\\
-HUD
-Head-up Display\\
-SoC
-System on a chip\\
-SOM
-System on a module\\
-SWaP-C
-Size, weight, power and cost\\
-VI
-Video Input\\
-UAV
-Unmanned Aerial Vehicle\\
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Term} & \textbf{Acronym}\\
+\hline
+Augmented Reality & AR\\
+\hline
+Camera Serial Interface & CSI\\
+\hline
+Enhanced Vision System & EVS\\
+\hline
+Global Positioning System & GPS\\
+\hline
+Graphic Processing Unit & GPU\\
+\hline
+Image Signal Processors & ISP\\
+\hline
+Inertial Measurement Unit & IMU\\
+\hline
+Head-up Display & HUD\\
+\hline
+System-on-chip & SoC\\
+\hline
+System-on-module & SOM\\
+\hline
+Size, weight, power and cost & SWaP-C\\
+\hline
+Three Dimensional & 3D\\
+\hline
+Two Dimensional & 2D\\
+\hline
+Video Input & VI\\
+\hline
+Unmanned Aerial Vehicle & UAV\\
+\hline
+Unmanned Aircraft System & UAS\\
+\hline
+Virtual Reality & VR\\
+\hline
+\end{tabular}
 
 \subsubsection{Abbreviations}
 
@@ -159,16 +176,16 @@ combination of all images captured by the cameras.\\
 
 \subsection{Product Perspective}
 
-The system will be self-contained and consists of three parts: one NVIDIA TX1 or 2 board, 
+The system will be self-contained and consists of three parts: one NVIDIA TX1/2, 
 one CSI carrier board, and at least two cameras. The cameras connect to the CSI board, 
-which is connected to the NVIDIA board. The NVIDIA board is responsible for decoding 
+which is connected to the NVIDIA TX1/2. The NVIDIA TX1/2 is responsible for decoding 
 the serial data retrieved by the CSI board from the cameras, and is then be used to 
 execute the software for image processing and combining images from multiple cameras.\\
 
 \begin{figure}[H]
 	\centering
 	\label{fig:CopyOnWriteBefore}
-	\includegraphics[width=8cm,height=3.25cm]{images/block_diagram.eps}
+	\includegraphics[width=8cm,height=3.6cm]{images/block_diagram.eps}
 	\caption{Product Block Diagram \label{overflow}}
 \end{figure}
 
@@ -211,8 +228,13 @@ THIS NEEDS TO BE IN PARAGRAPH FORM, WITH SECTIONS FROM THE IEEE STD 830-1998\\
 		\subitem Adequate power supply
 		\subitem NVIDIA Jetpack software + Ubuntu system to deploy it\\
 \subsection{CSI Board}
-		Camera serial interface is the hardware that interfaces with different cameras or image sensors, which provides output for a computer with pixel data and signals that can be used for subsequent image processing. Therefore, the CSI is the way to be used to transfer camera input to computer in this project.
-		In order to carry up to six cameras, a carrier board with CSI such as J106 is required to connect cameras and NVIDIA TX1/2, and the video output format from CSI is depending on different chosen cameras.\\
+		Camera serial interface is the hardware that interfaces with different cameras 
+		or image sensors, which provides output for a computer with pixel data and 
+		signals that can be used for subsequent image processing. Therefore, the CSI 
+		is the way to be used to transfer camera input to computer in this project.\\
+		In order to carry up to six cameras, a carrier board with CSI such as J106 is 
+		required to connect cameras and NVIDIA TX1/2, and the video output format from 
+		CSI is depending on different chosen cameras.\\
 
 \subsection{Cameras}
 		\subitem Visible light
