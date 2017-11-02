@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex 2016.10.17)  1 NOV 2017 17:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex 2016.10.17)  1 NOV 2017 17:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -732,32 +732,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 186--191
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 201--203
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 222.
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
 [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 222.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
  (./requirements_group51.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 222.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 222.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 220.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
 Package rerunfilecheck Info: File `requirements_group51.out' has not changed.
-(rerunfilecheck)             Checksum: F95E221C5CDCD2C409C2FC0B8E752820;1014.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 222.
+(rerunfilecheck)             Checksum: E25F2E75EC14C5A772AE3390AC1BCA8C;1185.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
  ) 
 Here is how much of TeX's memory you used:
- 9878 strings out of 493014
- 156132 string characters out of 6122796
- 250705 words of memory out of 5000000
- 13311 multiletter control sequences out of 15000+600000
+ 9875 strings out of 493014
+ 156092 string characters out of 6122796
+ 250963 words of memory out of 5000000
+ 13308 multiletter control sequences out of 15000+600000
  33846 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,6n,39p,335b,351s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on requirements_group51.dvi (6 pages, 29108 bytes).
+Output written on requirements_group51.dvi (6 pages, 31704 bytes).
