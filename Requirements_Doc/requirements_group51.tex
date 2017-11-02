@@ -9,6 +9,8 @@
 \usepackage{float}
 \usepackage{color}
 \usepackage{url}
+\usepackage{pgfgantt}
+\usepackage{rotating}
 
 \usepackage{balance}
 \usepackage[TABBOTCAP, tight]{subfigure}
@@ -70,16 +72,21 @@ by both the developers and the clients.\\
 
 The product outlined in this requirements document will be the multi-camera, SoC based,
  real-time video processing for UAS and VR/AR applications. This product will need to 
- be able to generate a fused video output from a multi-camera input. The product is 
+ be able to generate a stitched video output from a multi-camera input. The product is 
  intended to help initialize our client's development of a cheaper alternative to a 
  product that is already offered to their customers.\\
 
-The software products that will be produced include software for a fused video output 
+The software products that will be produced include software for a stitched video output 
 from the NVIDIA Jetson TX1 or TX2, receiving the input from two visible band cameras. 
 The video output is expected to be near-real-time, and the latency from the camera 
 input to the video output is expected to be improved upon throughout the project. Video 
-input stretch goals is to have software that fuses the video output from the input of 
-three, four, five, and six cameras, and have up to four infrared band inputs.\\ 
+output stretch goals is to have software that fuses the video output from the input of 
+three, four, five, and six cameras, and have up to four infrared band inputs.\\
+
+Output display stretch goals will be to incorporate inertial measurement unit (IMU) 
+data, orientation tracking data, GPS data, and geolocate imagery. Two final stretch 
+goals are packaging the hardware for flight, and interfacing the system to support
+the client's desired cameras for flight use.\\
 
 The goal of the software is to contribute to a project that will assist pilots during 
 low visibility conditions during the day, night, and inclement weather for all phases 
@@ -161,7 +168,7 @@ execute the software for image processing and combining images from multiple cam
 \begin{figure}[H]
 	\centering
 	\label{fig:CopyOnWriteBefore}
-	\includegraphics[width=8cm,height=3.1cm]{images/block_diagram.eps}
+	\includegraphics[width=8cm,height=3.25cm]{images/block_diagram.eps}
 	\caption{Product Block Diagram \label{overflow}}
 \end{figure}
 
@@ -213,8 +220,66 @@ THIS NEEDS TO BE IN PARAGRAPH FORM, WITH SECTIONS FROM THE IEEE STD 830-1998\\
 		\subitem UV
 		\subitem ...\\
 
-\section{Development Schedule}
+\newpage
+	\section{Development Schedule}
 
-<Gantt Chart here>\\
+	%See gantt chart, figure 2 on page 7.\\
+	%still in under construction\\
+	%\begin{figure}
+	%\centering
+	%\begin{tikzpicture}
+	%\begin{pgfinterruptboundingbox}
+	\begin{rotate}{270}
+	%\section{Development Schedule}
+    \begin{ganttchart}
+    	[x unit=1.0mm, time slot format=isodate]
+    	{2017-11-01}{2018-05-31}
+    	\gantttitlecalendar{year, month=name}\\
+    	\ganttbar{Task 1}{2017-11-01}{2017-11-30}\\
+    	\ganttbar{Task 2}{2017-11-15}{2018-01-06}\\
+    	\ganttbar{Task 3}{2018-01-01}{2018-01-31}\\
+    	\ganttbar{Task 4}{2018-01-15}{2018-02-28}\\
+    	\ganttbar{Task 5}{2018-03-01}{2018-03-31}\\
+    	\ganttbar{Task 6}{2018-04-01}{2018-04-30}\\
+    	\ganttbar{Task 7}{2018-05-01}{2018-05-31}\\
+    \end{ganttchart}
+    \newline
+    \newline
+    \newline
+    \newline
+    \newline
+    \newline
+    \newline
+    \newline
+	Fig. 2: Project Schedule
+	\newline
+	%\endcentering
+    \end{rotate}
+    %\end{pgfinterruptboundingbox}
+%\useasboundingbox (frame.south west) rectangle (frame.north east);    
+%\end{tikzpicture}
+%\caption Fig. 2: Project Schedule
+%\end{figure}
+\newpage	
+\newpage
+\newpage
+	
+
+\subsection{Development Schedule Tasks}
+Task 1: Have hardware procured and assembled.\\
+Task 2: Produce a tiled video output from the input of six cameras.\\
+Task 3: Produce stitched video output from the input of two and three cameras, 
+and have latency estimates produced.\\
+Task 4: Produce a dual stitched video output that is combined into a fused 
+five-camera output (stretch goal).\\
+Task 5: Incorporate IMU data, orientation tracking data, GPS data, and 
+geolocate imagery into the video output (stretch goals).\\
+Task 6: Package the system hardware for flight (stretch goal).\\
+Task 7: Produce a software interface for the system to accomodate higher 
+quality cameras (stretch goal).\\
+
+%\newpage
+
+
 
 \end{document}

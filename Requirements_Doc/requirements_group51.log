@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex 2016.10.17)  1 NOV 2017 17:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex 2016.10.17)  1 NOV 2017 23:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -277,24 +277,425 @@ y
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgfgantt/p
+gfgantt.sty
+Package: pgfgantt 2013/06/01 v4.0 Draw Gantt diagrams with TikZ
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/fronte
+ndlayer/tikz.sty
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/basicl
+ayer/pgf.sty
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/utilit
+ies/pgfrcs.sty
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/util
+ities/pgfutil-common.tex
+\pgfutil@everybye=\toks30
+\pgfutil@tempdima=\dimen137
+\pgfutil@tempdimb=\dimen138
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/util
+ities/pgfutil-common-lists.tex))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/util
+ities/pgfutil-latex.def
+\pgfutil@abb=\box32
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/ms/everysh
+i.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/util
+ities/pgfrcs.code.tex
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/basicl
+ayer/pgfcore.sty
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/system
+layer/pgfsys.sty
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/syst
+emlayer/pgfsys.code.tex
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/util
+ities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks31
+\pgfkeys@temptoks=\toks32
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/util
+ities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks33
+))
+\pgf@x=\dimen139
+\pgf@y=\dimen140
+\pgf@xa=\dimen141
+\pgf@ya=\dimen142
+\pgf@xb=\dimen143
+\pgf@yb=\dimen144
+\pgf@xc=\dimen145
+\pgf@yc=\dimen146
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count107
+\c@pgf@countb=\count108
+\c@pgf@countc=\count109
+\c@pgf@countd=\count110
+\t@pgf@toka=\toks34
+\t@pgf@tokb=\toks35
+\t@pgf@tokc=\toks36
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/syst
+emlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-dvips.def
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/syst
+emlayer/pgfsys-dvips.def
+File: pgfsys-dvips.def 2014/07/09  (rcs-revision 1.25)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/syst
+emlayer/pgfsys-common-postscript.def
+File: pgfsys-common-postscript.def 2008/10/01  (rcs-revision 1.22)
+\pgf@objectcount=\count111
+)))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/syst
+emlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count112
+\pgfsyssoftpath@bigbuffer@items=\count113
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/syst
+emlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/xcolor/xco
+lor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/graphics-c
+fg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: dvips.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcore.code.tex
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmath.code.tex
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathcalc.code.tex
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathutil.code.tex)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen147
+\pgfmath@count=\count114
+\pgfmath@box=\box33
+\pgfmath@toks=\toks37
+\pgfmath@stack@operand=\toks38
+\pgfmath@stack@operation=\toks39
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathfunctions.code.tex
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathfunctions.basic.code.tex)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathfunctions.trigonometric.code.tex)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathfunctions.random.code.tex)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathfunctions.comparison.code.tex)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathfunctions.base.code.tex)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathfunctions.round.code.tex)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathfunctions.misc.code.tex)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathfunctions.integerarithmetics.code.tex)))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count115
+))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen148
+\pgf@picmaxx=\dimen149
+\pgf@picminy=\dimen150
+\pgf@picmaxy=\dimen151
+\pgf@pathminx=\dimen152
+\pgf@pathmaxx=\dimen153
+\pgf@pathminy=\dimen154
+\pgf@pathmaxy=\dimen155
+\pgf@xx=\dimen156
+\pgf@xy=\dimen157
+\pgf@yx=\dimen158
+\pgf@yy=\dimen159
+\pgf@zx=\dimen160
+\pgf@zy=\dimen161
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen162
+\pgf@path@lasty=\dimen163
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen164
+\pgf@shorten@start@additional=\dimen165
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box34
+\pgf@hbox=\box35
+\pgf@layerbox@main=\box36
+\pgf@picture@serial@count=\count116
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen166
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen167
+\pgf@pt@y=\dimen168
+\pgf@pt@temp=\dimen169
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen170
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen171
+\pgf@sys@shading@range@num=\count117
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box37
+))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/basi
+clayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/modu
+les/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box38
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/modu
+les/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/compat
+ibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen172
+\pgf@nodesepend=\dimen173
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/compat
+ibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/utilit
+ies/pgffor.sty
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/utilit
+ies/pgfkeys.sty
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/util
+ities/pgfkeys.code.tex))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/math/p
+gfmath.sty
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmath.code.tex))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/util
+ities/pgffor.code.tex
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/math
+/pgfmath.code.tex)
+\pgffor@iter=\dimen174
+\pgffor@skip=\dimen175
+\pgffor@stack=\toks40
+\pgffor@toks=\toks41
+))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/fron
+tendlayer/tikz/tikz.code.tex
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/libr
+aries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count118
+\pgfplotmarksize=\dimen176
+)
+\tikz@lastx=\dimen177
+\tikz@lasty=\dimen178
+\tikz@lastxsaved=\dimen179
+\tikz@lastysaved=\dimen180
+\tikzleveldistance=\dimen181
+\tikzsiblingdistance=\dimen182
+\tikz@figbox=\box39
+\tikz@figbox@bg=\box40
+\tikz@tempbox=\box41
+\tikz@tempbox@bg=\box42
+\tikztreelevel=\count119
+\tikznumberofchildren=\count120
+\tikznumberofcurrentchild=\count121
+\tikz@fig@count=\count122
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/modu
+les/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count123
+\pgfmatrixcurrentcolumn=\count124
+\pgf@matrix@numberofcolumns=\count125
+)
+\tikz@expandcount=\count126
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/fron
+tendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+)))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/fron
+tendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/libr
+aries/pgflibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
+\arrowsize=\dimen183
+))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/fron
+tendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex
+File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.1a (rcs-revision 1.3)
+\pgf@layerbox@background=\box43
+\pgf@layerboxsaved@background=\box44
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/fron
+tendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/fron
+tendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
+File: tikzlibrarypatterns.code.tex 2008/01/15 v3.0.1a (rcs-revision 1.2)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/libr
+aries/pgflibrarypatterns.code.tex
+File: pgflibrarypatterns.code.tex 2008/03/03 v3.0.1a (rcs-revision 1.13)
+))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/fron
+tendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/fron
+tendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1
+)
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/libr
+aries/shapes/pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
+
+))
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/pgf/utilit
+ies/pgfcalendar.sty
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/generic/pgf/util
+ities/pgfcalendar.code.tex
+File: pgfcalendar.code.tex 2007/07/23 v3.0.1a (rcs-revision 1.11)
+\pgfcalendarcurrentjulian=\count127
+))
+\gtt@currentline=\count128
+\gtt@lasttitleline=\count129
+\gtt@currgrid=\count130
+\gtt@chartwidth=\count131
+\gtt@lasttitleslot=\count132
+\gtt@elementid=\count133
+\gtt@today@slot=\count134
+\gtt@startjulian=\count135
+\gtt@endjulian=\count136
+\gtt@calendar@slots=\count137
+\gtt@calendar@weeknumber=\count138
+\gtt@calendar@startofweek=\count139
+\gtt@left@slot=\count140
+\gtt@right@slot=\count141
+)
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/graphics/r
+otating.sty
+Package: rotating 2016/05/22 v2.16c rotated objects in LaTeX
+
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/base/ifthe
+n.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count142
+\rotFPtop=\skip50
+\rotFPbot=\skip51
+\rot@float@box=\box45
+\rot@mess@toks=\toks42
+)
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/preprint/b
 alance.sty
 Package: balance 1999/02/23 4.3 (PWD)
-\oldvsize=\dimen137
+\oldvsize=\dimen184
 )
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/subfigure/
 subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
-\subfigtopskip=\skip50
-\subfigcapskip=\skip51
-\subfigcaptopadj=\dimen138
-\subfigbottomskip=\skip52
-\subfigcapmargin=\dimen139
-\subfiglabelskip=\skip53
-\c@subfigure=\count107
-\c@lofdepth=\count108
-\c@subtable=\count109
-\c@lotdepth=\count110
+\subfigtopskip=\skip52
+\subfigcapskip=\skip53
+\subfigcaptopadj=\dimen185
+\subfigbottomskip=\skip54
+\subfigcapmargin=\dimen186
+\subfiglabelskip=\skip55
+\c@subfigure=\count143
+\c@lofdepth=\count144
+\c@subtable=\count145
+\c@lotdepth=\count146
 
 ****************************************
 * Local config file subfigure.cfg used *
@@ -302,17 +703,17 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/subfigure/
 subfigure.cfg)
-\subfig@top=\skip54
-\subfig@bottom=\skip55
+\subfig@top=\skip56
+\subfig@bottom=\skip57
 )
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/enumitem/e
 numitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
-\labelindent=\skip56
-\enit@outerparindent=\dimen140
-\enit@toks=\toks30
-\enit@inbox=\box32
-\enitdp@description=\count111
+\labelindent=\skip58
+\enit@outerparindent=\dimen187
+\enit@toks=\toks43
+\enit@inbox=\box46
+\enitdp@description=\count147
 )
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/geometry/g
 eometry.sty
@@ -331,18 +732,18 @@ Package ifvtex Info: VTeX not detected.
 ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count112
-\Gm@cntv=\count113
-\c@Gm@tempcnt=\count114
-\Gm@bindingoffset=\dimen141
-\Gm@wd@mp=\dimen142
-\Gm@odd@mp=\dimen143
-\Gm@even@mp=\dimen144
-\Gm@layoutwidth=\dimen145
-\Gm@layoutheight=\dimen146
-\Gm@layouthoffset=\dimen147
-\Gm@layoutvoffset=\dimen148
-\Gm@dimlist=\toks31
+\Gm@cnth=\count148
+\Gm@cntv=\count149
+\c@Gm@tempcnt=\count150
+\Gm@bindingoffset=\dimen188
+\Gm@wd@mp=\dimen189
+\Gm@odd@mp=\dimen190
+\Gm@even@mp=\dimen191
+\Gm@layoutwidth=\dimen192
+\Gm@layoutheight=\dimen193
+\Gm@layouthoffset=\dimen194
+\Gm@layoutvoffset=\dimen195
+\Gm@dimlist=\toks44
 )
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/hyperref/h
 yperref.sty
@@ -401,15 +802,15 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 voptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen149
-\Hy@linkcounter=\count115
-\Hy@pagecounter=\count116
+\@linkdim=\dimen196
+\Hy@linkcounter=\count151
+\Hy@pagecounter=\count152
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/hyperref/p
 d1enc.def
 File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count117
+\Hy@SavedSpaceFactor=\count153
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/latexconfi
 g/hyperref.cfg
@@ -422,12 +823,12 @@ Package hyperref Info: Plain pages OFF on input line 4501.
 Package hyperref Info: Backreferencing OFF on input line 4506.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4735.
-\c@Hy@tempcnt=\count118
+\c@Hy@tempcnt=\count154
 LaTeX Info: Redefining \url on input line 5088.
-\XeTeXLinkMargin=\dimen150
-\Fld@menulength=\count119
-\Field@Width=\dimen151
-\Fld@charsize=\dimen152
+\XeTeXLinkMargin=\dimen197
+\Fld@menulength=\count155
+\Field@Width=\dimen198
+\Fld@charsize=\dimen199
 Package hyperref Info: Hyper figures OFF on input line 6342.
 Package hyperref Info: Link nesting OFF on input line 6347.
 Package hyperref Info: Hyper index ON on input line 6350.
@@ -437,9 +838,9 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6367.
 Package hyperref Info: PDF/A mode OFF on input line 6372.
 LaTeX Info: Redefining \ref on input line 6412.
 LaTeX Info: Redefining \pageref on input line 6416.
-\Hy@abspage=\count120
-\c@Item=\count121
-\c@Hfootnote=\count122
+\Hy@abspage=\count156
+\c@Item=\count157
+\c@Hfootnote=\count158
 )
 
 Package hyperref Message: Driver (default): hdvips.
@@ -452,13 +853,13 @@ File: hdvips.def 2016/06/24 v6.83q Hyperref driver for dvips
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/hyperref/p
 dfmark.def
 File: pdfmark.def 2016/06/24 v6.83q Hyperref definitions for pdfmark specials
-\pdf@docset=\toks32
-\pdf@box=\box33
-\pdf@toks=\toks33
-\pdf@defaulttoks=\toks34
-\HyField@AnnotCount=\count123
-\Fld@listcount=\count124
-\c@bookmark@seq@number=\count125
+\pdf@docset=\toks45
+\pdf@box=\box47
+\pdf@toks=\toks46
+\pdf@defaulttoks=\toks47
+\HyField@AnnotCount=\count159
+\Fld@listcount=\count160
+\c@bookmark@seq@number=\count161
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/oberdiek/r
 erunfilecheck.sty
@@ -466,7 +867,7 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip57
+\Hy@SectionHShift=\skip59
 ))
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/caption/ca
 ption.sty
@@ -476,13 +877,13 @@ Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 ption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen153
-\captionmargin@=\dimen154
-\captionwidth=\dimen155
-\caption@tempdima=\dimen156
-\caption@indent=\dimen157
-\caption@parindent=\dimen158
-\caption@hangindent=\dimen159
+\captionmargin=\dimen256
+\captionmargin@=\dimen257
+\captionwidth=\dimen258
+\caption@tempdima=\dimen259
+\caption@indent=\dimen260
+\caption@parindent=\dimen261
+\caption@hangindent=\dimen262
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used.
 )
@@ -501,39 +902,40 @@ x {\normalfont \sffamily \footnotesize {#1.}\nobreakspace }\parbox [t]{\hsize }
 {\normalfont \sffamily \footnotesize \noindent \unhbox \@tempboxa #2}\else \hbo
 x to\hsize {\normalfont \sffamily \footnotesize \box \@tempboxa \hfil }\fi \fi 
 .
-\c@ContinuedFloat=\count126
+\c@ContinuedFloat=\count162
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
+Package caption Info: rotating package is loaded.
 Package caption Info: subfigure package is loaded.
 )
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/listings/l
 istings.sty
-\lst@mode=\count127
-\lst@gtempboxa=\box34
-\lst@token=\toks35
-\lst@length=\count128
-\lst@currlwidth=\dimen160
-\lst@column=\count129
-\lst@pos=\count130
-\lst@lostspace=\dimen161
-\lst@width=\dimen162
-\lst@newlines=\count131
-\lst@lineno=\count132
-\lst@maxwidth=\dimen163
+\lst@mode=\count163
+\lst@gtempboxa=\box48
+\lst@token=\toks48
+\lst@length=\count164
+\lst@currlwidth=\dimen263
+\lst@column=\count165
+\lst@pos=\count166
+\lst@lostspace=\dimen264
+\lst@width=\dimen265
+\lst@newlines=\count167
+\lst@lineno=\count168
+\lst@maxwidth=\dimen266
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/listings/l
 stmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count133
-\lst@skipnumbers=\count134
-\lst@framebox=\box35
+\c@lstnumber=\count169
+\lst@skipnumbers=\count170
+\lst@framebox=\box49
 )
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/listings/l
 istings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
-Package hyperref Info: Option `colorlinks' set `true' on input line 37.
+Package hyperref Info: Option `colorlinks' set `true' on input line 39.
 
 
 LaTeX Warning: Unused global option(s):
@@ -542,22 +944,23 @@ LaTeX Warning: Unused global option(s):
 (./requirements_group51.aux)
 \openout1 = `requirements_group51.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
 
 -- Lines per column: 39 (approximate, difference = 14.73578pt).
+ABD: EveryShipout initializing macros
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
 *geometry* verbose mode - [ preamble ] result:
@@ -592,8 +995,8 @@ LaTeX Font Info:    ... okay on input line 43.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box36
-Package hyperref Info: Link coloring ON on input line 43.
+\AtBeginShipoutBox=\box50
+Package hyperref Info: Link coloring ON on input line 45.
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/hyperref/n
 ameref.sty
@@ -603,123 +1006,128 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 /gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count135
+\c@section@level=\count171
 )
-LaTeX Info: Redefining \ref on input line 43.
-LaTeX Info: Redefining \pageref on input line 43.
-LaTeX Info: Redefining \nameref on input line 43.
+LaTeX Info: Redefining \ref on input line 45.
+LaTeX Info: Redefining \pageref on input line 45.
+LaTeX Info: Redefining \nameref on input line 45.
  (./requirements_group51.out) (./requirements_group51.out)
-\@outlinefile=\write3
-\openout3 = `requirements_group51.out'.
+\@outlinefile=\write4
+\openout4 = `requirements_group51.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count136
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 46.
+\c@lstlisting=\count172
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 48.
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/psnfss/ot1
 phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 46
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 48
 .
-LaTeX Font Info:    Try loading font information for U+msa on input line 46.
+LaTeX Font Info:    Try loading font information for U+msa on input line 48.
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/amsfonts/u
 msa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 46.
+LaTeX Font Info:    Try loading font information for U+msb on input line 48.
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/amsfonts/u
 msb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+pzd on input line 46.
+LaTeX Font Info:    Try loading font information for U+pzd on input line 48.
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/psnfss/upz
 d.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8.03> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 46.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 48.
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--49
+Underfull \hbox (badness 10000) in paragraph at lines 50--51
 
  []
 
 [0]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11.04124> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 54.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 56.
 LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <11.04124> not available
 
-(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 54.
+(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 56.
  (./requirements_group51.toc
 LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 2.
 )
-\tf@toc=\write4
-\openout4 = `requirements_group51.toc'.
+\tf@toc=\write5
+\openout5 = `requirements_group51.toc'.
 
  [1]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9.53561> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 59.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 61.
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--68
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 71--76
+Underfull \hbox (badness 10000) in paragraph at lines 63--70
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--83
+Underfull \hbox (badness 10000) in paragraph at lines 73--78
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--89
+Underfull \hbox (badness 10000) in paragraph at lines 79--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--96
 
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9.53561> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 94.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 101.
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--123
+Underfull \hbox (badness 10000) in paragraph at lines 107--130
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 134--137
+Underfull \hbox (badness 10000) in paragraph at lines 141--144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--143
+Underfull \hbox (badness 10000) in paragraph at lines 145--150
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--149
+Underfull \hbox (badness 10000) in paragraph at lines 151--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--160
+Underfull \hbox (badness 10000) in paragraph at lines 162--167
 
  []
 
 [3]
 File: images/block_diagram.eps Graphic file (type eps)
  <images/block_diagram.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 170--175
+Underfull \hbox (badness 10000) in paragraph at lines 177--182
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--183
+Underfull \hbox (badness 10000) in paragraph at lines 183--190
 
  []
 
@@ -727,52 +1135,52 @@ Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no ™ in font pplr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--191
+Underfull \hbox (badness 10000) in paragraph at lines 193--198
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 201--202
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--209
+Underfull \hbox (badness 10000) in paragraph at lines 214--216
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--215
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+[5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 269--280
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
-[5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+[7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 285.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 285.
  (./requirements_group51.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 220.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 285.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 285.
 Package rerunfilecheck Info: File `requirements_group51.out' has not changed.
-(rerunfilecheck)             Checksum: E25F2E75EC14C5A772AE3390AC1BCA8C;1185.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
+(rerunfilecheck)             Checksum: ED61569E24144B339F4E7FF5DFC87AB0;1261.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 285.
  ) 
 Here is how much of TeX's memory you used:
- 9875 strings out of 493014
- 156092 string characters out of 6122796
- 250963 words of memory out of 5000000
- 13308 multiletter control sequences out of 15000+600000
+ 21855 strings out of 493014
+ 427356 string characters out of 6122796
+ 498046 words of memory out of 5000000
+ 25036 multiletter control sequences out of 15000+600000
  33846 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,6n,39p,335b,351s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,6n,85p,440b,743s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on requirements_group51.dvi (6 pages, 31704 bytes).
+Output written on requirements_group51.dvi (8 pages, 49956 bytes).
