@@ -49,9 +49,8 @@
 \begin{abstract}
 
 This project aims to develop a system that creates a video feed from multiple cameras 
-operating on different spectral bands. We will combine video feeds from the
-visible light, infrared and ultraviolet spectral bands. The resulting composite image 
-will enable the user to see, via the video feed, a clear image in low-visibility 
+operating on the visible light and infrared spectral bands. The resulting composite 
+image will enable the user to see, via the video feed, a clear image in low-visibility 
 conditions such as fog. We use methods in software operating on an NVIDIA Jetson 
 TX1/2 device to create this composite image in near real-time.\\
 
@@ -69,7 +68,7 @@ TX1/2 device to create this composite image in near real-time.\\
 
 This software requirements specification is intended to define the requirements of the 
 project for developing a multi-camera, multispectral image processing system, that 
-operates on a SoC at near real-time, for use in ground and air based 
+operates on a SoM at near real-time, for use in air based 
 applications. Defined requirements will allow for a contract between us, the 
 developers, and Rockwell Collins, our client, on what Rockwell Collins wants us to 
 deliver in their desired software. This document is intended for review and reference 
@@ -81,7 +80,7 @@ The product outlined in this requirements document will be the multi-camera, SoM
  near real-time video processing for UAS and VR/AR applications. This product will need to 
  be able to generate a stitched video output from a multi-camera input. The product is 
  intended to help initialize our client's development of a cheaper alternative to a 
- product that is already offered to their customers.\\
+ product that is currently offered to their customers.\\
 
 The software products that will be produced include software for a stitched video output 
 from the NVIDIA TX1/2, receiving the input from two visible band cameras. 
@@ -163,8 +162,6 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	\hline
 	SWaP-C & Size, weight, power and cost\\
 	\hline
-	UAV & Unmanned Aerial Vehicle\\
-	\hline
 	UAS & Unmanned Aircraft System\\
 	\hline
 	VI & Video Input\\
@@ -173,25 +170,17 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	\hline
 \end{tabular}
 
-%\subsubsection{Abbreviations}
-
-%...
-
-%\subsection{References}
-
-%...
-
 \subsection{Overview}
 
-This project aims to create a device that is capable of combining the video input from 
+This project aims to create a product that is capable of combining the video input from 
 two or more cameras and produce and output at near real-time. Our proposed solution 
-will use an NVIDIA Jetson device, which we will use for its integrated GPU.\\
+will use an NVIDIA Jetson TX1/2, which we will use for its integrated GPU.\\
 
 We need this GPU to combine the images from multiple cameras. The end goal is to have 
 a system that uses the input from multiple cameras that operate on the infrared and 
 visible light spectral bands. By using these spectral bands, we should be able to 
 produce an image that can be used to see in low-visibility situations, such as landing 
-a UAV in fog.\\
+a UAS in fog.\\
 
 The images we produce will be 2D representations of our collective image captures. In 
 other words, we do not aim to create a 3D image or a dynamic focus image. This is 
@@ -205,7 +194,7 @@ combination of all images captured by the cameras.\\
 \subsection{Product Perspective}
 
 The system will be self-contained and consists of three parts: one NVIDIA TX1/2, 
-one CSI carrier board, and at least two cameras. The cameras connect to the CSI board, 
+one carrier board, and at least two cameras. The cameras connect to the carrier board, 
 which is connected to the NVIDIA TX1/2. The NVIDIA TX1/2 is responsible for decoding 
 the serial data retrieved by the CSI board from the cameras, and is then be used to 
 execute the software for image processing and combining images from multiple cameras.\\
@@ -287,20 +276,24 @@ will still operate.\\
 \subsubsection{Cameras}
 
 \begin{enumerate}[label=\alph*]
-	\item The cameras with CSI interface are required in order to transfer image data to 
+	\item Cameras with CSI interface are required in order to transfer image data to 
 	the NVIDIA TX1/2.\\
 	\item The transfer rate is expected to operate at near real-time, and the output format 
 	from the cameras will be accepted by NVIDIA TX1/2.\\
 	\item The cameras should be able to capture images from different spectral bands 
 	which includes infrared and visible light.\\
 	\item The quality of the camera is not a primary concern for our project, and its 
-	function is to is provide input to the NVIDIA TX1/2 for testing video output.\\
+	function is to is provide input to the NVIDIA TX1/2 for testing video output. 
+	A stretch goal involves providing an interface to accomodate for cameras that 
+	produces a higher quality input, but the hardware to connect these cameras to the 
+	carrier board does not appear to exist at this time.\\
 \end{enumerate}
 
 \subsection{Software Specifications}
 
 \begin{enumerate}[label=\alph*]
-	\item The software running on the TX1/2 should be able to decode the data streams from each camera and be able to manipulate that data in order to fulfill the next specification.\\
+	\item The software running on the TX1/2 should be able to decode the data streams 
+	from each camera and provide a stitched video output.\\
 	\item The software should be able to stitch images from infrared 
 	and visible light spectral bands to produce a 2D video output. \\
 	\item Latency of the data-processing in the software is expected to be near 
