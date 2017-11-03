@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex 2016.10.17)  2 NOV 2017 14:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex 2016.10.17)  2 NOV 2017 23:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -678,24 +678,33 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \rot@float@box=\box45
 \rot@mess@toks=\toks42
 )
+(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/enumitem/e
+numitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip52
+\enit@outerparindent=\dimen184
+\enit@toks=\toks43
+\enit@inbox=\box46
+\enitdp@description=\count143
+)
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/preprint/b
 alance.sty
 Package: balance 1999/02/23 4.3 (PWD)
-\oldvsize=\dimen184
+\oldvsize=\dimen185
 )
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/subfigure/
 subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
-\subfigtopskip=\skip52
-\subfigcapskip=\skip53
-\subfigcaptopadj=\dimen185
-\subfigbottomskip=\skip54
-\subfigcapmargin=\dimen186
-\subfiglabelskip=\skip55
-\c@subfigure=\count143
-\c@lofdepth=\count144
-\c@subtable=\count145
-\c@lotdepth=\count146
+\subfigtopskip=\skip53
+\subfigcapskip=\skip54
+\subfigcaptopadj=\dimen186
+\subfigbottomskip=\skip55
+\subfigcapmargin=\dimen187
+\subfiglabelskip=\skip56
+\c@subfigure=\count144
+\c@lofdepth=\count145
+\c@subtable=\count146
+\c@lotdepth=\count147
 
 ****************************************
 * Local config file subfigure.cfg used *
@@ -703,17 +712,8 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/subfigure/
 subfigure.cfg)
-\subfig@top=\skip56
-\subfig@bottom=\skip57
-)
-(/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/enumitem/e
-numitem.sty
-Package: enumitem 2011/09/28 v3.5.2 Customized lists
-\labelindent=\skip58
-\enit@outerparindent=\dimen187
-\enit@toks=\toks43
-\enit@inbox=\box46
-\enitdp@description=\count147
+\subfig@top=\skip57
+\subfig@bottom=\skip58
 )
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/geometry/g
 eometry.sty
@@ -935,7 +935,7 @@ istings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
-Package hyperref Info: Option `colorlinks' set `true' on input line 39.
+Package hyperref Info: Option `colorlinks' set `true' on input line 40.
 
 
 LaTeX Warning: Unused global option(s):
@@ -944,20 +944,20 @@ LaTeX Warning: Unused global option(s):
 (./requirements_group51.aux)
 \openout1 = `requirements_group51.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
 
 -- Lines per column: 39 (approximate, difference = 14.73578pt).
 ABD: EveryShipout initializing macros
@@ -996,7 +996,7 @@ ABD: EveryShipout initializing macros
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box50
-Package hyperref Info: Link coloring ON on input line 45.
+Package hyperref Info: Link coloring ON on input line 46.
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/hyperref/n
 ameref.sty
@@ -1008,9 +1008,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count171
 )
-LaTeX Info: Redefining \ref on input line 45.
-LaTeX Info: Redefining \pageref on input line 45.
-LaTeX Info: Redefining \nameref on input line 45.
+LaTeX Info: Redefining \ref on input line 46.
+LaTeX Info: Redefining \pageref on input line 46.
+LaTeX Info: Redefining \nameref on input line 46.
  (./requirements_group51.out) (./requirements_group51.out)
 \@outlinefile=\write4
 \openout4 = `requirements_group51.out'.
@@ -1019,45 +1019,45 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count172
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 48.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 49.
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/psnfss/ot1
 phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 48
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 49
 .
-LaTeX Font Info:    Try loading font information for U+msa on input line 48.
+LaTeX Font Info:    Try loading font information for U+msa on input line 49.
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/amsfonts/u
 msa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 48.
+LaTeX Font Info:    Try loading font information for U+msb on input line 49.
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/amsfonts/u
 msb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+pzd on input line 48.
+LaTeX Font Info:    Try loading font information for U+pzd on input line 49.
 
 (/nfs/guille/a2/rh80apps/tex_live/tex_live-2016/texmf-dist/tex/latex/psnfss/upz
 d.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8.03> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 48.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 49.
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--51
+Underfull \hbox (badness 10000) in paragraph at lines 51--57
 
  []
 
 [0]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11.04124> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 56.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <11.04124> not available
 
-(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 56.
+(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 63.
  (./requirements_group51.toc
 LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 2.
 )
@@ -1066,67 +1066,67 @@ LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 2.
 
  [1]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9.53561> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 61.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 68.
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--70
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--78
+Underfull \hbox (badness 10000) in paragraph at lines 70--77
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--85
+Underfull \hbox (badness 10000) in paragraph at lines 80--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--90
+Underfull \hbox (badness 10000) in paragraph at lines 86--92
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--95
+Underfull \hbox (badness 10000) in paragraph at lines 93--97
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--102
 
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9.53561> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 98.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 105.
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 162--165
+Underfull \hbox (badness 10000) in paragraph at lines 183--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--171
+Underfull \hbox (badness 10000) in paragraph at lines 187--192
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 172--177
+Underfull \hbox (badness 10000) in paragraph at lines 193--198
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--188
+Underfull \hbox (badness 10000) in paragraph at lines 204--209
 
  []
 
-File: images/block_diagram.eps Graphic file (type eps)
-<images/block_diagram.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 198--203
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 204--207
+File: images/diagram.eps Graphic file (type eps)
+<images/diagram.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 219--224
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--211
+Underfull \hbox (badness 10000) in paragraph at lines 225--228
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 229--232
 
  []
 
@@ -1134,52 +1134,112 @@ Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no ™ in font pplr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--219
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 229--230
+Underfull \hbox (badness 10000) in paragraph at lines 235--240
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--234
+Underfull \hbox (badness 10000) in paragraph at lines 243--248
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--242
+Underfull \hbox (badness 10000) in paragraph at lines 256--258
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
+Underfull \hbox (badness 10000) in paragraph at lines 258--260
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 260--262
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 267--269
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 268--279
+Underfull \hbox (badness 10000) in paragraph at lines 269--271
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--273
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 278--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--282
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--291
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 291--293
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--295
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--300
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--302
 
  []
 
 [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 280.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 280.
+Underfull \hbox (badness 10000) in paragraph at lines 323--334
+
+ []
+
+[7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 335.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 335.
  (./requirements_group51.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 280.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 280.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 335.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 335.
 Package rerunfilecheck Info: File `requirements_group51.out' has not changed.
-(rerunfilecheck)             Checksum: 01388980414B479C044D67E2A7200648;1258.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 280.
+(rerunfilecheck)             Checksum: 3838103C0F7F289E08B488D25215B90A;1315.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 335.
  ) 
 Here is how much of TeX's memory you used:
- 21857 strings out of 493014
- 427435 string characters out of 6122796
- 499043 words of memory out of 5000000
- 25038 multiletter control sequences out of 15000+600000
+ 21862 strings out of 493014
+ 427520 string characters out of 6122796
+ 502078 words of memory out of 5000000
+ 25043 multiletter control sequences out of 15000+600000
  33846 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,6n,85p,440b,730s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,8n,85p,440b,730s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on requirements_group51.dvi (7 pages, 51956 bytes).
+Output written on requirements_group51.dvi (8 pages, 57948 bytes).
