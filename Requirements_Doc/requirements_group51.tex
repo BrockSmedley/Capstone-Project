@@ -41,7 +41,7 @@
 
 \parindent = 0.0 in
 \parskip = 0.1 in
-\title{Requirements Document: Multi-Camera, SoC Based, Real-Time Video Processing for UAS and VR/AR Applications}
+\title{Requirements Document: Multi-Camera, SoM Based, Real-Time Video Processing for UAS and VR/AR Applications}
 \author{Area 51: Shu-Ping Chien, Brock Smedley, and W Keith Stirby Jr \\ 03 November 2017 \\ CS-461, Senior Software Engineering Project, Fall 2017}
 \begin{document}
 \begin{titlepage}
@@ -77,7 +77,7 @@ by both the developers and the clients.\\
 
 \subsection{Scope}
 
-The product outlined in this requirements document will be the multi-camera, SoC based,
+The product outlined in this requirements document will be the multi-camera, SoM based,
  near real-time video processing for UAS and VR/AR applications. This product will need to 
  be able to generate a stitched video output from a multi-camera input. The product is 
  intended to help initialize our client's development of a cheaper alternative to a 
@@ -121,7 +121,7 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	NVIDIA TX1/2 & NVIDIA GPUs, the Jetson TX1 or the Jetson TX2.\\
 	\hline
 	spectral bands & Electromagnetic frequency ranges; different 
-	spectrums of light, including \newline but not limited to infrared, ultraviolet, 
+	spectrums of light, including \newline but not limited to infrared 
 	and visible light.\\
 	\hline
 	standalone & A system that performs its function independently. \\
@@ -163,7 +163,7 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	\hline
 	SoC & System-on-chip\\
 	\hline
-	SOM & System-on-module\\
+	SoM & System-on-module\\
 	\hline
 	SWaP-C & Size, weight, power and cost\\
 	\hline
@@ -239,7 +239,7 @@ with the video output provided by the camera input. \\
 
 \subsection{Constraints}
 
-The client requires that the product's SoC be an NVIDIA TX1/2 to utilize its GPU 
+The client requires that the product's SoM be an NVIDIA TX1/2 to utilize its GPU 
 and CSI ports. \\
 
 The system must operate in near real-time, and therefore the camera feed(s) must be 
@@ -271,22 +271,21 @@ work independently of the system; if one fails, the others will still operate.\\
 \subsubsection{NVIDIA Jetson TX1/2}
 
 \begin{enumerate}[label=\alph*]
-	\item The NVIDIA TX1/2 will capture images through its CSI interface and transfer data 
-	into its GPU, which is used to combine the images from multiple cameras.\\ 
+	\item The NVIDIA TX1/2 will receive image data through its CSI interface from
+	the carrier board, and process this data to produce a video output. (STILL WORKING
+	ON THIS. NEED TO ADD MULTIPLE CAMERAS INFO to reflect multiple streams.)\\
 	\item The development environment of NVIDIA TX1/2 is available on Ubuntu system, and the 
 	module supports softwares for image processing.\\
-	%\item The NVIDIA TX1/2 is expected to consume approximately 7.5 Watts of power on 
-	%average.\\
 \end{enumerate}
 
-\subsubsection{CSI Board}
+\subsubsection{Carrier Board}
 
 \begin{enumerate}[label=\alph*]
 	\item The carrier board should contain a CSI interface, which is used to transfer the
 	input from up to six cameras to the NVIDIA TX1/2. \\
-	\item The CSI board will provide output for a computer with pixel data and signals that 
+	\item The carrier board will provide output for a computer with pixel data and signals that 
 	can be used for subsequent image processing.\\
-	\item The CSI board will be compatible with the NVIDIA TX1/2, and the output format of 
+	\item The carrier board will be compatible with the NVIDIA TX1/2, and the output format of 
 	CSI is depending on what cameras we chose.\\
 \end{enumerate}
 
@@ -298,7 +297,7 @@ work independently of the system; if one fails, the others will still operate.\\
 	\item The transfer rate is expected to operate at near real-time, and the output format 
 	from the cameras will be accepted by NVIDIA TX1/2.\\
 	\item The cameras should be able to capture images from different spectral bands 
-	which includes infrared, ultraviolet, and visible light.\\
+	which includes infrared and visible light.\\
 \end{enumerate}
 
 \subsection{Software Specifications}
@@ -339,7 +338,7 @@ work independently of the system; if one fails, the others will still operate.\\
 \end{center}	
 
 \subsection{Development Schedule Tasks}
-Task 1: Have hardware procured and assembled.\\
+Task 1: Have hardware procured and assembled when received.\\
 Task 2: Produce a tiled video output from the input of six cameras.\\
 Task 3: Produce stitched video output from the input of two and three cameras, 
 and have latency estimates produced.\\
