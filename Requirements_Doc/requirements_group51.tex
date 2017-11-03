@@ -137,10 +137,6 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	\hline
 	\textbf{Acronym} & \textbf{Term}\\
 	\hline
-	2D & Two Dimensional\\
-	\hline
-	3D & Three Dimensional\\
-	\hline
 	AR & Augmented Reality\\
 	\hline
 	CPU & Central Processing Unit\\
@@ -240,7 +236,9 @@ with the video output provided by the camera input. \\
 \subsection{Constraints}
 
 The client requires that the product's SoM be an NVIDIA TX1/2 to utilize its GPU 
-and CSI ports. \\
+and CSI ports. Due this product's application being on a UAS, its hardware must be 
+compact to meet SWaP-C requirements set by the client. The system must be standalone 
+and not rely on cloud computing and external databases. \\
 
 The system must operate in near real-time, and therefore the camera feed(s) must be 
 processed quickly enough for the user to make snap decisions based on the feed. The 
@@ -248,21 +246,18 @@ NVIDIA TX1/2 should process each frame before the next one arrives to be process
 For example, when recording at 30 fps each output frame should be processed in 
 less than 1/30 of a second.\\
 
-Due to the application for the product, its hardware must be compact and the system 
-must be standalone. \\
-
 \subsection{Assumptions \& Dependencies}
 
 Software will be implemented on an NVIDIA TX1/2, and will be deployed with NVIDIA 
 Jetpack software running on an Ubuntu machine. The NVIDIA TX1/2 is assumed to be 
-capable of processing the data feed through its CSI interface. 
+capable of processing the data feed through its CSI interface. \\
 
-Adequate power supplies are required; 
-they should meet the NVIDIA TX1/2 system requirements. 
+Adequate power supplies are required; they should meet the NVIDIA TX1/2 system 
+requirements. \\
 
-All cameras in use should be 
-aimed at same subject, capturing approximately the same image. Each camera should 
-work independently of the system; if one fails, the others will still operate.\\
+All cameras in use should be aimed at same subject, capturing approximately the same 
+image. Each camera should work independently of the system; if one fails, the others 
+will still operate.\\
 
 \section{Specific Requirements}
 
@@ -272,8 +267,8 @@ work independently of the system; if one fails, the others will still operate.\\
 
 \begin{enumerate}[label=\alph*]
 	\item The NVIDIA TX1/2 will receive image data through its CSI interface from
-	the carrier board, and process this data to produce a video output. (STILL WORKING
-	ON THIS. NEED TO ADD MULTIPLE CAMERAS INFO to reflect multiple streams.)\\
+	the carrier board, and process this data to produce a video output. The carrier
+	board is providing input to the NVIDIA TX1/2 from multiple cameras. \\
 	\item The development environment of NVIDIA TX1/2 is available on Ubuntu system, and the 
 	module supports softwares for image processing.\\
 \end{enumerate}
@@ -298,14 +293,15 @@ work independently of the system; if one fails, the others will still operate.\\
 	from the cameras will be accepted by NVIDIA TX1/2.\\
 	\item The cameras should be able to capture images from different spectral bands 
 	which includes infrared and visible light.\\
+	\item The quality of the camera is not a primary concern for our project, and its 
+	function is to is provide input to the NVIDIA TX1/2 for testing video output.\\
 \end{enumerate}
 
 \subsection{Software Specifications}
 
 \begin{enumerate}[label=\alph*]
-	\item The software is expected to transfer input images into a corresponding format for 
-	the GPU in the NVIDIA TX1/2 to produce a video output.\\
-	\item The software should be able to stitch images from infrared, ultraviolet, 
+	\item The software running on the TX1/2 should be able to decode the data streams from each camera and be able to manipulate that data in order to fulfill the next specification.\\
+	\item The software should be able to stitch images from infrared 
 	and visible light spectral bands to produce a 2D video output. \\
 	\item Latency of the data-processing in the software is expected to be near 
 	real-time, therefore the programming implemented will be required to use time
@@ -314,7 +310,9 @@ work independently of the system; if one fails, the others will still operate.\\
 	\begin{enumerate}
 	 	\item Output a dual stitched video combined with a fused five-camera input.\\
 		\item Incorporate IMU data, orientation tracking data, GPS data, and geolocate 
-		imagery into the video output.\\
+		imagery into the video output. An IMU is used to track linear and angular 
+		motion of an object by using gyroscopes and accelerometers. Orientation 
+		tracking utilizes sensor input to provide rotational and position data.\\
 		\item Provide an interface to accomodate for cameras the meet quality
 		requirements for video output. \\
 	\end{enumerate} 
@@ -332,6 +330,9 @@ work independently of the system; if one fails, the others will still operate.\\
     	\ganttbar{Task 5}{2018-03-01}{2018-03-31}\\
     	\ganttbar{Task 6}{2018-04-01}{2018-04-30}\\
     	\ganttbar{Task 7}{2018-05-01}{2018-05-31}\\
+    	\ganttlink{elem0}{elem1}
+    	\ganttlink{elem1}{elem2}
+    	\ganttlink{elem2}{elem3}
 	\end{ganttchart}
 \begin{center}
 	Fig. 2: Project Schedule
