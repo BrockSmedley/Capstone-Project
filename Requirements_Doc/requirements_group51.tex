@@ -304,8 +304,7 @@ work independently of the system; if one fails, the others will still operate.\\
 \subsection{Software Specifications}
 
 \begin{enumerate}[label=\alph*]
-	\item The software is expected to transfer input images into a corresponding format for 
-	the GPU in the NVIDIA TX1/2 to produce a video output.\\
+	\item The software running on the TX1/2 should be able to decode the data streams from each camera and be able to manipulate that data in order to fulfill the next specification.\\
 	\item The software should be able to stitch images from infrared, ultraviolet, 
 	and visible light spectral bands to produce a 2D video output. \\
 	\item Latency of the data-processing in the software is expected to be near 
