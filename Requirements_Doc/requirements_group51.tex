@@ -42,7 +42,7 @@
 \parindent = 0.0 in
 \parskip = 0.1 in
 \title{Requirements Document: Multi-Camera, SoC Based, Real-Time Video Processing for UAS and VR/AR Applications}
-\author{Group 51: Shu-Ping Chien, Brock Smedley, and W Keith Stirby Jr \\ 03 November 2017 \\ CS-461, Senior Software Engineering Project, Fall 2017}
+\author{Area 51: Shu-Ping Chien, Brock Smedley, and W Keith Stirby Jr \\ 03 November 2017 \\ CS-461, Senior Software Engineering Project, Fall 2017}
 \begin{document}
 \begin{titlepage}
 \maketitle
@@ -124,6 +124,11 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	spectrums of light, including \newline but not limited to infrared, ultraviolet, 
 	and visible light.\\
 	\hline
+	standalone & A system that performs its function independently. \\
+	\hline
+	time division multiplexing & The illusion of simultaneous execution in a CPU due
+	to a CPU being capable of running one process at a time.\\
+	\hline
 \end{tabular}
 
 \subsubsection{Acronyms}
@@ -137,6 +142,8 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	3D & Three Dimensional\\
 	\hline
 	AR & Augmented Reality\\
+	\hline
+	CPU & Central Processing Unit\\
 	\hline
 	CSI & Camera Serial Interface\\
 	\hline
@@ -232,17 +239,28 @@ with the video output provided by the camera input. \\
 
 \subsection{Constraints}
 
-The system must operate in near real-time. In other words, the camera feed(s) must be 
+The client requires that the product's SoC be an NVIDIA TX1/2 to utilize its GPU 
+and CSI ports. \\
+
+The system must operate in near real-time, and therefore the camera feed(s) must be 
 processed quickly enough for the user to make snap decisions based on the feed. The 
 NVIDIA TX1/2 should process each frame before the next one arrives to be processed. 
-If we’re recording at 30 fps, then each output frame should be processed in less than 
-1/30 of a second.\\
+For example, when recording at 30 fps each output frame should be processed in 
+less than 1/30 of a second.\\
+
+Due to the application for the product, its hardware must be compact and the system 
+must be standalone. \\
 
 \subsection{Assumptions \& Dependencies}
 
 Software will be implemented on an NVIDIA TX1/2, and will be deployed with NVIDIA 
-Jetpack software running on an Ubuntu machine. Adequate power supplies are required; 
-they should meet the NVIDIA TX1/2 system requirements. All cameras in use should be 
+Jetpack software running on an Ubuntu machine. The NVIDIA TX1/2 is assumed to be 
+capable of processing the data feed through its CSI interface. 
+
+Adequate power supplies are required; 
+they should meet the NVIDIA TX1/2 system requirements. 
+
+All cameras in use should be 
 aimed at same subject, capturing approximately the same image. Each camera should 
 work independently of the system; if one fails, the others will still operate.\\
 
@@ -257,8 +275,8 @@ work independently of the system; if one fails, the others will still operate.\\
 	into its GPU, which is used to combine the images from multiple cameras.\\ 
 	\item The development environment of NVIDIA TX1/2 is available on Ubuntu system, and the 
 	module supports softwares for image processing.\\
-	\item The NVIDIA TX1/2 is expected to consume approximately 7.5 Watts of power on 
-	average.\\
+	%\item The NVIDIA TX1/2 is expected to consume approximately 7.5 Watts of power on 
+	%average.\\
 \end{enumerate}
 
 \subsubsection{CSI Board}
@@ -291,7 +309,8 @@ work independently of the system; if one fails, the others will still operate.\\
 	\item The software should be able to stitch images from infrared, ultraviolet, 
 	and visible light spectral bands to produce a 2D video output. \\
 	\item Latency of the data-processing in the software is expected to be near 
-	real-time. \\
+	real-time, therefore the programming implemented will be required to use time
+	division multiplexing. \\
 	\item The software stretch goals are to:
 	\begin{enumerate}
 	 	\item Output a dual stitched video combined with a fused five-camera input.\\
