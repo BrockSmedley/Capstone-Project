@@ -68,7 +68,7 @@ TX1/2 device to create this composite image in near real-time.\\
 
 This software requirements specification is intended to define the requirements of the 
 project for developing a multi-camera, multispectral image processing system, that 
-operates on a SoM at near real-time, for use in air based 
+operates on an SoM at near real-time, for use in air based 
 applications. Defined requirements will allow for a contract between us, the 
 developers, and Rockwell Collins, our client, on what Rockwell Collins wants us to 
 deliver in their desired software. This document is intended for review and reference 
@@ -86,8 +86,8 @@ The software products that will be produced include software for a stitched vide
 from the NVIDIA TX1/2, receiving the input from two visible band cameras. 
 The video output is expected to be near real-time, and the latency from the camera 
 input to the video output is expected to be improved upon throughout the project. Video 
-output stretch goals is to have software that fuses the video output from the input of 
-three, four, five, and six cameras, and have up to four infrared band inputs.\\
+output stretch goals are to have software that fuses the video output from the input of 
+three, four, five, and six cameras; and to have up to four infrared band inputs.\\
 
 Output display stretch goals will be to incorporate IMU data, orientation tracking 
 data, GPS data, and geolocate imagery. Two final stretch goals are packaging the 
@@ -124,6 +124,8 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	and visible light.\\
 	\hline
 	standalone & A system that performs its function independently. \\
+	\hline
+	stitched (video) output & a composite image formed from multiple images
 	\hline
 	time division multiplexing & The illusion of simultaneous execution in a CPU due
 	to a CPU being capable of running one process at a time.\\
@@ -229,8 +231,8 @@ and CSI ports. Due this product's application being on a UAS, its hardware must 
 compact to meet SWaP-C requirements set by the client. The system must be standalone 
 and not rely on cloud computing and external databases. \\
 
-The system must operate in near real-time, and therefore the camera feed(s) must be 
-processed quickly enough for the user to make snap decisions based on the feed. The 
+The system must operate in near real-time, and therefore the video/camera feed(s) must be 
+processed quickly enough for the user to be able to make snap decisions based on the feed. The 
 NVIDIA TX1/2 should process each frame before the next one arrives to be processed. 
 For example, when recording at 30 fps each output frame should be processed in 
 less than 1/30 of a second.\\
@@ -258,8 +260,7 @@ will still operate.\\
 	\item The NVIDIA TX1/2 will receive image data through its CSI interface from
 	the carrier board, and process this data to produce a video output. The carrier
 	board is providing input to the NVIDIA TX1/2 from multiple cameras. \\
-	\item The development environment of NVIDIA TX1/2 is available on Ubuntu system, and the 
-	module supports softwares for image processing.\\
+	\item The development environment of NVIDIA TX1/2 is available on the Ubuntu operating system, and the module supports software for image processing.\\
 \end{enumerate}
 
 \subsubsection{Carrier Board}
@@ -270,13 +271,13 @@ will still operate.\\
 	\item The carrier board will provide output for a computer with pixel data and signals that 
 	can be used for subsequent image processing.\\
 	\item The carrier board will be compatible with the NVIDIA TX1/2, and the output format of 
-	CSI is depending on what cameras we chose.\\
+	CSI depends on what cameras we choose.\\
 \end{enumerate}
 
 \subsubsection{Cameras}
 
 \begin{enumerate}[label=\alph*]
-	\item Cameras with CSI interface are required in order to transfer image data to 
+	\item Cameras that use the CSI interface are required in order to transfer image data to 
 	the NVIDIA TX1/2.\\
 	\item The transfer rate is expected to operate at near real-time, and the output format 
 	from the cameras will be accepted by NVIDIA TX1/2.\\
@@ -301,7 +302,7 @@ will still operate.\\
 	division multiplexing. \\
 	\item The software stretch goals are to:
 	\begin{enumerate}
-	 	\item Output a dual stitched video combined with a fused five-camera input.\\
+	 	\item Output a dual stitched video combined with a fused six-camera input.\\
 		\item Incorporate IMU data, orientation tracking data, GPS data, and geolocate 
 		imagery into the video output. An IMU is used to track linear and angular 
 		motion of an object by using gyroscopes and accelerometers. Orientation 
@@ -333,11 +334,11 @@ will still operate.\\
 
 \subsection{Development Schedule Tasks}
 Task 1: Have hardware procured and assembled when received.\\
-Task 2: Produce a tiled video output from the input of six cameras.\\
-Task 3: Produce stitched video output from the input of two and three cameras, 
+Task 2: Produce stitched video output from the input of two and three cameras, 
 and have latency estimates produced.\\
+Task 3: Produce a tiled video output from the input of six cameras.\\
 Task 4: Produce a dual stitched video output that is combined into a fused 
-five-camera output (stretch goal).\\
+six-camera output (stretch goal).\\
 Task 5: Incorporate IMU data, orientation tracking data, GPS data, and 
 geolocate imagery into the video output (stretch goals).\\
 Task 6: Package the system hardware for flight (stretch goal).\\
