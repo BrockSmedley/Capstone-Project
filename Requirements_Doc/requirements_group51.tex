@@ -123,7 +123,8 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	spectrums of light, including \newline but not limited to infrared 
 	and visible light.\\
 	\hline
-	standalone & A system that performs its function independently. \\
+	standalone & The system performs its functionality independent of another
+	system, in our product's case it will be independent of a development kit. \\
 	\hline
 	stitched (video) output & a composite image formed from multiple images\\
 	\hline
@@ -175,8 +176,8 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 \subsection{Overview}
 
 This project aims to create a product that is capable of combining the video input from 
-two or more cameras and produce and output at near real-time. Our proposed solution 
-will use an NVIDIA Jetson TX1/2, which we will use for its integrated GPU.\\
+two or more cameras and produce an output at near real-time. Our proposed solution 
+will use an NVIDIA Jetson TX1/2, which we will use for its integrated GPU and CPU.\\
 
 We need this GPU to combine the images from multiple cameras. The end goal is to have 
 a system that uses the input from multiple cameras that operate on the infrared and 
@@ -217,7 +218,7 @@ can be used as a video feed for the pilot of a UAS during low visibility flight
 conditions. \\
 
 A functional stretch goal for video output provided by camera input is to fuse the 
-input from the visible and spectral bands, which will overlay the two types of output 
+input from the visible and infrared spectral bands, which will overlay the two types of output 
 and enhance the vision for a UAS pilot. \\
 
 Output display functional stretch goals will be to provide indications from IMU data, 
@@ -260,18 +261,18 @@ will still operate.\\
 	\item The NVIDIA TX1/2 will receive image data through its CSI interface from
 	the carrier board, and process this data to produce a video output. The carrier
 	board is providing input to the NVIDIA TX1/2 from multiple cameras. \\
-	\item The development environment of NVIDIA TX1/2 is available on the Ubuntu operating system, and the module supports software for image processing.\\
-\end{enumerate}
+	\item The development environment of NVIDIA TX1/2 is available on the Ubuntu 
+	operating system, and the module supports software for image processing.\\ 
+	\end{enumerate}
 
 \subsubsection{Carrier Board}
 
 \begin{enumerate}[label=\alph*]
 	\item The carrier board should contain a CSI interface, which is used to transfer the
 	input from up to six cameras to the NVIDIA TX1/2. \\
-	\item The carrier board will provide output for a computer with pixel data and signals that 
+	\item The carrier board will provide output for a computer with data and signals that 
 	can be used for subsequent image processing.\\
-	\item The carrier board will be compatible with the NVIDIA TX1/2, and the output format of 
-	CSI depends on what cameras we choose.\\
+	\item The carrier board will be compatible with the NVIDIA TX1/2.\\
 \end{enumerate}
 
 \subsubsection{Cameras}
@@ -298,8 +299,8 @@ will still operate.\\
 	\item The software should be able to stitch images from infrared 
 	and visible light spectral bands to produce a 2D video output. \\
 	\item Latency of the data-processing in the software is expected to be near 
-	real-time, therefore the programming implemented will be required to use time
-	division multiplexing. \\
+	real-time, therefore the programming implemented will be required to use either time
+	division multiplexing or parallel processing. \\
 	\item The software stretch goals are to:
 	\begin{enumerate}
 	 	\item Output a dual stitched video combined with a fused six-camera input.\\

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex 2016.10.17)  3 NOV 2017 19:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex 2016.10.17)  6 NOV 2017 14:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1095,78 +1095,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--101
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9.53561> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 104.
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 177--180
+Underfull \hbox (badness 10000) in paragraph at lines 178--181
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 181--186
+Underfull \hbox (badness 10000) in paragraph at lines 182--187
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--192
+Underfull \hbox (badness 10000) in paragraph at lines 188--193
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--203
+Underfull \hbox (badness 10000) in paragraph at lines 199--204
 
  []
 
 File: images/diagram.eps Graphic file (type eps)
 <images/diagram.eps>
-Underfull \hbox (badness 10000) in paragraph at lines 213--218
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 219--222
+Underfull \hbox (badness 10000) in paragraph at lines 214--219
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 223--226
+Underfull \hbox (badness 10000) in paragraph at lines 220--223
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--233
+Underfull \hbox (badness 10000) in paragraph at lines 224--227
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--239
+Underfull \hbox (badness 10000) in paragraph at lines 230--234
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--245
+Underfull \hbox (badness 10000) in paragraph at lines 235--240
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--248
+Underfull \hbox (badness 10000) in paragraph at lines 243--246
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--252
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--263
+Underfull \hbox (badness 10000) in paragraph at lines 250--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
+Underfull \hbox (badness 10000) in paragraph at lines 261--264
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 269--271
+Underfull \hbox (badness 10000) in paragraph at lines 264--266
 
  []
 
@@ -1181,69 +1176,74 @@ Underfull \hbox (badness 10000) in paragraph at lines 273--275
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--282
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--284
+Underfull \hbox (badness 10000) in paragraph at lines 281--283
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--286
+Underfull \hbox (badness 10000) in paragraph at lines 283--285
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--291
+Underfull \hbox (badness 10000) in paragraph at lines 285--287
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--298
+Underfull \hbox (badness 10000) in paragraph at lines 287--292
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 298--300
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 300--303
+Underfull \hbox (badness 10000) in paragraph at lines 297--299
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 305--306
+Underfull \hbox (badness 10000) in paragraph at lines 299--301
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--310
+Underfull \hbox (badness 10000) in paragraph at lines 301--304
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--312
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--347
+Underfull \hbox (badness 10000) in paragraph at lines 307--311
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 311--313
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--348
 
  []
 
 [7] [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 348.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 348.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 349.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 349.
  (./requirements_group51.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 348.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 348.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 349.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 349.
 Package rerunfilecheck Info: File `requirements_group51.out' has not changed.
 (rerunfilecheck)             Checksum: DB592A4EB878B5C37FFA236FBC2C7A22;1319.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 348.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 349.
  ) 
 Here is how much of TeX's memory you used:
  21889 strings out of 493014
@@ -1254,4 +1254,4 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  62i,8n,85p,440b,730s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on requirements_group51.dvi (9 pages, 62380 bytes).
+Output written on requirements_group51.dvi (9 pages, 62344 bytes).
