@@ -1,0 +1,121 @@
+\documentclass[letterpaper,10pt,serif,draftclsnofoot,onecolumn,compsoc,titlepage]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{cite}
+\usepackage{alltt}
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{pgfgantt}
+\usepackage{rotating}
+\usepackage{enumitem}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+
+\usepackage{geometry}
+\geometry{margin=.75in}
+\usepackage{hyperref}
+%\usetikzlibrary{shapes, positioning, calc}
+\usepackage{caption}
+\usepackage{listings}
+%\usepackage[utf8]{inputenc}
+%pull in the necessary preamble matter for pygments output
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+   colorlinks = true,
+   citecolor = black,
+   linkcolor = black,
+   urlcolor = black,
+   pdfauthor = {Shu-Ping Chien, Brock Smedley, and W Keith Striby Jr},
+   pdfkeywords = {CS461 "Senior Project" Requirements Document},
+   pdftitle = {CS 461 Requirements Document},
+   pdfsubject = {CS 461 Requirements Document},
+   pdfpagemode = UseNone
+}
+
+\parindent = 0.0 in
+\parskip = 0.1 in
+\title{Technical Review: Multi-Camera, SoM Based, Real-Time Video Processing for UAS and VR/AR Applications}
+\author{Area 51: Brock Smedley \\ 12 November 2017 \\ CS461, Senior Software Engineering Project, Fall 2017}
+
+\begin{document}
+\begin{titlepage}
+\maketitle
+
+\begin{abstract}
+This project aims to create a system that produces a composite video output generated from multiple camera inputs. Three core components of the project that this document focuses on are development/deployment systems, system interfaces, and the system's operating system. My role in this project is to bridge the gap between the algorithms and the computers; to know how a software should be deployed on the system, what software can be used to get the most effective and efficient result, and how to best interact with other devices from the core system.
+
+\thispagestyle{empty}
+\end{abstract}
+\end{titlepage}
+\newpage
+
+
+\section{Development/Deployment Technologies}
+The NVIDIA Jetson TX2, the device we plan to implement our solution on, is a System-on-a-Module (SoM) device that hosts an operating system (typically Ubuntu) and allows for several types of development on it. NVIDIA offers a pre-built development environment called Jetpack that includes the operating system and all the software we might need to implement our solution. This is an attractive solution given the simplicity of it, but there are other options. It is also possible to develop our solution on some other workstation and then flash the TX2 system memory with that system’s image. We can also install an operating system manually on the TX2 and develop directly on it, as we can with Jetpack, with the caveat that we’ll have to manually install all of the software we need. We’ll examine each of these options in the following paragraphs.
+
+\subsection{Jetpack}
+Jetpack is a software deployment solution that includes an Ubuntu operating system and a bundle of software we might use to develop our solution. Once the TX2 is flashed with the Jetpack image, we can develop directly on the TX2 by connecting peripherals to the device. The software included in Jetpack encompasses a wide variety of disciplines such as machine learning, deep learning, image analysis, system profiling, and more. Also, because the TX2 can connect the internet, we can use the device remotely with SSH.
+
+Jetpack is a very attractive option because it is so simple. It includes a majority (if not all) of the software we need to develop our solution, and it flashes the system with Ubuntu which is a very robust and user-friendly operating system. However, if we need more software, we will have to install it ourselves. That is a simple thing to do with Ubuntu, though. Another downfall is that Jetpack takes a long time to install. This is not a problem if we’re just installing it once and developing on top of it, but if we want to rebuild the whole system, it will take some extra time.
+
+\subsection{Remote development}
+Another option is to develop the solution on a remote workstation and then flash the TX2 with the newly-developed image for testing. This is the least attractive option because it will require a memory flash for each build, and memory flashes in general take a considerable amount of time. However, we could take advantage of the extra computing power we can get on a remote workstation (because we can use any workstation) to test computationally-intensive algorithms quickly before deploying them on the TX2 for testing. However, this is still impractical because we can just test algorithms on whatever workstation we want and then access the algorithm’s source code (using version control) from the TX2 over the internet and continue testing natively.
+
+\subsection{Manual OS build}
+The last option is to manually install and configure the operating system on the TX2. Using this method, we will have the most control over exactly what our system requirements are and how the system is built. At first glance, this is a slightly less appealing option to Jetpack simply because Jetpack includes so much software that we would otherwise have to install manually. But on the other hand, installing software manually is not very difficult and the process can be scripted. 
+
+Additionally, the scripts we write to configure the TX2 system environment can be added to version control, which will make our system specifications very transparent and concise. There is also the benefit of saving space; if we install all of our software manually, we can avoid installing programs that we don’t need and therefore save space on the TX2. However, space isn’t much of a constraint given the TX2’s 32GB flash memory capacity. Additionally, Jetpack allows you to individually select the software to install, providing the same memory-saving benefits that manual installation does, without the time-consuming installation process.
+
+\subsection{Conclusion}
+Given consideration to the preceding items, Jetpack appears to be the best software deployment option for this project. Jetpack allows us to easily install the software we need and we can be guaranteed that the image will run on the TX2. Although we won’t use scripts to configure the system (which means that it won’t be documented in version control), that information can be documented just as well elsewhere, perhaps in a system specification document. Anyone else who wants to recreate our solution can use Jetpack and install the software that we did using it, and can be guaranteed that the system will operate as expected. Additionally, this option will allow for a simplified development process in which we develop directly on the TX2 and manage the system with version control while avoiding unnecessary and time-consuming re-flashing of the system memory.
+
+\newpage
+\section{TX2 System Interfaces}
+The NVIDIA TX2 has a variety of system interfaces that can be used to interact with the system during operation. These interfaces will prove useful in later stages of development when we want to test user inputs which will modify parameters of the system while it is in use. The TX2 offers CAN, UART, SPI, I2C, I2S, and GPIOs for serial communication but for brevity, we’ll only be looking at I2C, SPI, and GPIO.
+
+\subsection{I2C}
+I2C (Inter-Integrated Circuit) is a serial bus that allows for synchronous communication with the device. With I2C, only two wires are used, one for data and one for the bus clock [1]. I2C is relatively easy to program for and is very expandable in the sense that it allows interaction with a large number of devices. I2C allows for several different data transmission rates, ranging from 100 kbit/s to 5 Mbit/s. Because of its flexibility and speed, I2C is ideal for interfacing with peripheral devices such as knobs and sensors in real time. 
+
+I2C is widely used in other applications. Some examples include changing the volume on an intelligent speaker, controlling display brightness in OLED/LCD displays, interfacing with NVRAM chips that store settings, reading configuration data from RAM, and reading real-time clocks. In this regard, I2C is a strong option for interfacing with our system; an application that will require few inputs and outputs and does not require extremely high speed interfacing.
+
+\subsection{SPI}
+SPI (Serial Peripheral Interface bus) is a synchronous serial bus that is commonly used for short-distance communications. Some technologies that utilize SPI include LCD displays and SD cards. SPI has no upper limit on speed and is only limited by the hardware involved. SPI uses four IO lanes (versus I2C’s two), but as a result, implementing its use in software is more simplified than I2C. 
+
+SPI does not support slave acknowledgement, so a master could be transmitting to nothing and not know it. This is less than ideal in a system where intelligent communication between peripherals and the system is required. Additionally, the fact that the bus is meant for short-range communications means that it’s not ideal for peripherals that may be relatively distant from the system motherboard.
+
+\subsection{GPIO}
+GPIO (General-purpose input/output) is a serial communications bus that has no specific purpose; its inputs are typically disabled by default [2]. GPIO is particularly effective for interacting with systems that have a limited number of pins, and for reading data from various sensors such as cameras, temperature sensors, and accelerometers. It can also be used to control and write to various devices such as DC motors, audio devices, light-emitting diodes (LEDs), and liquid-crystal (LC) displays. GPIO is generally usable for any peripheral interaction but does not offer especially high speeds or any other feature that might be useful in corner-case-type applications; it’s the jack-of-all-trades bus, so to speak. In any case, the use of GPIO can be effective for testing and development, and can typically be replaced with another serial bus like I2C or SPI if necessary since all serial buses have the same fundamental functionality: transmitting data serially.
+
+\subsection{Conclusion}
+Our system will likely use GPIO and I2C for peripheral communication. I2C and GPIO offer robust capabilities and for our application, will do the job well. While we do not know exactly what these ports will be used for yet, it is feasible to assume that we’ll need a combination of both speed and data integrity for things such as sensor input and status output. SPI cannot offer data integrity due to its inherent physical short-range limitations. I2C offers high enough speed for the basic sensors and output indicators that we’ll eventually use, but it can be overkill for early stages of development. GPIO is very easy to work with physically, and is very commonly used in other microcontrollers, which will make it easy to learn more about during development. At this stage, it is hard to know which one we’ll use for which application, so both must be considered during later stages of development.
+
+\newpage
+\section{Operating Systems}
+The NVIDIA TX2 allows for a variety of operating systems to be installed. Supported operating systems are built on the Linux 4 kernel. In the following section, we compare the L4T, ROS, and Ubuntu ARM operating systems, and their potential uses in the project.
+
+\subsection{L4T (Linux for Tegra)}
+L4T is based on Ubuntu, a widely-used operating system that provides a robust repository of software and a user-friendly interface. L4T is the operating system that is provided with NVIDIA Jetpack [5]. Due to the fact that L4T is the default OS installed by Jetpack, the software that NVIDIA recommends for deploying the TX2’s operating system, it is a strong contender. In the case of our project, L4T simplifies development in that it is contiguous with the rest of our development platform and it provides a simple and commonly-used environment, which can enable more effective development and future usability.
+
+L4T also includes all of the necessary drivers that are needed by the OS to fully take advantage of the TX2. Using another operating system would require manual installation of drivers and software, or a custom image to be flashed onto the system memory. It should also be noted that Ubuntu is NVIDIA’s recommended host operating system for deploying the Jetpack image onto the TX2, and therefore we can take advantage of using Ubuntu (L4T is an Ubuntu variant) in both the host and target (TX2) systems to enable more efficient and effective learning during development.
+
+\subsection{ROS (Robot Operating System)}
+ROS is an operating system that was designed to be used in robots. It provides a robust set of tools that allow the OS to interface with other systems easily. ROS is commonly used in robots that have moving parts and whose moving parts are all controlled by one system [4]. It allows developers to take advantage of several libraries that simplify the task of controlling multiple components at once. It also offers a declarative programming language known as Robot Description Language that allows the developer to easily model the robot in software for testing and visualization.
+
+ROS is a great option for robots that move around or have a lot of moving parts, but our project does not have many moving parts (if any at all). ROS has a lot of interesting functionality that could be useful in other projects, but ours does not need most of the software that ROS includes, and if we do need some of that software, it can be installed manually.
+
+\subsection{Ubuntu ARM}
+The TX2 also supports Ubuntu ARM. Ubuntu ARM is just a version of Ubuntu that runs on the ARM architecture, which is what the TX2 uses in its CPU. The advantage of using Ubuntu ARM is that it has less overhead than L4T because it is a barebones Ubuntu image, meaning that it doesn’t come with any pre-installed software that the operating system does not rely on [3]. The disadvantage of Ubuntu ARM is that we would have to manually install and configure all of the software that we need or create an image from scratch that has the software and configuration we need. 
+
+One thing that makes the use of Ubuntu ARM attractive is that because the operating system is barebones, although we would have to either make an image from scratch or install everything manually, we could write scripts that do it autonomously and keep them in version control, which would provide a more transparent system description.
+
+\subsection{Conclusion}
+After carefully considering the preceding options, L4T seems to be the best option. Even though it may have more overhead than Ubuntu ARM, space isn’t a big concern on the TX2, and it would likely be more effective during development stages given its inherent usability and simplicity. If at some point in the future, system requirements dictated a necessity for better performance, space usage, or efficiency, one could replicate the system configuration of an L4T image on an Ubuntu ARM machine and create a new image from that, but that is something that would be more important for a production system, and those constraints will not be important during the development stage where we will be spending the vast majority of our time.
+
+\end{document}
