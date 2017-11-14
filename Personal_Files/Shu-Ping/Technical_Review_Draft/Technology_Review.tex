@@ -1,0 +1,215 @@
+\documentclass[letterpaper,10pt,serif,draftclsnofoot,onecolumn,compsoc,titlepage]{IEEEtran}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+\usepackage{cite}
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+
+\usepackage{geometry}
+\geometry{margin=.75in}
+\usepackage{hyperref}
+%\usetikzlibrary{shapes, positioning, calc}
+\usepackage{caption}
+\usepackage{listings}
+%\usepackage[utf8]{inputenc}
+%pull in the necessary preamble matter for pygments output
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+   colorlinks = true,
+   citecolor = black,
+   linkcolor = black,
+   urlcolor = black,
+   pdfauthor = {Shu-Ping Chien},
+   pdfkeywords = {"Senior Project" Technology Review},
+   pdftitle = {CS 461 Technology Review},
+   pdfsubject = {CS 461 Technology Review},
+   pdfpagemode = UseNone
+}
+
+\parindent = 0.0 in
+\parskip = 0.1 in
+\title{Technology Review: Multi-Camera, System-on-Chip (SoC) Based, Real-Time Video Processing for UAS and VR/AR Applications}
+\author{Group 51: Shu-Ping Chien \\ 14 November 2017 \\ CS-461, Senior Software Engineering Project, Fall 2017}
+\begin{document}
+\begin{titlepage}
+\maketitle
+\begin{abstract}
+
+This project aims to develop a system that creates a video feed from multiple cameras operating on different spectral bands. In this document, it will analyze three different pieces, and each piece 
+is a component of the project. Based on criteria, there will be three potential technologies listed 
+in each piece to describe about the functionality. Compare to each technology, I will discuss and 
+explain the reason of the chosen technology.
+
+\end{abstract}
+\end{titlepage}
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Data storage}
+\subsection{Overview}
+NVIDIA Jetson TX1 and TK1 provides 16 GB data storage with eMMC, SDIO, and SATA, and NVIDIA 
+Jetson TX2 provides larger storage with 32 GB. In our project, 16 to 32 GB should be enough to 
+hold our program because our program receives input video then computes for output will achieve 
+near real-time, which means that we do not be able to store many data in our memory. Therefore, 
+we will choose suitable data storage and cost SWAP-C. \\
+
+
+\subsection{Criteria}
+There is not much limitation on data storage since our alternative modules only support eMMC, SDIO, 
+and SATA for data storage. Therefore, the chosen data storage requires low size, weight, power, and
+ cost (SWAP-C), and we also look for adequate reading speed and stability from a data storage. We 
+ will discuss and compare each of these options in the following paragraph. \\
+
+\subsection{Potential Choices}
+\subsubsection{eMMC}
+The eMMC is embedded MMC (MultiMediaCard) as an embedded non-volatile memory system, and MMC is a 
+memory card standard used for solid-state storage. The embedded card (eMMC) is widely used in the 
+industry as a primary means of integrated storage in portable devices because of saved space, and 
+almost all mobile phones and tablets used this form of flash for main storage. \\
+
+\subsubsection{SDIO}
+A SDIO is Secure Digital Input Output card, which is an extension of the SD specification to cover 
+Input and Output functions. SDIO cards are functional in host devices designed to support their 
+input-output functions, and these devices can support some electronics such as GPS receiver, and 
+also interfaces to Wi-Fi, Bluetooth, and Ethernet. The standard size of SDIO is 32.0×24.0×2.1 mm. \\
+
+\subsubsection{SATA}
+The SATA is Serial AT Attachment, which is a computer bus interface used to connect mass storage 
+devices such as hard disk drives and solid-state drives. SATA host adapters and devices communicate 
+via a high-speed serial cable over two pairs of conductors, so the efficiency and stability for 
+reading and writing data between devices can not be exceed by other data storage. With the advantage
+, which is usually used in personal computer or embedded in laptop. \\
+
+\subsection{Discussion}
+Compare the three data storages, each technology with different functionalities will be used depending
+ different purpose. Since this project is not required to connect to host devices or optimize the 
+ speed of reading and writing data, the chosen technology is aimed to cost SWAP-C. On the other hand, 
+ although the data trasformating rate of eMMC is not as fast as SATA SSD, the volume of eMMC is the 
+ smallest. \\
+
+\subsection{Conclusion}
+We choose to use eMMC because it is already embedded inside every potential SoM in our project, 
+so we do not need to have another device as data storage. Since our program will not take much space 
+to store data, it does not require high reading and writing speed with SATA SSD. \\
+
+
+
+\section{Image processing software}
+\subsection{Overview}
+This software intend to transfer input images into a suitable format for image processing in GPU
+, which will stitch images from infrared and visible light spectral bands as 2D video output. 
+These softwares are usually included in the Jetpack or other development toolkit. In this case, 
+the alternative image processing softwares we focus on are available from Jetpack, which are CUDA, 
+OpenCV, and OpenGL.\\
+
+\subsection{Criteria}
+Each software would be supported by the chosen module, NVIDIA Jetson TX1/2 or TK1, and where 
+the operating system are typically on Ubuntu. In order to fulfil near real-time Latency of 
+the data-processing, so the programming will be implemented by the parallel processing. On 
+the other hand, considered about the stretch goal, the software will be able to fuse up to 
+six camera input.\\
+
+\subsection{Potential Choices}
+\subsubsection{CUDA}
+The Jetpack includes CUDA toolkit for Ubuntu, which is a parallel computing platform and 
+allows developers to use a GPU for general purpose processing. The CUDA platform is designed 
+to work with programming language C and C++. The advantages of CUDA can accelerate download 
+and readback to and from the GPU, but there are also some limitations of Interoperability 
+with rendering language such as OpenGL.\\
+
+\subsubsection{OpenCV}
+The Jetpack includes OpenCV library mainly aimed at real-time computer version. OpenCV is 
+Open Source Computer Vision Library, which provides basic image processing and video 
+processing with build-in algorithm library such as edge detect. Image processing in OpenCV 
+can be easier to change images between different color spaces and apply different geometric 
+transformations to images.\\
+
+\subsubsection{OpenGL}
+The Jetpack includes OpenGL 4.3, 4.4 and 4.5 to support GPU developing. OpenGL is Open 
+Graphics Library, which is typically used to interact with GPU to achieve accelerated 
+rendering 2D and 3D vector graphics with C language. We expect to read images from the video 
+input and fuse images by using shaders to control the graphics pipeline.\\ 
+
+\subsection{Discussion}
+In order to achieve the primary goals of image processing for this project, to fulfil near 
+real-time latency and stitch multiple images as one 2D video output, the software we choose 
+should fuse images efficiently. Compare to OpenGL, CUDA and OpenCV provide advantages on 
+reading data and computation of images. In contrast, the OpenGL shading language enables us 
+to stitch high quality images, and the system is easier for developer to control more complex 
+condition since we may have multiple input values. \\
+
+
+\subsection{Conclusion}
+We choose to use OpenGL because this is a better choice for image processing with multiple 
+video input. At the same time, in order to accelerate computing vector and pixel information 
+of images, we may include OpenCV library to improve the program, or we will write our own 
+algorithm for edge detect. \\
+
+
+\section{Media streaming}
+\subsection{Overview}
+We need a media streaming software in this project because our goal is to fuse video input 
+from multiple cameras at the same time. In order to distribute the computation order from 
+different cameras, we need to find the software to link together our video input and processing 
+systems. \\
+
+\subsection{Criteria}
+The chosen media streaming software is also required to be developed on our SoM and the operating 
+system. Also, the software should support the format of our video input and be able to connect to 
+the image processing software. In the following potential choices, GStreamer and Libargus are 
+already included in the Jetpack, so we should be more careful on the limitations when programming 
+if we choose to use FFMpeg. \\
+
+\subsection{Potential Choices}
+\subsubsection{GStreamer}
+GStreamer is a pipeline-based multimedia framework which links together a wide variety of media processing systems to complete complex workflows. GStreamer is open-source software object and has
+ a range of bindings for various languages such as Python and C++. GStreamer processes media
+  by connecting a number of processing elements into a pipeline, each element will be grouped and 
+  used to different execution.\\
+
+\subsubsection{FFMpeg}
+FFmpeg is a software project that produces libraries and programs for handling multimedia data, 
+which includes different audio and video libraries and the ffmpeg command line program for 
+transcoding multimedia files. An advantage of FFmpeg is that which support various video and 
+and image formats.\\
+
+\subsubsection{Libargus}
+The Libargus in Camera Application API offers a low-level frame-synchronous API for camera 
+applications, with per frame camera parameter control, multiple camera support, and EGL stream 
+outputs, which can be programmed in C++ language. RAW output CSI cameras needing ISP can be used 
+with either libargus or GStreamer plugin. For example, Libargus is able to use multiple sensors 
+to capture for OpenGL preview or JEPG captures.\\
+
+\subsection{Discussion}
+The pipeline computation with multimedia is a specific tool to fulfil near real-time image 
+processing. Compare GStreamer with other two choices, GStreamer is easier to be controlled by 
+developer with complete system which supports various applications. In contrast, Libargus can 
+only be used for NVIDIA CSI camera products, so there is insufficient information to operate in 
+different situation.\\
+
+\subsection{Conclusion}
+We choose to use GStreamer because it can connect to multiple and different medias, so it is 
+easier to handle the condition of having more than two cameras as input. In addition, since 
+elements are separated into different groups, it is more clear for developer to organize the 
+way to combine processing data.\\
+
+
+
+\section{References}
+Ian Stewart, 2016, Getting Started with the JetPack Camera API\\
+
+\end{document}
+
+
