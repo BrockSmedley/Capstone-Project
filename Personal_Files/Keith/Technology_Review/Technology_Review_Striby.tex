@@ -54,8 +54,8 @@
 
 In this report are three technologies that will be necessary for our Capstone Project. 
 Each technology was narrowed down to three options that produce similar 
-results. Criteria is established, each options is explored and compared, and then 
-a decision  explains why that particular option was selected. \\
+results. Criteria is established, each option is explored and compared, and then 
+a decision explaining why that particular option was selected. \\
 
 \thispagestyle{empty}
 \end{abstract}
@@ -103,7 +103,7 @@ need to be tethered to a carrier board for input and output peripherals.\\
 
 The project requires near real-time image processing to occur in a system that is 
 standalone, and conforms to our client's requirements for SWaP-C due to its intended application. For the image processing to 
-occur anywhere a UAS (Unmanned Areal System) travels, the performance of the SoM 
+occur anywhere a UAS travels, the performance of the SoM 
 needs to be capable of edge computing while it's up in the clouds.
 Multiple camera inputs will be processed through our SoM and their images will be 
 stitched, fused, analyzed, and have high-resolution video output. This requires our 
@@ -219,7 +219,7 @@ and Jetson TX2 modules because the NVIDIA Tegra K1 processor is not available on
 module. The size of the Jetson TK1 dev kit puts it at a 
 disadvantage when comparing it to the size, weight, and max power draw of the Jetson 
 TX1 and TX2 modules. The major disadvantage that the TK1 has in comparison to the TX1 
-and TX2 is the amount of CSI cameras it can accomodate. \\
+and TX2 is the amount of CSI cameras it can accommodate. \\
 
 NVIDIA was capable of doubling or enhancing all active processing components on the 
 TX2 in comparison to the TX1, and both modules have the same dimensions. With NVIDIA's 
@@ -341,7 +341,7 @@ the X-Carrier's and Spacely Carrier's larger board dimensions. However, the J106
 offers limited interfaces in comparison to the X-Carrier and Spacely Carrier boards due 
 to its size and relies on its 4x PCIe slots for future options like a GPS/GNSS module. The 
 X-Carrier does rely on the Auvidea J20-2 board to connect to for supporting  
-camera input whereas the J106 and Spacely Carrer have all six MIPI CSI-2 ports directly 
+camera input whereas the J106 and Spacely Carrier have all six MIPI CSI-2 ports directly 
 installed. The major benefit to the Spacely Carrier's size is that it has a large 
 amount of USB ports and miscellaneous I/O ports and a built-in expansion for a 
 GPS/GNSS module. Although, the J106 and X-Carrier Boards have built-in IMUs whereas the 
@@ -352,17 +352,17 @@ Spacely Carrier does not.\\
 The final selection for our product's carrier board is dependent on multiple variables, 
 all of which will be determined during software development and testing. All three of 
 the companies 
-designed and developed the carrier boards specifically to be used with the Jetson TX1 and 
-TX2 modules for our product's application. Each carrier board offers subtle and unique 
+designed and developed their carrier boards for specific use with the Jetson TX1 and 
+TX2 modules. Each carrier board offers subtle and unique 
 advantages over the other, and it's difficult to say which one will be capable of 
-providing the best solution. \\
+providing the best solution without adequate testing. \\
 
-\section{Camera Case for Mounting}
+\section{Camera Case}
 
 \subsection{Overview}
 
 The Raspberry Pi (v2) cameras selected for developing our software have an exposed circuit 
-board and camera lense. These cameras should be enclosed for protection and mounted to 
+board and camera lens. These cameras should be enclosed for protection and mounted to 
 provide consistent testing of the software being produced. Camera mounting and positioning
 will need to remain in the same known setup while developing software for multiple camera 
 input. \\
@@ -380,7 +380,7 @@ have screw holes on it. \\
 \subsubsection{Adjustable Pi Camera Mount}
 
 This camera mount made by Pimoroni is as basic as they come and are \$5 each. The mount 
-consists of a two piece bracket, one to mount the camera to and another to fix the 
+consists of a two-piece bracket, one to mount the camera to and another to fix the 
 mount. However, the support bracket and camera bracket snap together. This camera 
 mount includes screws and hex-nuts to secure the camera to the bracket\cite{AdjCamMt}. \\
 
@@ -394,7 +394,7 @@ mounting, comes with screws and tape, and are \$6 each\cite{BlueCase}. \\
 
 This Adafruit Raspberry Pi enclosure is sleek, snaps closed, and has four pegs inside making a 
 secure hold on the camera. To mount the case are two slots and a 
-one-quarter inch tripot mount nut. A hole on the lid of the case to prevents 
+one-quarter inch tripod mount nut. A hole on the lid of the case to prevents 
 distorting camera images. Our Raspberry Pi Camera v2 is slightly thicker than the 
 original camera that the case was designed for, and it is recommended to remove a spacer from 
 the circuit board to prevent blurry images. These cases are priced at \$3 each\cite{adafruitCase}.\\
@@ -405,7 +405,7 @@ Each option provides a different stance on simplicity, caters to custom mounting
 options, and is specifically designed for Raspberry Pi. The adjustable mount 
 by Pimoroni offers no protection unlike SB Components and Adafruit's cases. The 
 mounting holes on SB Components enclosure does come with screws for them but with 
-just a extra little effort the Adafruit case can be just as secure. Adafruit's 
+just a little extra effort the Adafruit case can be just as secure. Adafruit's 
 case has a sleek and minimalist design and may be more versatile for mounting, but 
 the big blocky SB Components case positions the camera vertically and has the 
 screw holes on its horizontal surface. \\
