@@ -16,13 +16,13 @@
 \contentsline {subsubsection}{\numberline {2.3.3}OpenGL}{5}{subsubsection.2.3.3}
 \contentsline {subsection}{\numberline {2.4}Discussion}{5}{subsection.2.4}
 \contentsline {subsection}{\numberline {2.5}Conclusion}{5}{subsection.2.5}
-\contentsline {section}{\numberline {3}Media streaming}{5}{section.3}
-\contentsline {subsection}{\numberline {3.1}Overview}{5}{subsection.3.1}
+\contentsline {section}{\numberline {3}Media streaming}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Overview}{6}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Criteria}{6}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Potential Choices}{6}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}GStreamer}{6}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}FFMpeg}{6}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}Libargus}{6}{subsubsection.3.3.3}
-\contentsline {subsection}{\numberline {3.4}Discussion}{6}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.3.3}MEncoder}{6}{subsubsection.3.3.3}
+\contentsline {subsection}{\numberline {3.4}Discussion}{7}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}Conclusion}{7}{subsection.3.5}
-\contentsline {section}{\numberline {4}References}{7}{section.4}
+\contentsline {section}{References}{7}{section*.2}

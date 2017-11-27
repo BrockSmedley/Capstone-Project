@@ -5,10 +5,13 @@
 \usepackage{amsmath}                                         
 \usepackage{amsthm}                                          
 \usepackage{cite}
+
 \usepackage{alltt}                                           
 \usepackage{float}
 \usepackage{color}
 \usepackage{url}
+\usepackage{pgfgantt}
+\usepackage{rotating}
 
 \usepackage{balance}
 \usepackage[TABBOTCAP, tight]{subfigure}
@@ -20,6 +23,7 @@
 %\usetikzlibrary{shapes, positioning, calc}
 \usepackage{caption}
 \usepackage{listings}
+
 %\usepackage[utf8]{inputenc}
 %pull in the necessary preamble matter for pygments output
 
@@ -39,16 +43,18 @@
 \parindent = 0.0 in
 \parskip = 0.1 in
 \title{Technology Review: Multi-Camera, System-on-Chip (SoC) Based, Real-Time Video Processing for UAS and VR/AR Applications}
-\author{Group 51: Shu-Ping Chien \\ 14 November 2017 \\ CS-461, Senior Software Engineering Project, Fall 2017}
+\author{Group 51: Shu-Ping Chien \\ 21 November 2017 \\ CS-461, Senior Software Engineering Project, Fall 2017}
 \begin{document}
 \begin{titlepage}
 \maketitle
 \begin{abstract}
 
-This project aims to develop a system that creates a video feed from multiple cameras operating on different spectral bands. In this document, it will analyze three different pieces, and each piece 
-is a component of the project. Based on criteria, there will be three potential technologies listed 
-in each piece to describe about the functionality. Compare to each technology, I will discuss and 
-explain the reason of the chosen technology.
+TThis project aims to develop a system that creates a video feed from multiple cameras operating on 
+different spectral bands. In this document, I will analyze three different topics used in this project, 
+and the goal of these topics contributes to image processing with multiple inputs. Based on criteria, 
+there will be three potential technologies listed in each piece to describe about the functionality. 
+Compare to each technology, I will discuss about each technology and explain the reason of the chosen one.
+
 
 \end{abstract}
 \end{titlepage}
@@ -93,16 +99,19 @@ reading and writing data between devices can not be exceed by other data storage
 , which is usually used in personal computer or embedded in laptop. \\
 
 \subsection{Discussion}
-Compare the three data storages, each technology with different functionalities will be used depending
- different purpose. Since this project is not required to connect to host devices or optimize the 
- speed of reading and writing data, the chosen technology is aimed to cost SWAP-C. On the other hand, 
- although the data trasformating rate of eMMC is not as fast as SATA SSD, the volume of eMMC is the 
- smallest. \\
+Compare the three data storage cards, each technology with different functionalities will be used 
+depending different purpose, the SDIO support various input-output functions, and the SATA provides high 
+speed for reading and writing data. Since the goal of this project does not require to connect to host 
+devices or optimize the speed of reading and writing data, the chosen technology is aimed to cost lower 
+SWAP-C. The SDIO and SATA are external cards, so we need extra cost and space if we choose to use them. 
+In contrast, because the eMMC is already embedded inside the module, this is the cheapest choice.\\
 
 \subsection{Conclusion}
-We choose to use eMMC because it is already embedded inside every potential SoM in our project, 
-so we do not need to have another device as data storage. Since our program will not take much space 
-to store data, it does not require high reading and writing speed with SATA SSD. \\
+We choose to use eMMC because it is already embedded inside every potential SoM in our project, so we do 
+not need to have additional space and cost for another data storage. Since our program aims to achieve 
+near real-time computation, it will not take much space to store data nor require high reading and 
+writing speed with SATA SSD. Therefore, the eMMC is the best choice for data storage in this project that 
+the eMMC takes the lowest SWaP-C.\\
 
 
 
@@ -137,33 +146,38 @@ can be easier to change images between different color spaces and apply differen
 transformations to images.\\
 
 \subsubsection{OpenGL}
-The Jetpack includes OpenGL 4.3, 4.4 and 4.5 to support GPU developing. OpenGL is Open 
-Graphics Library, which is typically used to interact with GPU to achieve accelerated 
-rendering 2D and 3D vector graphics with C language. We expect to read images from the video 
-input and fuse images by using shaders to control the graphics pipeline.\\ 
+The Jetpack includes OpenGL 4.3, 4.4 and 4.5 to support GPU developing. OpenGL is Open Graphics Library, 
+which is typically used to interact with GPU to achieve accelerated rendering 2D and 3D vector graphics 
+with C language. We can handle the image processing with pixel processing path, which the program 
+acquires pixels and textures and allow us to operate on those to generate fused images. On the other 
+hand, OpenGL also contains the compiler and runtime environment for shaders written in the GLSL shader 
+language. The small program of shader runs on the GPU to modify the images depending on the taken input 
+from OpenGL textures \cite{shader}.\\ 
 
 \subsection{Discussion}
-In order to achieve the primary goals of image processing for this project, to fulfil near 
-real-time latency and stitch multiple images as one 2D video output, the software we choose 
-should fuse images efficiently. Compare to OpenGL, CUDA and OpenCV provide advantages on 
-reading data and computation of images. In contrast, the OpenGL shading language enables us 
-to stitch high quality images, and the system is easier for developer to control more complex 
-condition since we may have multiple input values. \\
+In order to achieve the goals of image processing for this project, to fulfil near real-time latency and 
+stitch multiple images as one 2D video output, the software we choose should fuse images efficiently. 
+Comparing OpenGL with CUDA and OpenCV, the latter softwares provide higher efficiency on reading data and 
+computation of image processing. In contrast, the OpenGL shading language enables us to stitch high 
+quality images, and the system is more convenient for developer to control more complex conditions since 
+we may have multiple input values.\\
 
 
 \subsection{Conclusion}
-We choose to use OpenGL because this is a better choice for image processing with multiple 
-video input. At the same time, in order to accelerate computing vector and pixel information 
-of images, we may include OpenCV library to improve the program, or we will write our own 
-algorithm for edge detect. \\
+Based on the discussion, we choose to use OpenGL in this project because it is the better choice for 
+image processing with multiple video inputs. Since we will have different number and kind of inputs, 
+shader language in OpenGL allow us easily to contribute different situations. At the same time, in order 
+to accelerate computing vector and pixel information of images, we may include OpenCV library to improve 
+the program, or we will write our own algorithm for edge detect. \\
 
 
 \section{Media streaming}
 \subsection{Overview}
-We need a media streaming software in this project because our goal is to fuse video input 
-from multiple cameras at the same time. In order to distribute the computation order from 
-different cameras, we need to find the software to link together our video input and processing 
-systems. \\
+We need a media streaming software in this project because we have multiple input cameras, and the image 
+processing will be implemented with images rather than videos. Therefore, we need a tool to transfer the 
+format from input video to image format for image processing and transfer the format back when it is done. 
+For instance, we expect the software to read data from the chosen camera, then processes and transfers 
+the format and export in the platform for image processing.\\
 
 \subsection{Criteria}
 The chosen media streaming software is also required to be developed on our SoM and the operating 
@@ -177,39 +191,43 @@ if we choose to use FFMpeg. \\
 GStreamer is a pipeline-based multimedia framework which links together a wide variety of media processing systems to complete complex workflows. GStreamer is open-source software object and has
  a range of bindings for various languages such as Python and C++. GStreamer processes media
   by connecting a number of processing elements into a pipeline, each element will be grouped and 
-  used to different execution.\\
+  used to different execution \cite{gstreamer}.\\
 
 \subsubsection{FFMpeg}
-FFmpeg is a software project that produces libraries and programs for handling multimedia data, 
-which includes different audio and video libraries and the ffmpeg command line program for 
-transcoding multimedia files. An advantage of FFmpeg is that which support various video and 
-and image formats.\\
+FFmpeg is an open-source multimedia manipulation library of plugins and programs that can be applied to 
+various parts of the audio and video processing pipelines \cite{ffmpeg}. FFMpeg includes libav library 
+to handle a great quantity of different formats, and the ffmpeg command line program for transcoding 
+multimedia files. The FFMpeg supports native NVIDIA GPU hardware accelerated video encoding and decoding 
+through the integration of the NVIDIA Video Codec SDK \cite{nvidia}.\\
 
-\subsubsection{Libargus}
-The Libargus in Camera Application API offers a low-level frame-synchronous API for camera 
-applications, with per frame camera parameter control, multiple camera support, and EGL stream 
-outputs, which can be programmed in C++ language. RAW output CSI cameras needing ISP can be used 
-with either libargus or GStreamer plugin. For example, Libargus is able to use multiple sensors 
-to capture for OpenGL preview or JEPG captures.\\
+\subsubsection{MEncoder}
+MEncoder is a free command line transcoding tool, which can convert and compress general video, audio, 
+and image formats, which is usually used with MPlayer as a companion program \cite{mplay}. The same as MPlayer, 
+MEncoder is also written in C language, and it features to filter and transform the video and audio 
+streams. The filters include cropping, scaling, vertical flipping, etc, the functionality enable user to 
+transform and edit their input streams at the same time.\\
 
 \subsection{Discussion}
-The pipeline computation with multimedia is a specific tool to fulfil near real-time image 
-processing. Compare GStreamer with other two choices, GStreamer is easier to be controlled by 
-developer with complete system which supports various applications. In contrast, Libargus can 
-only be used for NVIDIA CSI camera products, so there is insufficient information to operate in 
-different situation.\\
+Compare the three technologies, FFMpeg supports the most kinds of formats, and GStreamer provides most 
+convenient operation to implement streaming at the same time with pipeline system. In contrast, MEncoder 
+doesn’t support many formats nor have pipeline interface. Since it is even used with MPlayer, there are 
+more limitations to transform data with MEncoder in this project. Then compare FFMpeg with GStreamer, the 
+number of supporting formats is not a trouble for GStreamer because the disadvantage can be modified with 
+plug-in libraries.\\
 
 \subsection{Conclusion}
-We choose to use GStreamer because it can connect to multiple and different medias, so it is 
-easier to handle the condition of having more than two cameras as input. In addition, since 
-elements are separated into different groups, it is more clear for developer to organize the 
-way to combine processing data.\\
+We choose to use GStreamer because the pipeline-based framework lets us easier to control and distribute 
+inputs from different cameras. With the arranged input data in order, it allows us to handle processing 
+in different conditions if are more than two cameras as input. Moreover, since GStreamer uses a plug-in 
+architecture with shared libraries, it is able to support many additional media formats, and which 
+includes FFMpeg-based plug-in. Therefore, because of the convenient pipeline-based framework system and 
+various media formats, GStreamer is the best choice of media streaming in this project.\\
 
 
 
-\section{References}
-Ian Stewart, 2016, Getting Started with the JetPack Camera API\\
-
+\cite{lable}
+\bibliographystyle{IEEEtran}
+\bibliography{Technology_Review}
 \end{document}
 
 
