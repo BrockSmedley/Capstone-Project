@@ -219,17 +219,50 @@ The TX2 supports ARM Linux 4 operating systems, and the OS we’ll be using for 
 L4T will be flashed onto the TX2 system memory using NVIDIA Jetpack. Jetpack allows us to choose the operating system and software to be installed on the TX2. It runs on a separate Ubuntu host which is connected to the TX2 via USB and a router connecting both the machines to the internet, and can be downloaded from the NVIDIA’s website after creating an account. Ubuntu is not required to run Jetpack, but NVIDIA strongly recommends it, and Ubuntu is a very user-friendly and robust operating system, so it will suit our development needs perfectly.
 
 \subsubsection{Development}
-Once L4T is flashed to the TX2 from Jetpack, we can use the TX2 like a normal computer, using USB to connect a mouse \& keyboard, and HDMI to connect a monitor. Development can occur directly on the TX2 or remotely via SSH (Ethernet). We will likely use a combination of the two; sometimes it is required, for example when internet access is not available; sometimes it’s just more convenient.
-\\
-We will also make use of a GitHub repository to keep our code, which can be accessed by the TX2 via the internet. This will allow each group member to work on different parts of the project simultaneously without interfering with other group members’ work. Most Linux variants come with a version of Git, but if L4T does not, then we can always install it using Ubuntu’s package manager.
+Once L4T is flashed to the TX2 from Jetpack, we can use the TX2 like a normal computer, using USB to connect a mouse \& keyboard, and HDMI to connect a monitor. Development can occur directly on the TX2 or remotely via SSH (Ethernet). We will likely use a combination of the two; sometimes it is required, for example when internet access is not available; sometimes it’s just more convenient. \\
 
-\subsubsection{subsection topic of topic to design}
+We will also make use of a GitHub repository to keep our code, which can be accessed by the TX2 via the internet. This will allow each group member to work on different parts of the project simultaneously without interfering with other group members’ work. Most Linux variants come with a version of Git, but if L4T does not, then we can always install it using Ubuntu’s package manager. \\
 
-words \\
+\subsection{Making Camera Input Ready for Image Processing}
 
-\subsubsection{another subsection topic of topic to design}
+\subsubsection{Multimedia API}
 
-words \\
+The raw pixel data from the cameras will be sent through the CSI and must be converted 
+to the BRG color space in the VI (Video Input) unit before being sent to the ISPs 
+(Image Signal Processors). Application development can use either libargus API 
+included in L4T or GStreamer plugin to prepare the raw pixel data in the VI unit, and 
+therefore convert the data to a format that’s recognizable by the ISP. NVIDIA does not 
+support V4L2 when using CSI cameras, but GStreamer does and therefore will be used in 
+our software.  \\
+
+\subsubsection{GStreamer}
+
+GStreamer architecture utilizes pipelines to process media and connect the processing 
+elements. An additional architecture GStreamer uses is plugin, which provides each 
+processing element. \\
+
+\paragraph{Installing GStreamer}
+
+To install GStreamer 1.0 and plugins the following commands will be entered in the 
+command line: \\
+
+sudo add-apt-repository universe \\
+sudo add-apt-repository multiverse \\
+sudo apt-get update \\
+sudo apt-get install gstreamer1.0-tools gstreamer1.0-alsa gstreamer1.0-plugins-base 
+gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
+gstreamer1.0-libav \\
+sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev 
+libgstreamer-plugins-good1.0-dev libgstreamer-plugins-bad1.0-dev \\
+
+\paragraph{GStreamer Plugins}
+
+To display what a camera is capturing \texttt{nvcamerasrc} included in the piping, 
+and is a plugin that allows options for our software to control ISP properties. \\
+
+For converting video frames from the CSI camera the \texttt{videoconvert} plugin will 
+be included in piping, along with \texttt{video/x-raw, format=(string){}} to specify 
+details on the conversion input and output. \\
 
 
 \nocite{*}
