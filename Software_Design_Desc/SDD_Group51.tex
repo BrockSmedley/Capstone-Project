@@ -114,13 +114,14 @@ of our software required for our product. \\
 \begin{tabular}{|l|p{11cm}|}
 	\hline
 	\textbf{Term} & \textbf{Definition}\\
+	\hline
 	multiple cameras & At least two cameras, but a maximum of six cameras for 
 	video input.\\
 	\hline
 	near real-time & Fast enough that a human could not notice the time 
 	delay (lag) between \newline real life images and images displayed by the system.\\
 	\hline
-	NVIDIA TX1/2 & NVIDIA GPUs, the Jetson TX1 or the Jetson TX2.\\
+	(NVIDIA) TX1/2 & NVIDIA GPUs, the Jetson TX1 or the Jetson TX2.\\
 	\hline
 	GitHub repository & version control software for source code hosting and development\\
 	\hline
@@ -148,9 +149,13 @@ of our software required for our product. \\
 	\hline
 	ISP & Image Signal Processors\\
 	\hline
+	L4T & Linux for Tegra \\
+	\hline
 	SoM & System-on-module\\
 	\hline
 	USB & Universal Serial Bus\\
+	\hline
+	V4L2 & Video for Linux 2 \\
 	\hline
 	VI & Video Input\\
 	\hline
@@ -185,9 +190,9 @@ will stitch input images from GStreamer and print the output to the display devi
 
 \subsection{Interfaces}
 
-The NVIDIA TX2 is an SoM with an ARM processor and an NVIDIA GPU. It includes several 
+The NVIDIA TX1/2 is an SoM with an ARM processor and an NVIDIA GPU. It includes several 
 interfaces that can be used to exchange data with the module such as Ethernet, USB, 
-I2C, and GPIO, among others. These connect to the TX2 via a 400-pin connector that 
+I2C, and GPIO, among others. These connect to the TX1/2 via a 400-pin connector that 
 attaches to a carrier board, which has a set of ports to interface with. These 
 interfaces will be used in our implementation of the project for varying purposes. \\
 
@@ -198,18 +203,18 @@ will also allow us to control the system remotely using SSH. Ethernet will likel
 be used in the final implementation, however. The final implementation will likely 
 have an image flashed directly to its memory so that there is no need to download any 
 new software or data. The carrier board we will be using in the final implementation 
-may not have an Ethernet connection, but if it does not have it, we can attach the TX2 
+may not have an Ethernet connection, but if it does not have it, we can attach the TX1/2 
 to the dev board that it came with, which has at least one connection for every 
-interface that the TX2 supports. \\
+interface that the TX1/2 supports. \\
 
 \subsubsection{USB}
 
-USB will be necessary for flashing the TX2 with a new image. This only needs to be 
+USB will be necessary for flashing the TX1/2 with a new image. This only needs to be 
 done once at the start of development, and possibly again when a production image is 
 ready to be flashed, but it is nonetheless required for development. USB can also be 
 used for simple file transfers in cases where the internet is not available. USB will 
 also not be present on the final product, but it should not be necessary at that stage; 
-we will not be using USB for any system-critical functions. The TX2 can always be 
+we will not be using USB for any system-critical functions. The TX1/2 can always be 
 plugged into the dev board if changes to the system need to be made, and then 
 re-attached to the final-product board with the new data on it.\\
 
@@ -218,55 +223,62 @@ re-attached to the final-product board with the new data on it.\\
 I2C and GPIO will be used in later phases of the project which we may not actually 
 work on. These interfaces can be used for connecting things like environmental sensors 
 and control interfaces like buttons and knobs. Our portion of the project will focus 
-solely on creating the camera system on the TX2 which can then be expanded upon by 
+solely on creating the camera system on the TX1/2 which can then be expanded upon by 
 other teams. \\
 
 \subsection{Architecture}
 
 \subsubsection{Operating Systems}
 
-The TX2 supports ARM Linux 4 operating systems, and the OS we’ll be using for this 
-project is Linux4Tegra (L4T). L4T is an ubuntu variant that comes preloaded with a 
+The TX1/2 supports ARM Linux 4 operating systems, and the OS we will be using for this 
+project is L4T. L4T is an ubuntu variant that comes preloaded with a 
 bundle of software that can be used to take advantage of the processing power that 
-the TX2 has to offer. L4T is simply an Ubuntu ARM image with NVIDIA drivers 
+the TX1/2 has to offer. L4T is simply an Ubuntu ARM image with NVIDIA drivers 
 pre-installed. Using L4T takes the guesswork out of developing the software 
 environment so that more time can be spent developing the core solution. \\
 
 \subsubsection{Deployment Software}
 
-L4T will be flashed onto the TX2 system memory using NVIDIA Jetpack. Jetpack allows 
-us to choose the operating system and software to be installed on the TX2. It runs on 
-a separate Ubuntu host which is connected to the TX2 via USB and a router connecting 
-both the machines to the internet, and can be downloaded from the NVIDIA’s website 
+L4T will be flashed onto the TX1/2 system memory using NVIDIA Jetpack. Jetpack allows 
+us to choose the operating system and software to be installed on the TX1/2. It runs on 
+a separate Ubuntu host which is connected to the TX1/2 via USB and a router connecting 
+both the machines to the internet, and can be downloaded from the NVIDIA's website 
 after creating an account. Ubuntu is not required to run Jetpack, but NVIDIA strongly 
 recommends it, and Ubuntu is a very user-friendly and robust operating system, so it 
 will suit our development needs perfectly. \\
 
 \subsubsection{Development}
 
-Once L4T is flashed to the TX2 from Jetpack, we can use the TX2 like a normal 
+Once L4T is flashed to the TX1/2 from Jetpack, we can use the TX1/2 like a normal 
 computer, using USB to connect a mouse \& keyboard, and HDMI to connect a monitor. 
-Development can occur directly on the TX2 or remotely via SSH (Ethernet). We will 
+Development can occur directly on the TX1/2 or remotely via SSH (Ethernet). We will 
 likely use a combination of the two; sometimes it is required, for example when 
-internet access is not available; sometimes it’s just more convenient. \\
+internet access is not available; sometimes it is more convenient. \\
 
 We will also make use of a GitHub repository to keep our code, which can be accessed 
-by the TX2 via the internet. This will allow each group member to work on different 
-parts of the project simultaneously without interfering with other group members’ 
+by the TX1/2 via the internet. This will allow each group member to work on different 
+parts of the project simultaneously without interfering with other group members' 
 work. Most Linux variants come with a version of Git, but if L4T does not, then we 
-can always install it using Ubuntu’s package manager. \\
+can always install it using Ubuntu's package manager. \\
 
 \subsection{Making Camera Input Ready for Image Processing}
 
 \subsubsection{Multimedia API}
 
 The raw pixel data from the cameras will be sent through the CSI and must be converted 
-to the BRG color space in the VI (Video Input) unit before being sent to the ISPs 
-(Image Signal Processors). Application development can use either libargus API 
+to the BRG color space in the VI unit before being sent to the ISPs. 
+Application development can use either libargus API 
 included in L4T or GStreamer plugin to prepare the raw pixel data in the VI unit, and 
-therefore convert the data to a format that’s recognizable by the ISP. NVIDIA does not 
+therefore convert the data to a format that is recognizable by the ISP. NVIDIA does not 
 support V4L2 when using CSI cameras, but GStreamer does and therefore will be used in 
 our software.  \\
+
+	\begin{figure}[H]
+		\centering
+		\label{fig:MultimediaBlockDiagram}
+		\includegraphics[width=10cm]{images/multimedia-block.eps}
+		\caption{Jetson TX1/2 Camera Subsystem \label{overflow}}
+	\end{figure}
 
 \subsubsection{GStreamer}
 
