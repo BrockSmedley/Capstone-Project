@@ -133,28 +133,77 @@ will stitch input images from GStreamer and print the output to the display devi
 \section{System Architecture}
 
 \subsection{Interfaces}
-The NVIDIA TX2 is an SoM with an ARM processor and an NVIDIA GPU. It includes several interfaces that can be used to exchange data with the module such as Ethernet, USB, I2C, and GPIO, among others. These connect to the TX2 via a 400-pin connector that attaches to a carrier board, which has a set of ports to interface with. These interfaces will be used in our implementation of the project for varying purposes.
+
+The NVIDIA TX2 is an SoM with an ARM processor and an NVIDIA GPU. It includes several 
+interfaces that can be used to exchange data with the module such as Ethernet, USB, 
+I2C, and GPIO, among others. These connect to the TX2 via a 400-pin connector that 
+attaches to a carrier board, which has a set of ports to interface with. These 
+interfaces will be used in our implementation of the project for varying purposes. \\
 
 \subsubsection{Ethernet}
-Ethernet is essential for development. It will allow us to connect to the internet and will also allow us to control the system remotely using SSH. Ethernet will likely not be used in the final implementation, however. The final implementation will likely have an image flashed directly to its memory so that there is no need to download any new software or data. The carrier board we will be using in the final implementation may not have an Ethernet connection, but if it does not have it, we can attach the TX2 to the dev board that it came with, which has at least one connection for every interface that the TX2 supports.
+
+Ethernet is essential for development. It will allow us to connect to the internet and 
+will also allow us to control the system remotely using SSH. Ethernet will likely not 
+be used in the final implementation, however. The final implementation will likely 
+have an image flashed directly to its memory so that there is no need to download any 
+new software or data. The carrier board we will be using in the final implementation 
+may not have an Ethernet connection, but if it does not have it, we can attach the TX2 
+to the dev board that it came with, which has at least one connection for every 
+interface that the TX2 supports. \\
 
 \subsubsection{USB}
-USB will be necessary for flashing the TX2 with a new image. This only needs to be done once at the start of development, and possibly again when a production image is ready to be flashed, but it is nonetheless required for development. USB can also be used for simple file transfers in cases where the internet is not available. USB will also not be present on the final product, but it should not be necessary at that stage; we will not be using USB for any system-critical functions. The TX2 can always be plugged into the dev board if changes to the system need to be made, and then re-attached to the final-product board with the new data on it.
+
+USB will be necessary for flashing the TX2 with a new image. This only needs to be 
+done once at the start of development, and possibly again when a production image is 
+ready to be flashed, but it is nonetheless required for development. USB can also be 
+used for simple file transfers in cases where the internet is not available. USB will 
+also not be present on the final product, but it should not be necessary at that stage; 
+we will not be using USB for any system-critical functions. The TX2 can always be 
+plugged into the dev board if changes to the system need to be made, and then 
+re-attached to the final-product board with the new data on it.\\
 
 \subsubsection{I2C \& GPIO}
-I2C and GPIO will be used in later phases of the project which we may not actually work on. These interfaces can be used for connecting things like environmental sensors and control interfaces like buttons and knobs. Our portion of the project will focus solely on creating the camera system on the TX2 which can then be expanded upon by other teams.
+
+I2C and GPIO will be used in later phases of the project which we may not actually 
+work on. These interfaces can be used for connecting things like environmental sensors 
+and control interfaces like buttons and knobs. Our portion of the project will focus 
+solely on creating the camera system on the TX2 which can then be expanded upon by 
+other teams. \\
 
 \subsection{Architecture}
+
 \subsubsection{Operating Systems}
-The TX2 supports ARM Linux 4 operating systems, and the OS we’ll be using for this project is Linux4Tegra (L4T). L4T is an ubuntu variant that comes preloaded with a bundle of software that can be used to take advantage of the processing power that the TX2 has to offer. L4T is simply an Ubuntu ARM image with NVIDIA drivers pre-installed. Using L4T takes the guesswork out of developing the software environment so that more time can be spent developing the core solution.
+
+The TX2 supports ARM Linux 4 operating systems, and the OS we’ll be using for this 
+project is Linux4Tegra (L4T). L4T is an ubuntu variant that comes preloaded with a 
+bundle of software that can be used to take advantage of the processing power that 
+the TX2 has to offer. L4T is simply an Ubuntu ARM image with NVIDIA drivers 
+pre-installed. Using L4T takes the guesswork out of developing the software 
+environment so that more time can be spent developing the core solution. \\
 
 \subsubsection{Deployment Software}
-L4T will be flashed onto the TX2 system memory using NVIDIA Jetpack. Jetpack allows us to choose the operating system and software to be installed on the TX2. It runs on a separate Ubuntu host which is connected to the TX2 via USB and a router connecting both the machines to the internet, and can be downloaded from the NVIDIA’s website after creating an account. Ubuntu is not required to run Jetpack, but NVIDIA strongly recommends it, and Ubuntu is a very user-friendly and robust operating system, so it will suit our development needs perfectly.
+
+L4T will be flashed onto the TX2 system memory using NVIDIA Jetpack. Jetpack allows 
+us to choose the operating system and software to be installed on the TX2. It runs on 
+a separate Ubuntu host which is connected to the TX2 via USB and a router connecting 
+both the machines to the internet, and can be downloaded from the NVIDIA’s website 
+after creating an account. Ubuntu is not required to run Jetpack, but NVIDIA strongly 
+recommends it, and Ubuntu is a very user-friendly and robust operating system, so it 
+will suit our development needs perfectly. \\
 
 \subsubsection{Development}
-Once L4T is flashed to the TX2 from Jetpack, we can use the TX2 like a normal computer, using USB to connect a mouse \& keyboard, and HDMI to connect a monitor. Development can occur directly on the TX2 or remotely via SSH (Ethernet). We will likely use a combination of the two; sometimes it is required, for example when internet access is not available; sometimes it’s just more convenient. \\
 
-We will also make use of a GitHub repository to keep our code, which can be accessed by the TX2 via the internet. This will allow each group member to work on different parts of the project simultaneously without interfering with other group members’ work. Most Linux variants come with a version of Git, but if L4T does not, then we can always install it using Ubuntu’s package manager. \\
+Once L4T is flashed to the TX2 from Jetpack, we can use the TX2 like a normal 
+computer, using USB to connect a mouse \& keyboard, and HDMI to connect a monitor. 
+Development can occur directly on the TX2 or remotely via SSH (Ethernet). We will 
+likely use a combination of the two; sometimes it is required, for example when 
+internet access is not available; sometimes it’s just more convenient. \\
+
+We will also make use of a GitHub repository to keep our code, which can be accessed 
+by the TX2 via the internet. This will allow each group member to work on different 
+parts of the project simultaneously without interfering with other group members’ 
+work. Most Linux variants come with a version of Git, but if L4T does not, then we 
+can always install it using Ubuntu’s package manager. \\
 
 \subsection{Making Camera Input Ready for Image Processing}
 
@@ -174,21 +223,24 @@ GStreamer architecture utilizes pipelines to process media and connect the proce
 elements. An additional architecture GStreamer uses is plugin, which provides each 
 processing element. \\
 
-\paragraph{Installing GStreamer}
+\paragraph{Installing GStreamer}\mbox{} \\ 
 
 To install GStreamer 1.0 and plugins the following commands will be entered in the 
-command line: \\
+command line in order: \\
 
-sudo add-apt-repository universe \\
-sudo add-apt-repository multiverse \\
-sudo apt-get update \\
-sudo apt-get install gstreamer1.0-tools gstreamer1.0-alsa gstreamer1.0-plugins-base 
-gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly 
-gstreamer1.0-libav \\
-sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev 
-libgstreamer-plugins-good1.0-dev libgstreamer-plugins-bad1.0-dev \\
+	\begin{enumerate}
+		\item\texttt{\$ sudo add-apt-repository universe} \\
+		\item\texttt{\$ sudo add-apt-repository multiverse} \\
+		\item\texttt{\$ sudo apt-get update} \\
+		\item\texttt{\$ sudo apt-get install gstreamer1.0-tools gstreamer1.0-alsa 
+			gstreamer1.0-plugins-base \newline gstreamer1.0-plugins-good 
+			gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \newline
+			gstreamer1.0-libav} \\
+		\item\texttt{\$ sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \newline
+		libgstreamer-plugins-good1.0-dev libgstreamer-plugins-bad1.0-dev} \\
+	\end{enumerate}
 
-\paragraph{GStreamer Plugins}
+\paragraph{GStreamer Plugins}\mbox{} \\ 
 
 To display what a camera is capturing \texttt{nvcamerasrc} included in the piping, 
 and is a plugin that allows options for our software to control ISP properties. \\
