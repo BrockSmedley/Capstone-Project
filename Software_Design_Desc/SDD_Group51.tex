@@ -47,12 +47,19 @@
 \parskip = 0.1 in
 \title{Software Design Description: Multi-Camera, SoM Based, Real-Time Video Processing for UAS and VR/AR Applications}
 \author{Area 51: Shu-Ping Chien, Brock Smedley, W Keith Stirby Jr \\ 01 December 2017 \\ CS461, Senior Software Engineering Project, Fall 2017}
+
+\lstset{
+  language=C++,
+  basicstyle=\small,
+  breaklines=true
+  }
+
 \begin{document}
 \begin{titlepage}
 \maketitle
-\begin{abstract}
 
-abstract words \\
+\begin{abstract}
+This document is a bird's eye view of our multi-camera video processing project for Rockwell Collins. A description and background knowledge pertaining to the project is provided in sections 1-3. Sections 4-5 provide detailed descriptions of the project and its core components; how each component contributes to the project, how it works, how it interacts with other components, and what its limitations are. 
 
 \thispagestyle{empty}
 \end{abstract}
@@ -312,6 +319,61 @@ For converting video frames from the CSI camera the \texttt{videoconvert} plugin
 be included in piping, along with \texttt{video/x-raw, format=(string){}} to specify 
 details on the conversion input and output. \\
 
+\subsection{Image Processing for Video Output}
+Since the  NVIDIA Jetpack includes OpenGL 4.3, 4.4, and 4.5, the program will use OpenGL and the OpenGL Shading Language for image processing to detect edge and draw on images, and the output will be sent to a display device. \\
+
+\subsubsection{OpenGL Environment Setup}
+Before drawing anything with OpenGL, the OpenGL environment need to be set up at first in order to specify the size of screen window and viewing features. Then the output images will be generated in display function, where the program does image processing and draws to. \\
+
+\subsubsection{Bind Video Input as Textures}
+The video output will be read as textures and processed in the shaders. The OpenGL binds a texture with the following code:\\
+
+\begin{tabular}{|p{15cm}|}
+\begin{lstlisting}
+GLuint tex;
+glGenTextures(1, &tex);
+glBindTexture(GL_TEXTURE_2D, tex);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,GL_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+\end{lstlisting}
+\end{tabular}
+
+Where the image is the a loaded texture image from video output, and it is composed of 2D arrays of pixels. Then the texture can be used in the OpenGL Shading Language with the created shaders.\\
+
+There are two shaders used in this project, vertex shader and fragment shader. The vertex shader needs to be modified so that the texture coordinates can be interpolated over the fragments, and with the output from the vertex shader, the fragment shader fused images as output. \\
+
+\subsubsection{Vertex Shader}
+Since textures are sampled using texture coordinates, which are represented as s and t, the vertex shader uses the input to modify the texture coordinates and pass to fragment shader as output. In order to provide access to the texture in the fragment shader, the program will set the texture as uniform variable of type sampler2D in the fragment shader.\\
+
+\subsubsection{Fragment Shader}
+The fragment shader renders an image by filling color in pixels. The color filled in a pixel will be determined based on the texture, where the program read the RGB information with output of texture coordinate from vertex shader.\\
+
+In OpenGL:\\
+\begin{tabular}{|p{15cm}|}
+\begin{lstlisting}
+glUniform1i(glGetUniformLocation(shaderProgram, "texName"), 0);
+\end{lstlisting}
+\end{tabular}
+\\
+\\
+In Fragment Shader:\\
+\begin{tabular}{|p{15cm}|}
+\begin{lstlisting}
+   in vec2 Texcoord;    //from vertex shader
+   out vec4 outColor;
+   uniform sampler2D texName;
+
+   void main()
+   {
+         outColor = texture(tex, Texcoord);
+   }
+\end{lstlisting}
+\end{tabular}
+
+In this code in the fragment shader, the output, outColor, will be the color from function texture(tex, Texcoord). By controlling the Texcoord, the fragment shader can draw on specific coordinate to generate an output image.\\
 
 \nocite{*}
 %\newpage
