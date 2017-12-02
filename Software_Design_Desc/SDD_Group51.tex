@@ -101,11 +101,78 @@ architecture, receiving camera input and formatting for image processing, and im
 processing for video output. The structure of our document reflects these three areas 
 of our software required for our product. \\ 
 
+\newpage
 \section{References}
 
 \bibliographystyle{ieeetr}
 \bibliography{SDD_Group51}
 
+\subsection{Definitions, Acronyms, Abbreviations}
+
+\subsubsection{Definitions}
+
+\begin{tabular}{|l|p{11cm}|}
+	\hline
+	\textbf{Term} & \textbf{Definition}\\
+	low visibility & Inability to see clearly with the naked eye.\\
+	\hline	
+	multiple cameras & At least two cameras, but a maximum of six cameras for 
+	video input.\\
+	\hline
+	near real-time & Fast enough that a human could not notice the time 
+	delay (lag) between \newline real life images and images displayed by the system.\\
+	\hline
+	NVIDIA TX1/2 & NVIDIA GPUs, the Jetson TX1 or the Jetson TX2.\\
+	\hline
+	spectral bands & Electromagnetic frequency ranges; different 
+	spectrums of light, including \newline but not limited to infrared 
+	and visible light.\\
+	\hline
+	standalone & The system performs its functionality independent of another
+	system, in our product's case it will be independent of a development kit. \\
+	\hline
+	stitched (video) output & a composite image formed from multiple images\\
+	\hline
+	time division multiplexing & The illusion of simultaneous execution in a CPU due
+	to a CPU being capable of running one process at a time.\\
+	\hline
+\end{tabular}
+
+\subsubsection{Acronyms}
+
+\begin{tabular}{|l|l|}
+	\hline
+	\textbf{Acronym} & \textbf{Term}\\
+	\hline
+	CPU & Central Processing Unit\\
+	\hline
+	CSI & Camera Serial Interface\\
+	\hline
+	EVS & Enhanced Vision System\\
+	\hline
+	fps & Frames per second\\
+	\hline
+	GPS & Global Positioning System\\
+	\hline
+	GPU & Graphic Processing Unit\\
+	\hline
+	ISP & Image Signal Processors\\
+	\hline
+	IMU & Inertial Measurement Unit\\
+	\hline
+	HUD & Head-up Display\\
+	\hline
+	SoC & System-on-chip\\
+	\hline
+	SoM & System-on-module\\
+	\hline
+	SWaP-C & Size, weight, power and cost\\
+	\hline
+	VI & Video Input\\
+	\hline
+\end{tabular}
+
+\newpage
 \section{System Overview}  
 
 \subsection{Identified Stakeholders and Design Concerns}
@@ -142,7 +209,7 @@ Ethernet is essential for development. It will allow us to connect to the intern
 USB will be necessary for flashing the TX2 with a new image. This only needs to be done once at the start of development, and possibly again when a production image is ready to be flashed, but it is nonetheless required for development. USB can also be used for simple file transfers in cases where the internet is not available. USB will also not be present on the final product, but it should not be necessary at that stage; we will not be using USB for any system-critical functions. The TX2 can always be plugged into the dev board if changes to the system need to be made, and then re-attached to the final-product board with the new data on it.
 
 \subsubsection{I2C \& GPIO}
-I2C and GPIO will be used in later phases of the project which we may not actually work on. These interfaces can be used for connecting things like environmental sensors and control interfaces like buttons and knobs. Our portion of the project will focus solely on creating the camera system on the TX2 which can then be expanded upon by other teams.
+I2C (The Inter-integrated Circuit) and GPIO (General-purpose Input/Output) will be used in later phases of the project which we may not actually work on. These interfaces can be used for connecting things like environmental sensors and control interfaces like buttons and knobs. Our portion of the project will focus solely on creating the camera system on the TX2 which can then be expanded upon by other teams.
 
 \subsection{Architecture}
 \subsubsection{Operating Systems}
