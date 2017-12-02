@@ -101,11 +101,62 @@ architecture, receiving camera input and formatting for image processing, and im
 processing for video output. The structure of our document reflects these three areas 
 of our software required for our product. \\ 
 
+\newpage
 \section{References}
 
 \bibliographystyle{ieeetr}
 \bibliography{SDD_Group51}
 
+\subsection{Definitions, Acronyms, Abbreviations}
+
+\subsubsection{Definitions}
+
+\begin{tabular}{|l|p{11cm}|}
+	\hline
+	\textbf{Term} & \textbf{Definition}\\
+	multiple cameras & At least two cameras, but a maximum of six cameras for 
+	video input.\\
+	\hline
+	near real-time & Fast enough that a human could not notice the time 
+	delay (lag) between \newline real life images and images displayed by the system.\\
+	\hline
+	NVIDIA TX1/2 & NVIDIA GPUs, the Jetson TX1 or the Jetson TX2.\\
+	\hline
+	GitHub repository & version control software for source code hosting and development\\
+	\hline
+	spectral bands & Electromagnetic frequency ranges; different 
+	spectrums of light, including \newline but not limited to infrared 
+	and visible light.\\
+	\hline
+	stitch(ed) (video) output & a composite image formed from multiple images\\
+	\hline
+\end{tabular}
+
+\subsubsection{Acronyms}
+
+\begin{tabular}{|l|l|}
+	\hline
+	\textbf{Acronym} & \textbf{Term}\\
+	\hline
+	CSI & Camera Serial Interface\\
+	\hline
+	GPIO & General-purpose Input/Output\\
+	\hline
+	GPU & Graphic Processing Unit\\
+	\hline
+	I2C & The Inter-integrated Circuit Protocol\\
+	\hline
+	ISP & Image Signal Processors\\
+	\hline
+	SoM & System-on-module\\
+	\hline
+	USB & Universal Serial Bus\\
+	\hline
+	VI & Video Input\\
+	\hline
+\end{tabular}
+
+\newpage
 \section{System Overview}  
 
 \subsection{Identified Stakeholders and Design Concerns}
