@@ -60,8 +60,8 @@
 \end{abstract}
 \end{titlepage}
 
-%\newpage
-%\tableofcontents
+\newpage
+\tableofcontents
 
 \newpage
 
@@ -69,26 +69,57 @@
 
 \subsection{Purpose}
 
+Our project is required to provide a video output at near real-time from a 
+multi-camera input utilizing an NVIDIA Jetson TX1 or TX2 system-on-module (SoM). 
+The software produced will perform image processing and edge computing on the 
+camera input to display a visually enhanced and stitched video output. 
+Size, weight, power, and cost (SWaP-C) requirements for the project are due 
+to its application being for UAS and VR/AR, and from our system utilizing a 
+mass-produced SoM, particularly the Jetson TX1 or TX2.  
 
 \subsection{Scope}
+ 
+Software scope/requirements here. (Take pixel streams, do the hokey pokey, and 
+we have low latency, wicked fast video at near real-time speed.)
+ 
+Application specific hardware and software are vital for the project due the the 
+system requirements and constraints of the project.
+The NVIDIA Jetson TX1 and TX2 run on an Ubuntu based Linux for Tegra (L4T) operating 
+system created specifically for producing customized imaging, installed on a 
+GPU-accelerated dual-core CPU with dual Image Signal Processors (ISPs). 
+NVIDIA provides the Jetson Software Development Pack (JetPack) 3.1 which has L4T 28.1 
+and is capable of supporting a multitude of multimedia and image processing API. 
+The cameras will utilize the most widely used camera interface for mobile applications, 
+MIPI CSI-2, which is capable of supporting 1080p, 4k, and 8k video. 
+A carrier board will connect the cameras to the Jetson TX1 or TX2 that also provides 
+additional application-specific interfaces and peripherals. 
 
 
 \subsection{Overview}
 
 \section{Week 1}
+
+\subsection{Summary}
+
+
 \subsection{Retrospective}
 
 \begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
    \hline
    \textbf{Positives} & \textbf{Deltas} & \textbf{Actions}\\ 
    \hline
-   anything good that happened & changes that need to be implemented & specific actions that will be implemented in order to create the necessary changes \\
+   anything good that happened 
+   & changes that need to be implemented 
+   & specific actions that will be implemented in order to create the necessary 
+   changes \\
    \hline
 \end{tabular}
-
-\subsection{Summary}
 
 \section{Week 2}
+
+\subsection{Summary}
+
+
 \subsection{Retrospective}
 
 \begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
@@ -99,9 +130,12 @@
    \hline
 \end{tabular}
 
-\subsection{Summary}
 
 \section{Week 3}
+
+\subsection{Summary}
+
+
 \subsection{Retrospective}
 
 \begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
@@ -115,6 +149,10 @@
 \subsection{Summary}
 
 \section{Week 4}
+
+\subsection{Summary}
+
+
 \subsection{Retrospective}
 
 \begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
@@ -124,10 +162,12 @@
    anything good that happened & changes that need to be implemented & specific actions that will be implemented in order to create the necessary changes \\
    \hline
 \end{tabular}
-
-\subsection{Summary}
 
 \section{Week 5}
+
+\subsection{Summary}
+
+
 \subsection{Retrospective}
 
 
@@ -138,10 +178,12 @@
    anything good that happened & changes that need to be implemented & specific actions that will be implemented in order to create the necessary changes \\
    \hline
 \end{tabular}
-
-\subsection{Summary}
 
 \section{Week 6}
+
+\subsection{Summary}
+
+
 \subsection{Retrospective}
 
 
@@ -152,10 +194,12 @@
    anything good that happened & changes that need to be implemented & specific actions that will be implemented in order to create the necessary changes \\
    \hline
 \end{tabular}
-
-\subsection{Summary}
 
 \section{Week 7}
+
+\subsection{Summary}
+
+
 \subsection{Retrospective}
 
 
@@ -166,10 +210,12 @@
    anything good that happened & changes that need to be implemented & specific actions that will be implemented in order to create the necessary changes \\
    \hline
 \end{tabular}
-
-\subsection{Summary}
 
 \section{Week 8}
+
+\subsection{Summary}
+
+
 \subsection{Retrospective}
 
 
@@ -180,10 +226,12 @@
    anything good that happened & changes that need to be implemented & specific actions that will be implemented in order to create the necessary changes \\
    \hline
 \end{tabular}
-
-\subsection{Summary}
 
 \section{Week 9}
+
+\subsection{Summary}
+
+
 \subsection{Retrospective}
 
 
@@ -194,10 +242,12 @@
    anything good that happened & changes that need to be implemented & specific actions that will be implemented in order to create the necessary changes \\
    \hline
 \end{tabular}
-
-\subsection{Summary}
 
 \section{Week 10}
+
+\subsection{Summary}
+
+
 \subsection{Retrospective}
 
 
@@ -209,9 +259,8 @@
    \hline
 \end{tabular}
 
-\subsection{Summary}
 
-\newpage
+
 
 
 \nocite{*}
