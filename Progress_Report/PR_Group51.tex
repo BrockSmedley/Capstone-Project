@@ -94,10 +94,25 @@ and is capable of supporting a multitude of multimedia and image processing API.
 The cameras will utilize the most widely used camera interface for mobile applications, 
 MIPI CSI-2, which is capable of supporting 1080p, 4k, and 8k video. 
 A carrier board will connect the cameras to the Jetson TX1 or TX2 that also provides 
-additional application-specific interfaces and peripherals. 
+additional application-specific interfaces and peripherals. \\
+
+The software materials for this project will support the NVIDIA Jetson TX1 and TX2 and 
+be able to produce fused images from cameras in near real-time. The media inputs from 
+cameras through CSI will be captured in pipelines for distribution and transformation 
+then sent to the image processor, and the process avoids to reload our input datas to 
+reduce latency. The image processing software will utilize the images from media stream 
+and produce stitched images as output to the display device.  
 
 
 \subsection{Overview}
+This document will provide briefly recaps and summaries weekly of our project in the fall 
+term 2017. The goal of the project is aimed to build the multi-camera, SoM based, real-time
+video processing for UAS and VR/AR application and cut down the cost, and the primary job 
+we processed in the term is researching on adequate hardware and software pieces, which are 
+asked to meet the requirements and be able to be connected to each other. Based on hardware 
+pieces, the process of researching on software started in last weeks of the term. The 
+possible softwares are included in the NVIDIA Jetpack or open source, so these does not 
+influence the cost.
 
 
 
