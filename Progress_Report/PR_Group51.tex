@@ -83,21 +83,20 @@ mass-produced SoM, particularly the Jetson TX1 or TX2.
 
 \subsection{Scope}
  
-SHU-Ping or BROCK - PLEASE WRITE
-Software scope/requirements here. (Take pixel streams, do the 
-hokey pokey, and we have low latency, wicked fast video at near real-time speed.)
- 
 Application specific hardware and software are vital for the project due the the 
 system requirements and constraints of the project.
 The NVIDIA Jetson TX1 and TX2 run on an Ubuntu based Linux for Tegra (L4T) operating 
 system created specifically for producing customized imaging, installed on a 
 GPU-accelerated dual-core CPU with dual Image Signal Processors (ISPs). 
+
+L4T, being an Ubuntu variant, provides a friendly development interface with access to a large repository of additional software.
 NVIDIA provides the Jetson Software Development Pack (JetPack) 3.1 which has L4T 28.1 
-and is capable of supporting a multitude of multimedia and image processing API. 
+and is capable of supporting a multitude of multimedia and image processing API. Jetpack is installed on an Ubuntu host and then used to flash the TX2's memory with L4T and selected libraries.
+
 The cameras will utilize the most widely used camera interface for mobile applications, 
 MIPI CSI-2, which is capable of supporting 1080p, 4k, and 8k video. 
 A carrier board will connect the cameras to the Jetson TX1 or TX2 that also provides 
-additional application-specific interfaces and peripherals. \\
+additional application-specific interfaces and peripherals.
 
 The software materials for this project will support the NVIDIA Jetson TX1 and TX2 and 
 be able to produce fused images from cameras in near real-time. The media inputs from 
@@ -325,7 +324,8 @@ from Tiana and McGrath before submitting the final draft. The group continued to
 work on the Requirements Document through the weekend. \\
 
 It was confirmed by McGrath that hardware for the project had been ordered. The group 
-had their weekly Friday meeting with Lin. \\
+had their weekly Friday meeting with Lin. The group continued research on project hardware and booted up the TX2 for the first time.
+\\
 
 \subsection{Retrospective}
 
@@ -374,7 +374,7 @@ due to Veteran's Day Holiday. Instead the group communicated with Lin via email.
    & 
    Following the completion of the requirements documents, each group member gained an understanding of what they were going to be responsible for. Each member also got a feel for what the other members strengths were, and how they could be allocated to further the group's progress towards the project's completion.
    & 
-   Each member, having gained a deeper understanding of their portion of the project, was given a sense of ownership of their portion of the project. This ownership defines what each member's role in the project is. Each member now has a sense of what their future objectives will involve and what can be expected from them.
+   Chien took responsibility for image-processing and media-streaming software; Striby took responsibility for SoMs, carrier boards, and camera cases; and Smedley took responsibility for development technologies, system interfaces, and operating systems.
    \\
    \hline
 \end{tabular}
@@ -401,12 +401,11 @@ had their weekly Friday meeting with Lin.\\
    \textbf{Positives} & \textbf{Deltas} & \textbf{Actions}\\ 
    \hline
    Each group member became more versed on the project's technologies and 
-   began investigating the software development that will take place for the project. 
-   Group members established their specialty areas for the project.  
+   began investigating the software development that will take place for the project.  
    & 
    Setting up the TX2 for the first time gave Smedley more information about development technologies involved with the hardware, shedding light on future requirements. 
    & 
-   The group discussed more specific details regarding system requirements and how they would be implemented. 
+   The group discussed more specific details regarding system requirements and how they would be implemented. Group members established which portion of the project they would each be responsible for. 
    \\
    \hline
 \end{tabular}
@@ -433,7 +432,7 @@ Lin did not take place due to Thanksgiving Break. \\
    & 
    Smedley had gained more knowledge about the TX2 and associated software. This information would be shared with the group so that each member could use it to further their progress in their respective portions of the project.
    & 
-   The group met during class and shared knowledge pertaining to the project; each member gained an understanding of what their objectives were and how best to implement their knowledge into the project.
+   Smedley configured the TX2 and ran some test programs on it to test the GPU and memory capabilities.
    changes \\
    \hline
 \end{tabular}
