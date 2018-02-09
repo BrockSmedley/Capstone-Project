@@ -55,7 +55,12 @@
 
 \begin{abstract}
 
-Need abstract here \\
+This document highlights the group's progress made during the Winter 2018 term. \\
+Update the rest \\
+The 
+project is introduced along with an explanation of the hardware and software 
+surrounding our product's planned solution. Each week of the Fall 2017 term is 
+summarized along with a retrospective. \\
 
 \thispagestyle{empty}
 \end{abstract}
@@ -69,19 +74,81 @@ Need abstract here \\
 \section{Introduction}
 
 \subsection{Purpose}
-Purpose
+Our project is required to provide a video output at near real-time from a 
+multi-camera input utilizing an NVIDIA Jetson TX1 or TX2 system-on-module (SoM). 
+The software produced will perform image processing and edge computing on the 
+camera input to display a visually enhanced and stitched video output. 
+Size, weight, power, and cost (SWaP-C) requirements for the project are due 
+to its application being for UAS and VR/AR, and from our system utilizing a 
+mass-produced SoM, particularly the Jetson TX1 or TX2. \\
 
 \subsection{Scope}
- 
-Scope
+Application specific hardware and software are vital for the project due the the 
+system requirements and constraints of the project.
+The NVIDIA Jetson TX1 and TX2 run on an Ubuntu based Linux for Tegra (L4T) operating 
+system created specifically for producing customized imaging, installed on a 
+GPU-accelerated dual-core CPU with dual Image Signal Processors (ISPs). 
 
+L4T, being an Ubuntu variant, provides a friendly development interface with access to a large repository of additional software.
+NVIDIA provides the Jetson Software Development Pack (JetPack) 3.1 which has L4T 28.1 
+and is capable of supporting a multitude of multimedia and image processing API. Jetpack is installed on an Ubuntu host and then used to flash the TX2's memory with L4T and selected libraries.
+
+The cameras will utilize the most widely used camera interface for mobile applications, 
+MIPI CSI-2, which is capable of supporting 1080p, 4k, and 8k video. 
+A carrier board will connect the cameras to the Jetson TX1 or TX2 that also provides 
+additional application-specific interfaces and peripherals.
+
+The software materials for this project will support the NVIDIA Jetson TX1 and TX2 and 
+be able to produce fused images from cameras in near real-time. The media inputs from 
+cameras through CSI will be captured in pipelines for distribution and transformation 
+then sent to the image processor, and the process avoids to reload our input datas to 
+reduce latency. The image processing software will utilize the images from media stream 
+and produce stitched images as output to the display device.  \\
 
 \subsection{Overview}
-Overview
+This document provides a recap of the progress made on our project during the 
+Winter 2018 term. \\
+Update this section \\
+In addition to completing required documents and assignments the group primarily 
+researched on hardware and software solutions necessary to complete the project 
+successfully. Once hardware research was completed and procurement started the group 
+began researching more into the design and development of software. The following 
+sections reflect this progress with detailed weekly summaries and retrospectives. \\
 
 
-\section{Section 1}
-Section 1
+\section{Shu-Ping}
+Describe where you are currently on the project \\
+
+Describe what you have left to do \\
+
+Describe any problems that have impeded your progress, with any solutions \\
+
+Include particularly interesting pieces of code \\
+
+Include images of your project - screen shots, photos, etc \\
+
+\section{Brock}
+Describe where you are currently on the project \\
+
+Describe what you have left to do \\
+
+Describe any problems that have impeded your progress, with any solutions \\
+
+Include particularly interesting pieces of code \\
+
+Include images of your project - screen shots, photos, etc \\
+
+
+\section{Keith}
+Describe where you are currently on the project \\
+
+Describe what you have left to do \\
+
+Describe any problems that have impeded your progress, with any solutions \\
+
+Include particularly interesting pieces of code \\
+
+Include images of your project - screen shots, photos, etc \\
 
 
 
