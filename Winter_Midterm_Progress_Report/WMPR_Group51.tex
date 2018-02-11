@@ -87,19 +87,19 @@ Application specific hardware and software are vital for the project due the the
 system requirements and constraints of the project.
 The NVIDIA Jetson TX1 and TX2 run on an Ubuntu based Linux for Tegra (L4T) operating 
 system created specifically for producing customized imaging, installed on a 
-GPU-accelerated dual-core CPU with dual Image Signal Processors (ISPs). 
+GPU-accelerated dual-core CPU with dual Image Signal Processors (ISPs). \\
 
 L4T, being an Ubuntu variant, provides a friendly development interface with access to a 
 large repository of additional software.
 NVIDIA provides the Jetson Software Development Pack (JetPack) 3.1 which has L4T 28.1 
 and is capable of supporting a multitude of multimedia and image processing API. Jetpack 
 is installed on an Ubuntu host and then used to flash the TX2's memory with L4T and 
-selected libraries.
+selected libraries. \\
 
 The cameras will utilize the most widely used camera interface for mobile applications, 
 MIPI CSI-2, which is capable of supporting 1080p, 4k, and 8k video. 
 A carrier board will connect the cameras to the Jetson TX1 or TX2 that also provides 
-additional application-specific interfaces and peripherals.
+additional application-specific interfaces and peripherals. \\
 
 The software materials for this project will support the NVIDIA Jetson TX1 and TX2 and 
 be able to produce fused images from cameras in near real-time. The media inputs from 
@@ -145,24 +145,55 @@ Include images of your project - screen shots, photos, etc \\
 \section{Keith}
 
 \subsection{Current Project Status}
-Describe where you are currently on the project \\
+%Describe where you are currently on the project \\
 
+As of the end of week five, the project had another unsuccessful attempt to demonstrate 
+multi-camera input with the Jetson TX2 module. Previous attempts were with the TX2 module
+connected to the development kit and the Auvidea J20 module which has six CSI-2 camera 
+ports. Our most recent attempt was with the TX2 module connected to the Auvidea J106 
+carrier board and the Auvidea M110 motherboard. Both of these attempts were receiving 
+input from two or three Raspberry Pi v2.1 (IMX-219) cameras, and various GStreamer 
+pipelines were input to produce a video output. \\
+
+The group is waiting on an IMX274CS-X from Leopard Imaging, which has an 
+adapter board allowing it to connect to the TX2 module. The adapter board can support 
+up to six MIPI cameras simultaneously and also comes with the setup. The IMX274CS-X 
+promises to be compatible with the Connect Tech Inc Spacely Carrier
+Board and the Colorado Engineering Inc X-Carrier carrier board. This is helpful due to 
+our struggles to obtain drivers and patches to support other TX2 module and carrier 
+board configurations. \\
 
 
 \subsection{Work Remaining for Project}
-Describe what you have left to do \\
+%Describe what you have left to do \\
+
+Following the teams two attempts to produce multi-camera inputs with the TX2 module 
+we're having to re-think our approach to project completion. The kernel setup, patches, 
+and drivers for the TX2, J106, M110 setup needs to be re-attempted since we only tested 
+this a few times during week five. This may require the TX2 module to be re-flashed a 
+few times to attempt multiple kernel configurations with various patches and drivers 
+installed. My confidence with our GStreamer pipelines to produce camera output is 
+also low due to the information from Ridge Run that requires the use of 
+\texttt{v4l2src} in pipelines to produce video output with the TX2, J106, M110 setup. 
+Before attempting to use \textt{v4l2src} in our pipeline we had only been successful 
+using \texttt{nvcamerasrc} in a pipeline, which was to produce video output from a 
+single camera. More research needs to be performed on GStreamer to ensure that we've 
+made adequate pipelines for video output from a multiple camera input setup. This will 
+also ensure that our pipelines are adequate to test other TX2 module setups with our 
+other carrier boards.\\
+
 
 
 \subsection{Problems Experienced and Solutions (if applicable)}
-Describe any problems that have impeded your progress, with any solutions \\
+%Describe any problems that have impeded your progress, with any solutions \\
 
 
 \subsection{Code Involved in the Project}
-Include particularly interesting pieces of code \\
+%Include particularly interesting pieces of code \\
 
 
 \subsection{Images of our Project}
-Include images of your project - screen shots, photos, etc \\
+%Include images of your project - screen shots, photos, etc \\
 
 
 
