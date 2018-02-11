@@ -146,7 +146,7 @@ Include particularly interesting pieces of code \\
 Include images of your project - screen shots, photos, etc \\
 
 
-\section{Keith}
+\section{Contributor: W Keith Striby Jr}
 
 \subsection{Current Project Status}
 %Describe where you are currently on the project \\
@@ -179,8 +179,9 @@ few times to attempt multiple kernel configurations with various patches and dri
 installed. \\
 
 My confidence with our GStreamer pipelines to produce camera output is 
-low due to the information from Ridge Run that requires the use of 
-\texttt{v4l2src} in pipelines to produce video output with the TX2, J106, M110 setup. 
+low due to the information from RidgeRun that requires the use of 
+\texttt{v4l2src} in pipelines to produce video output with the TX2, J106, M110 setup with 
+RidgeRun's software patches. 
 Before attempting to use \textt{v4l2src} in our pipeline we had only been successful 
 using \texttt{nvcamerasrc} in a pipeline, which was to produce video output from a 
 single camera. More research needs to be performed on GStreamer to ensure that we've 
@@ -198,27 +199,71 @@ time crunch to complete the project. \\
 \subsection{Problems Experienced and Solutions (if applicable)}
 %Describe any problems that have impeded your progress, with any solutions \\
 
-In our pursuit to produce multi-camera output two setups have been attempted. Our first 
+In our pursuit to produce multi-camera output two hardware setups have been attempted. 
+Our first 
 setup was with the TX2 module connected to the development kit that came with the module. 
 We then removed the single CSI-2 camera that came with the development kit and installed 
-the Auvidea J20-2 module. Then multiple wikis by Ridge Run were followed to setup and configure 
+the Auvidea J20 module. Then multiple wikis by RidgeRun were followed to setup 
+and configure 
 the kernel for this hardware combination. While building the kernel in the TX2 instead of 
-out host laptop we experienced \textt{WARNING: root device  does not exist} multiple times
+a host laptop we experienced \textt{WARNING: root device  does not exist} multiple times
 and therefore re-flashed the TX2 module. This required our host laptop to be setup with 
 Ubuntu for the first time, which required some research and a few attempts to make Ubuntu 
 successfully install. We then learned how to flash the TX2 module using the host laptop 
 with JetPack version 3.1, which took several attempts until it was successfully completed. 
 Following numerous unsuccessful attempts with this hardware configuration with JetPack 
 version 3.1 we agreed to try the hardware setup with JetPack version 3.0 software 
-supporting the module, but was still unable to 
-successfully produce a multi-camera input even after obtaining patches from Ridge Run. \\
+supporting the module, but was still unable to successfully produce a multi-camera input 
+even after obtaining patches from RidgeRun. \\
 
+Due to our unsuccessful attempts with the development kit using the J20 module we decided 
+to pursue our second hardware setup, with the TX2 module 
+connected to the Auvidea J106 carrier board and M110 motherboard. This required us to 
+re-flash the TX2 module, which we ended up doing several times along the way before 
+reaching 
+a point that was thought to provide a multi-camera input. Even though the end result was 
+a
+failure, we were successful in getting the hardware setup to have some basic 
+functionality. This includes booting Ubuntu and installing Auvidea firmware for the USB 
+ports to work with a keyboard and mouse. We then made other attempts to get the setup to
+work by following more RidgeRun wikis that provided GStreamer patches in order to capture 
+using \textt{v4l2src} and RAW10 but we continued to be unsuccessful at producing any type 
+of video output. \\
 
+During both hardware setups we continually had issues with a certain patch that was 
+obtained from RidgeRun via email communications. Our initial inquiry was to obtain 
+patches from RidgeRun, who has teamed up with Auvidea to provide software support for 
+Auvidea's hardware, for our TX2 module, development kit, and J20 setup. One of RidgeRun's 
+wikis shows a video demonstration of this setup working with two cameras 
+providing input, and we had reached a point where we were told to obtain patches from 
+them. The response to our inquiry was not what we expected, and a representative from 
+RidgeRun responded to inform us that they develop camera drivers and sell them as 
+add-ons. Additionally, RidgeRun offered to help us develop drivers for JetPack for 
+\$95 per hour. The patches that we requested were not available but other patches were 
+offered if we responded to the email, and we did. These patches obtained had been 
+developed to
+provide the IMX219 driver with the TX1 using kernel version 3.10, and it had also been
+tested with the TX2 using kernel version 4.4 and the J106 but they experienced 
+stability issues. Of the nine patches obtained, five were deemed unnecessary, three 
+were successfully implemented, and one is failing to patch because we cannot locate 
+the file it's programmed to patch. \\
 
 \subsection{Code Involved in the Project}
 %Include particularly interesting pieces of code \\
 
+As a result of our issues to get the two hardware setups to produce video output from 
+multi-camera input, my code thus care has been limited to GStreamer pipelines obtained 
+from a few sources. \\
 
+This first pipeline is how we were capable of creating a single camera input to produce 
+a video, and the setup was utilizing the TX2 module on the development kit. \\
+
+pipeline here\\
+
+Our next pipeline is how we were initially testing a two camera input with the TX2 module 
+on the development kit, Auvidea J20, and up to two Raspberry Pi v2.1 (IMX219) cameras. \\
+
+pipeline here\\
 
 \subsection{Images of our Project}
 %Include images of your project - screen shots, photos, etc \\
