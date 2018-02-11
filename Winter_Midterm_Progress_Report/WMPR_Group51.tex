@@ -56,7 +56,9 @@
 \begin{abstract}
 
 This document highlights the group's progress made during the Winter 2018 term. \\
+
 Update the rest \\
+
 The 
 project is introduced along with an explanation of the hardware and software 
 surrounding our product's planned solution. Each week of the Fall 2017 term is 
@@ -111,7 +113,9 @@ and produce stitched images as output to the display device.  \\
 \subsection{Overview}
 This document provides a recap of the progress made on our project during the 
 Winter 2018 term. \\
+
 Update this section \\
+
 In addition to completing required documents and assignments the group primarily 
 researched on hardware and software solutions necessary to complete the project 
 successfully. Once hardware research was completed and procurement started the group 
@@ -172,24 +176,48 @@ we're having to re-think our approach to project completion. The kernel setup, p
 and drivers for the TX2, J106, M110 setup needs to be re-attempted since we only tested 
 this a few times during week five. This may require the TX2 module to be re-flashed a 
 few times to attempt multiple kernel configurations with various patches and drivers 
-installed. My confidence with our GStreamer pipelines to produce camera output is 
-also low due to the information from Ridge Run that requires the use of 
+installed. \\
+
+My confidence with our GStreamer pipelines to produce camera output is 
+low due to the information from Ridge Run that requires the use of 
 \texttt{v4l2src} in pipelines to produce video output with the TX2, J106, M110 setup. 
 Before attempting to use \textt{v4l2src} in our pipeline we had only been successful 
 using \texttt{nvcamerasrc} in a pipeline, which was to produce video output from a 
 single camera. More research needs to be performed on GStreamer to ensure that we've 
 made adequate pipelines for video output from a multiple camera input setup. This will 
 also ensure that our pipelines are adequate to test other TX2 module setups with our 
-other carrier boards.\\
+other two carrier boards. \\
 
-
+Following receiving our long awaited IMX274CS-X from Leopard Imaging the team will 
+still need to work with the X-Carrier and Spacely carrier boards. This will 
+require research to ensure that all required patches and drivers are installed 
+to allow for both setups to work with the TX2 module. The team intends to obtain at 
+least one more TX2 module to allow multiple configurations to be tested due to our 
+time crunch to complete the project. \\
 
 \subsection{Problems Experienced and Solutions (if applicable)}
 %Describe any problems that have impeded your progress, with any solutions \\
 
+In our pursuit to produce multi-camera output two setups have been attempted. Our first 
+setup was with the TX2 module connected to the development kit that came with the module. 
+We then removed the single CSI-2 camera that came with the development kit and installed 
+the Auvidea J20-2 module. Then multiple wikis by Ridge Run were followed to setup and configure 
+the kernel for this hardware combination. While building the kernel in the TX2 instead of 
+out host laptop we experienced \textt{WARNING: root device  does not exist} multiple times
+and therefore re-flashed the TX2 module. This required our host laptop to be setup with 
+Ubuntu for the first time, which required some research and a few attempts to make Ubuntu 
+successfully install. We then learned how to flash the TX2 module using the host laptop 
+with JetPack version 3.1, which took several attempts until it was successfully completed. 
+Following numerous unsuccessful attempts with this hardware configuration with JetPack 
+version 3.1 we agreed to try the hardware setup with JetPack version 3.0 software 
+supporting the module, but was still unable to 
+successfully produce a multi-camera input even after obtaining patches from Ridge Run. \\
+
+
 
 \subsection{Code Involved in the Project}
 %Include particularly interesting pieces of code \\
+
 
 
 \subsection{Images of our Project}
