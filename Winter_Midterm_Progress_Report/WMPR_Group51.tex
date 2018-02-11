@@ -258,12 +258,12 @@ from a few sources. \\
 This first pipeline is how we were capable of creating a single camera input to produce 
 a video, and the setup was utilizing the TX2 module on the development kit. \\
 
-pipeline here\\
+\textt{gst-launch-1.0 nvcamerasrc ! 'video/x-raw(memory:NVMM),width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=2 ! nvegltransform ! nveglglessink -e} \\
 
 Our next pipeline is how we were initially testing a two camera input with the TX2 module 
 on the development kit, Auvidea J20, and up to two Raspberry Pi v2.1 (IMX219) cameras. \\
 
-pipeline here\\
+\textt{DISPLAY=:0 gst-launch-1.0 nvcamerasrc sensor-id=0 fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)1640, height=(int)1232, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! nveglglessink nvcamerasrc sensor-id=1 fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)1640, height=(int)1232, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! nveglglessink -e}\\
 
 \subsection{Images of our Project}
 %Include images of your project - screen shots, photos, etc \\
