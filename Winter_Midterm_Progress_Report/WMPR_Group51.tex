@@ -29,6 +29,28 @@
 %\usepackage[utf8]{inputenc}
 %pull in the necessary preamble matter for pygments output
 
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  %language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  %numberstyle=\tiny\color{gray},
+  %keywordstyle=\color{blue},
+  %commentstyle=\color{dkgreen},
+  %stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
 %% The following metadata will show up in the PDF properties
 \hypersetup{
    colorlinks = true,
@@ -46,7 +68,7 @@
 \parindent = 0.0 in
 \parskip = 0.1 in
 \title{Winter Midterm Progress Report: Multi-Camera, SoM Based, Real-Time Video Processing for UAS and VR/AR Applications}
-\author{Area 51: Shu-Ping Chien, Brock Smedley, W Keith Stirby Jr \\ 08 February 2018 \\ CS461, Senior Software Engineering Project, Winter 2018}
+\author{Area 51: Shu-Ping Chien, Brock Smedley, W Keith Striby Jr \\ 16 February 2018 \\ CS461, Senior Software Engineering Project, Winter 2018}
 
 
 \begin{document}
@@ -180,10 +202,10 @@ installed. \\
 
 My confidence with our GStreamer pipelines to produce camera output is 
 low due to the information from RidgeRun that requires the use of 
-\texttt{v4l2src} in pipelines to produce video output with the TX2, J106, M110 setup with 
+\texttt{ v4l2src } in pipelines to produce video output with the TX2, J106, M110 setup with 
 RidgeRun's software patches. 
-Before attempting to use \textt{v4l2src} in our pipeline we had only been successful 
-using \texttt{nvcamerasrc} in a pipeline, which was to produce video output from a 
+Before attempting to use \texttt{ v4l2src } in our pipeline we had only been successful 
+using \texttt{ nvcamerasrc } in a pipeline, which was to produce video output from a 
 single camera. More research needs to be performed on GStreamer to ensure that we've 
 made adequate pipelines for video output from a multiple camera input setup. This will 
 also ensure that our pipelines are adequate to test other TX2 module setups with our 
@@ -206,7 +228,7 @@ We then removed the single CSI-2 camera that came with the development kit and i
 the Auvidea J20 module. Then multiple wikis by RidgeRun were followed to setup 
 and configure 
 the kernel for this hardware combination. While building the kernel in the TX2 instead of 
-a host laptop we experienced \textt{WARNING: root device  does not exist} multiple times
+a host laptop we experienced \texttt{ WARNING: root device  does not exist } multiple times
 and therefore re-flashed the TX2 module. This required our host laptop to be setup with 
 Ubuntu for the first time, which required some research and a few attempts to make Ubuntu 
 successfully install. We then learned how to flash the TX2 module using the host laptop 
@@ -227,7 +249,7 @@ failure, we were successful in getting the hardware setup to have some basic
 functionality. This includes booting Ubuntu and installing Auvidea firmware for the USB 
 ports to work with a keyboard and mouse. We then made other attempts to get the setup to
 work by following more RidgeRun wikis that provided GStreamer patches in order to capture 
-using \textt{v4l2src} and RAW10 but we continued to be unsuccessful at producing any type 
+using \texttt{ v4l2src } and RAW10 but we continued to be unsuccessful at producing any type 
 of video output. \\
 
 During both hardware setups we continually had issues with a certain patch that was 
@@ -258,12 +280,18 @@ from a few sources. \\
 This first pipeline is how we were capable of creating a single camera input to produce 
 a video, and the setup was utilizing the TX2 module on the development kit. \\
 
-\textt{gst-launch-1.0 nvcamerasrc ! 'video/x-raw(memory:NVMM),width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=2 ! nvegltransform ! nveglglessink -e} \\
+\begin{lstlisting}
+gst-launch-1.0 nvcamerasrc ! 'video/x-raw(memory:NVMM),width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=0 ! nvegltransform ! nveglglessink -e
+\end{lstlisting}
+\cite{OneCamPipe}
 
 Our next pipeline is how we were initially testing a two camera input with the TX2 module 
 on the development kit, Auvidea J20, and up to two Raspberry Pi v2.1 (IMX219) cameras. \\
 
-\textt{DISPLAY=:0 gst-launch-1.0 nvcamerasrc sensor-id=0 fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)1640, height=(int)1232, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! nveglglessink nvcamerasrc sensor-id=1 fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)1640, height=(int)1232, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! nveglglessink -e}\\
+\begin{lstlisting}
+DISPLAY=:0 gst-launch-1.0 nvcamerasrc sensor-id=0 fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)1640, height=(int)1232, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! nveglglessink nvcamerasrc sensor-id=1 fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)1640, height=(int)1232, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! nveglglessink -e
+\end{lstlisting}
+\cite{TwoCamPipe}
 
 \subsection{Images of our Project}
 %Include images of your project - screen shots, photos, etc \\
@@ -271,4 +299,7 @@ on the development kit, Auvidea J20, and up to two Raspberry Pi v2.1 (IMX219) ca
 
 
 \nocite{*}
+\newpage
+\bibliographystyle{ieeetr}
+\bibliography{WMPR_Group51}
 \end{document}
