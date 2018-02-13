@@ -146,15 +146,78 @@ sections reflect this progress with detailed weekly summaries and retrospectives
 
 
 \section{Shu-Ping}
-Describe where you are currently on the project \\
 
-Describe what you have left to do \\
+\subsection{Current Project Status}
 
-Describe any problems that have impeded your progress, with any solutions \\
+In the first five weeks, the group try to capture images from Raspberry Pi v2.1 cameras 
+through the CSI-2 camera ports, and the group recorded each attempt and process in document. 
+At the end of week five, the group has explored on different methods to activate the cameras 
+through J20 CSI-2 board, but the result was not as ideal as expected to solve the majority 
+problem of images capturing. In each re-flashing attempt, the group added patches for Auvidea 
+J106 board and re-flash Jetpack to TX2 module, then build up kernel to see if the connection 
+with cameras and pipeline worked.\\
 
-Include particularly interesting pieces of code \\
+In the last progression, the group was able to set up patches for Auvidea J106 carrier board 
+and the Auvidea M110 motherboard in order to connects the board together with the monitor and 
+enable keyboard and mouse. It was successful after building the kernel on TX2 module, but the 
+applied patches for IMX-219 driver, which is a driver released by RidgeRun to activate Raspberry 
+Pi camera through J20 CSI-2 board for NVIDIA TX1/TX2, did not work well with some unknown errors 
+on patch 0007. Therefore, the group targeted on several options to overcome current dilemma. The 
+first option was waiting on an IMX274CS-X from Leopard Imaging, and the group expected the adapter 
+board could be compatible with the Connect Tech Inc Spacely Carrier Board and the Colorado 
+Engineering Inc X-Carrier carrier board. At the same time, the group also tried to defeat bugs 
+on previous system and searched on information about media pipeline and image processing libraries 
+for following steps.\\
 
-Include images of your project - screen shots, photos, etc \\
+\subsection{Work Remaining for Project}
+
+The group has spent five weeks to work on hardware compatibility and developing environment in order 
+to process on images captured from CSI-2 cameras. However, since the unexpected delay of compatible 
+problems affected the progression, the group bumped into problems on system on module setting up and 
+progressing behind. The goal of the hardware in this project is to create a system on module based 
+application, where the group planned to have TX2, J106, and M110 in this project, and due to many 
+unsuccessful attempts during the previous five weeks, the system is still waiting to be set up to 
+activate Raspberry Pi v2.1 cameras and manipulate on images. Therefore, the remaining work for hardware 
+ask the team to solve problems on current system or to research on other possible option in order to 
+complete system on TX2 module for image processing from video input.\\
+
+On the other hand, the goal of the software in this project requires the team to stitch video inputs from 
+two visible band cameras to generate a single stream as output with OpenCV or OpenGL. Since the problem of 
+hardware connection hasn’t been solved, the group hasn’t touched the topic. The requirement of image processing 
+asked it to be near real-time, so the group expected to apply GStreamer to transfer and encode with GStreamer 
+pipeline function to the GPU. The GStreamer includes OpenCV library to support media transferred into OpenCV 
+program, and the team will utilize build-in function in OpenCV for edge detection on image and fuse two images 
+together.\\
+
+\subsection{Problems Experienced and Solutions}
+
+The majority problem the group experienced was image capturing feature on the system on module application. 
+The encountered the problem with several reasons, first the group spent a lot of time on doing research about 
+and studying on hardware. With some professional terms which may cause misunderstanding, the group directly tested 
+for reflashing on module and examined errors and missing information. The process included attempts on different 
+version of Jetpack, contacting with the RidgeRun to ask functionalities and requirements about IMX219 driver, and
+ building kernel. However, even the last attempt was unsuccessful to approach IMX219 with cameras on J20 board to 
+ get input video, and the error message given from the compiler confused the group to keep using IMX219. Whereas, 
+ because of the stuck on capturing images, the group could not work on the image process with the captured images.\\
+
+ In order to keep progressing on the project, the group lists several possible solution for hardware connection 
+ and driver installation. With the response from the RidgeRun that the company is able to help for driver 
+ installation in paid, then the first option is that the group will address the current problems with the 
+ client and ask for determination if the client agree to let RidgeRun develop on IMX219. Otherwise, there 
+ are also some options such as developing on TX1 instead of TX2 since there are more information available 
+ with the TX1 module. At the same time, the group is researching on IMX274CS-X from Leopard Imaging and 
+ expects the alternative technology will make progress. \\
+
+ On the other hand, since the group currently can not have solution on image capturing, the members 
+ determine to progress on image processing separated from video input form cameras. The group will 
+ install compatible version of graphing developing tools with OpenCV 3.3.1 and OpenGL 4.5 on the ubuntu 
+ system, which are included in Jetpack 3.1. Instead of video input from cameras, the group will use 
+ other videos and demonstrate with different situations for visible light and infrared images to fuse 
+ images together. Therefore, the group can process on hardware and software problems at the same time, 
+ so the image processing data can be executed on different platform and will not be erased if reflash again. 
+ Also, the group still need to do research on GStreamer in order to transfered the actual video inputs 
+ into the image processing program.\\
+
 
 \section{Brock}
 Describe where you are currently on the project \\
