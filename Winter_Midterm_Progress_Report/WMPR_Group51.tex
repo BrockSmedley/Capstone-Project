@@ -260,23 +260,29 @@ this a few times during week five. This may require the TX2 module to be re-flas
 few times to attempt multiple kernel configurations with the various patches and drivers 
 installed. \\
 
-My confidence with our GStreamer pipelines to produce camera output is 
-low due to the information from RidgeRun that requires the use of 
+More research and information surrounding GStreamer needs to be performed to ensure that we're 
+writing adequate pipelines for video output for a multiple camera setup. 
+This will also ensure that our pipelines are adequate to test other TX2 module setups 
+with the Spacely Carrier and X-Carrier carrier boards.
+So far my confidence with our GStreamer pipelines to produce multi-camera output is 
+low but, there may be other issues causing this because of our implementation of kernel 
+patches for the TX2 to work with the Auvidea J106 carrier board and M110 motherboard. 
+Information provided by RidgeRun that requires the use of 
 \texttt{ v4l2src } in pipelines to produce video output with the TX2, J106, M110 setup with 
 RidgeRun's software patches. 
 Before attempting to use \texttt{ v4l2src } in our pipeline we had only been successful 
 using \texttt{ nvcamerasrc } in a pipeline, which was to produce video output from a 
-single camera. More research needs to be performed on GStreamer to ensure that we've 
-made adequate pipelines for video output from a multiple camera input setup. This will 
-also ensure that our pipelines are adequate to test other TX2 module setups with our 
-other two carrier boards. \\
+single camera that came with the development kit. \\
 
-Following receiving our long awaited IMX274CS-X from Leopard Imaging the team will 
-still need to work with the X-Carrier and Spacely carrier boards. This will 
-require research to ensure that all required patches and drivers are installed 
-to allow for both setups to work with the TX2 module. The team intends to obtain at 
+Following the receipt of our long awaited IMX274CS-X circuit board and six-camera kit 
+from Leopard Imaging, the team will 
+still work with the Spacely Carrier and X-Carrier carrier boards. This will 
+require research and communication with both carrier board providers to ensure that 
+all required patches and drivers are installed 
+to allow both setups to work with the TX2 module. The team intends to obtain at 
 least one more TX2 module to allow multiple configurations to be tested due to our 
-time crunch to complete the project. \\
+time crunch to complete the project. When any type of multi-camera output has been 
+produced image processing may then begin testing with OpenCV. \\
 
 \subsection{Problems Experienced and Solutions (if applicable)}
 %Describe any problems that have impeded your progress, with any solutions \\
@@ -301,15 +307,16 @@ even after obtaining patches from RidgeRun. \\
 Due to our unsuccessful attempts with the development kit using the J20 module we decided 
 to pursue our second hardware setup, with the TX2 module 
 connected to the Auvidea J106 carrier board and M110 motherboard. This required us to 
-re-flash the TX2 module, which we ended up doing several times along the way before 
-reaching 
-a point that was thought to provide a multi-camera input. Even though the end result was 
-a
-failure, we were successful in getting the hardware setup to have some basic 
+re-flash the TX2 module with a kernel intended for this hardware setup, which 
+was performed several times along the way before reaching 
+what was thought to be adequate for multi-camera input. Even though the expected result 
+for video output was 
+a failure, we were successful in getting the hardware setup to have some basic 
 functionality. This includes booting Ubuntu and installing Auvidea firmware for the USB 
-ports to work with a keyboard and mouse. We then made other attempts to get the setup to
-work by following more RidgeRun wikis that provided GStreamer patches in order to capture 
-using \texttt{ v4l2src } and RAW10 but we continued to be unsuccessful at producing any type 
+ports to work with a keyboard and mouse. Several attempts were made to get the setup to
+work after following more RidgeRun wikis instructing us to install GStreamer patches 
+in order to capture 
+using \texttt{ v4l2src } and RAW10, but we continued to be unsuccessful at producing any type 
 of video output. \\
 
 During both hardware setups we continually had issues with a certain patch that was 
@@ -328,17 +335,18 @@ provide the IMX219 driver with the TX1 using kernel version 3.10, and it had als
 tested with the TX2 using kernel version 4.4 and the J106 but they experienced 
 stability issues. Of the nine patches obtained, five were deemed unnecessary, three 
 were successfully implemented, and one is failing to patch because we cannot locate 
-the file it's programmed to patch. \\
+the file it's programmed to patch. A follow-up email to RidgeRun needs to be written 
+due to our efforts being exhausted.\\
 
 \subsection{Code Involved in the Project}
 %Include particularly interesting pieces of code \\
 
 As a result of our issues to get the two hardware setups to produce video output from 
-multi-camera input, my code thus care has been limited to GStreamer pipelines obtained 
-from a few sources. \\
+multi-camera input, my code thus care has been limited to GStreamer pipelines. \\
 
 This first pipeline is how we were capable of creating a single camera input to produce 
-a video, and the setup was utilizing the TX2 module on the development kit. \\
+a video, and the setup was utilizing the TX2 module on the development kit and the 
+CSI-2 camera that came with it. \\
 
 \begin{lstlisting}
 gst-launch-1.0 nvcamerasrc ! 'video/x-raw(memory:NVMM),width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=0 ! nvegltransform ! nveglglessink -e
@@ -346,7 +354,9 @@ gst-launch-1.0 nvcamerasrc ! 'video/x-raw(memory:NVMM),width=640, height=480, fr
 \cite{OneCamPipe}
 
 Our next pipeline is how we were initially testing a two camera input with the TX2 module 
-on the development kit, Auvidea J20, and up to two Raspberry Pi v2.1 (IMX219) cameras. \\
+on the development kit, Auvidea J20, and up to two Raspberry Pi v2.1 (IMX219) cameras. 
+This pipeline was also attempted with the TX2 module setup with the Auvidea J106 carrier
+board and M110 motherboard. \\
 
 \begin{lstlisting}
 DISPLAY=:0 gst-launch-1.0 nvcamerasrc sensor-id=0 fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)1640, height=(int)1232, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! nveglglessink nvcamerasrc sensor-id=1 fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)1640, height=(int)1232, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! nveglglessink -e
@@ -356,6 +366,7 @@ DISPLAY=:0 gst-launch-1.0 nvcamerasrc sensor-id=0 fpsRange="30 30" ! 'video/x-ra
 
 \section{Images of our Project}
 %Include images of your project - screen shots, photos, etc \\
+
 
 
 
