@@ -77,14 +77,12 @@
 
 \begin{abstract}
 
-This document highlights the group's progress made during the Winter 2018 term. \\
+This document highlights the group's progress made during the first half of the 
+Winter 2018 term. The project is introduced along with an explanation of the 
+hardware and software surrounding our product's planned solution. Then each group member
+explains their contributions to the project, what they have remaining to complete
+the projects requirements, and problems experienced with solutions if applicable. \\
 
-Update the rest \\
-
-The 
-project is introduced along with an explanation of the hardware and software 
-surrounding our product's planned solution. Each week of the Fall 2017 term is 
-summarized along with a retrospective. \\
 
 \thispagestyle{empty}
 \end{abstract}
@@ -117,7 +115,7 @@ L4T, being an Ubuntu variant, provides a friendly development interface with acc
 large repository of additional software.
 NVIDIA provides the Jetson Software Development Pack (JetPack) 3.1 which has L4T 28.1 
 and is capable of supporting a multitude of multimedia and image processing API. Jetpack 
-is installed on an Ubuntu host and then used to flash the TX2's memory with L4T and 
+is installed on an Ubuntu host computer and is then used to flash the TX2's memory with L4T and 
 selected libraries. \\
 
 The cameras will utilize the most widely used camera interface for mobile applications, 
@@ -133,19 +131,18 @@ reduce latency. The image processing software will utilize the images from media
 and produce stitched images as output to the display device.  \\
 
 \subsection{Overview}
-This document provides a recap of the progress made on our project during the 
-Winter 2018 term. \\
+This document provides a recap of the progress made on our project through the first half
+of the Winter 2018 term. The group has focused on getting the TX2 module to produce a 
+multi-camera output with the Auvidea J106 module attached to the development kit, and with 
+the TX2 module attached to the Auvidea J106 carrier board and M110 motherboard. 
+Shu-Ping Chien and W Keith Striby Jr have primarily been working in tandem so their 
+contributions will be similar. The following 
+sections reflect this progress with each group member explaining where their involvement 
+with the project currently is, work remaining, and problems experienced so far over the term 
+with solutions if applicable. \\ 
 
-Update this section \\
 
-In addition to completing required documents and assignments the group primarily 
-researched on hardware and software solutions necessary to complete the project 
-successfully. Once hardware research was completed and procurement started the group 
-began researching more into the design and development of software. The following 
-sections reflect this progress with detailed weekly summaries and retrospectives. \\
-
-
-\section{Shu-Ping}
+\section{Contributor: Shu-Ping Chien}
 
 \subsection{Current Project Status}
 
@@ -219,7 +216,7 @@ version of Jetpack, contacting with the RidgeRun to ask functionalities and requ
  into the image processing program.\\
 
 
-\section{Brock}
+\section{Contributor: Brock Smedley}
 Describe where you are currently on the project \\
 
 Describe what you have left to do \\
@@ -356,7 +353,8 @@ DISPLAY=:0 gst-launch-1.0 nvcamerasrc sensor-id=0 fpsRange="30 30" ! 'video/x-ra
 \end{lstlisting}
 \cite{TwoCamPipe}
 
-\subsection{Images of our Project}
+
+\section{Images of our Project}
 %Include images of your project - screen shots, photos, etc \\
 
 
