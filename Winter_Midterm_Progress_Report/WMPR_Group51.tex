@@ -136,8 +136,8 @@ of the Winter 2018 term. The group so far has been primarily focused on getting 
 Shu-Ping Chien and W Keith Striby Jr have primarily been working in tandem so their 
 contributions will be similar. Brock has spent most of the term doing research about the software we use so that it may later be scripted in order to save development time. The following 
 sections reflect this progress with each group member explaining where their involvement 
-with the project currently is, work remaining, and problems experienced so far over the term 
-with solutions if applicable. \\ 
+with the project currently is, work remaining, problems experienced 
+with solutions if applicable, and images of the hardware setups. \\ 
 
 
 \section{Contributor: Shu-Ping Chien}
@@ -220,18 +220,18 @@ version of Jetpack, contacting with the RidgeRun to ask functionalities and requ
 %Describe where you are currently on the project \\
 My role in this project is primarily to handle scripting of system processes and the simplification/modularization thereof. Due to the difficulties we've had with setting up a platform to build the system on, I have not been able to make much meaningful progress. However, we have learned a significant amount about the hardware and software involved in our project. In the time that we've spent attempting to configure a working system, I have learned to decipher the long and confusing GStreamer pipelines that we are either building or planning to build, I've learned new methods of patching the linux kernel, and I've learned a lot about the hardware involved. At this point, I believe we have the knowledge necessary to make much more significant progress in the coming weeks.
 
-\subsection{Remaining Objectives}
+\subsection{Work Remaining for Project}
 %Describe what you have left to do \\
 As soon as we have a working platform, my first job will be to automate the build process. Automating this process will significantly reduce the time we have to spend re-configuring the device(s) during testing. These autonomous scripts will be stored in version control for full transparency and organization. Next, once we get a GStreamer pipeline configured to capture multiple camera streams, I will automate that process by first creating a bash script that runs our gst-launch command. Then, if necessary/feasible, I will re-write that script in C to improve performance.
 
 
-\subsection{Problems So Far}
+\subsection{Problems Experienced and Solutions (if applicable)}
 %Describe any problems that have impeded your progress, with any solutions \\
 The biggest problem we've had is configuring the TX2 to correctly display our video feeds. This problem has led the group to focus all of its efforts into building a working platform. I suppose my biggest problem at this point is having nothing to automate. We're working furiously to put together a functional system, and concurrently, we are accumulating a large wealth of information about the technical aspects of the project and hopefully, that knowledge can be used in the future to simplify development. 
 
 In Keith's section he will mention the different devices we've used and the issues we've had with them. Each board has a unique set of software that must be installed in order to properly use its interfaces; drivers, firmware, etc. So far, we have not been able to correctly install that software. We are currently in the process of setting up a new carrier board that (hopefully) offers more developer-friendly software. Shu-Ping has described the software and code we're planning to use to create our composite image using the cameras' video streams. This code is what I will be scripting once we are sure that it works properly on our system.
 
-\subsection{Code}
+\subsection{Code Involved in the Project}
 %Include particularly interesting pieces of code \\
 Since we haven't been able to instantiate a functional multi-camera system, I haven't had any programs to write. Shu-Ping is primarily in charge of the GStreamer and OpenCV code, which I will later port to either a shell script or C code. This graphics processing code will be the meat and potatoes of our project, so once it's working, I will have plenty of code to write.
 
@@ -384,7 +384,6 @@ DISPLAY=:0 gst-launch-1.0 nvcamerasrc sensor-id=0 fpsRange="30 30" ! 'video/x-ra
 
 \section{Images of our Hardware}
 %Include images of your project - screen shots, photos, etc \\
-
 
 
 \begin{figure}[H]
