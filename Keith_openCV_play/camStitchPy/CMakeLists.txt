@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project(camStitch)
+find_package(OpenCV REQUIRED)
+add_executable(camStitch cameraStitching.py)
+target_link_libraries(camStitch ${OpenCV_LIBS})
