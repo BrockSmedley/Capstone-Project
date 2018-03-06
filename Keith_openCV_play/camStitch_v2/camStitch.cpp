@@ -6,6 +6,50 @@
 using namespace std;
 using namespace cv;
 
+
+int streaming(VideoCapture cap1, VideoCapture cap2)
+{
+    Mat fr1, fr2, copy1, copy2, pano;
+    bool try_use_gpu = false;
+    vector<Mat> imgs;
+
+	//while (true)
+    	//{
+        	cap1 >> fr1;
+       		cap2 >> fr2;
+        	fr1.copyTo(copy1);
+        	fr2.copyTo(copy2);
+			
+		imgs.push_back(copy1);
+		imgs.push_back(copy2);
+
+        	cap1 >> fr1;
+       		cap2 >> fr2;
+       		fr1.copyTo(copy1);
+        	fr2.copyTo(copy2);
+
+		imgs.push_back(copy1);
+		imgs.push_back(copy2);
+
+        	Stitcher test = Stitcher::createDefault(try_use_gpu);
+        	Stitcher::Status status = test.stitch(imgs, pano);
+
+        	if (status != Stitcher::OK)
+        	{
+          		cout << "Error stitching - Code: " <<int(status)<<endl;
+            		return -1;
+        	}
+
+        	
+		imshow("Frame 1", fr1);
+        	imshow("Frame 2", fr2);
+       		imshow("Stitched Image", pano);
+
+        	if(waitKey(30) >= 0) 
+            		return -1;
+	//}
+}
+
 int main(int argc, char *argv[])
 {
     Mat fr1, fr2, copy1, copy2, pano;
@@ -26,12 +70,28 @@ int main(int argc, char *argv[])
 		cout << "connection cap2 failed" << endl;
 		return -1;
 	}
+	
+	while(true)
+	{
+		int test = 0;
+		
+		test = streaming(cap1, cap2);
+		cout << "test: " << int(test) << endl;
+   	}
 
-    	while (true)
+	/*while (true)
     	{
         	cap1 >> fr1;
        		cap2 >> fr2;
         	fr1.copyTo(copy1);
+        	fr2.copyTo(copy2);
+			
+		imgs.push_back(copy1);
+		imgs.push_back(copy2);
+
+        	cap1 >> fr1;
+       		cap2 >> fr2;
+       		fr1.copyTo(copy1);
         	fr2.copyTo(copy2);
 
 		imgs.push_back(copy1);
@@ -42,16 +102,18 @@ int main(int argc, char *argv[])
 
         	if (status != Stitcher::OK)
         	{
-            		cout << "Error stitching - Code: " <<int(status)<<endl;
+          		cout << "Error stitching - Code: " <<int(status)<<endl;
             		return -1;
         	}
 
-        	imshow("Frame 1", fr1);
+        	
+		imshow("Frame 1", fr1);
         	imshow("Frame 2", fr2);
-        	imshow("Stitched Image", pano);
+       		imshow("Stitched Image", pano);
 
         	if(waitKey(30) >= 0) 
             		break;
-    	}
+	}*/
+
     	return 0;
 }
