@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nvidia/Shu_openCV/Stitch/camStitch.cpp
+opencv2/opencv.hpp
+-
+opencv2/stitching.hpp
+-
+opencv2/imgcodecs.hpp
+/home/nvidia/Shu_openCV/Stitch/opencv2/imgcodecs.hpp
+iostream
+-
+vector
+-
+
