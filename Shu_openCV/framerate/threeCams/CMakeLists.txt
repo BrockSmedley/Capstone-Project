@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( FPS3 )
+find_package( OpenCV REQUIRED )
+add_executable( FPS3 fps1.cpp )
+target_link_libraries( FPS3 ${OpenCV_LIBS} )
