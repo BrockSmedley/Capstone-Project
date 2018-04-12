@@ -1,5 +1,6 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/stitching.hpp>
+#include "opencv2/imgcodecs.hpp"
 #include <iostream>
 #include <vector>
 
@@ -11,7 +12,7 @@ Stitcher::Mode mode = Stitcher::PANORAMA;
 int streaming(VideoCapture cap1, VideoCapture cap2)
 {
 	Mat fr1, fr2, copy1, copy2, pano;
-    	bool try_use_gpu = true;
+    	bool try_use_gpu = false;
     	vector<Mat> imgs;
 
 	//while (true)
@@ -54,7 +55,7 @@ int main(int argc, char *argv[])
     //vector<Mat> imgs;
     //VideoCapture cap1(), cap2();
 
-	VideoCapture cap1("nvcamerasrc sensor-id=0 ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480, format=(string)I420, framerate=(fraction)30/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink", CAP_GSTREAMER); //middle output
+	VideoCapture cap1("nvcamerasrc sensor-id=1 ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480, format=(string)I420, framerate=(fraction)30/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink", CAP_GSTREAMER); //middle output
 
 	VideoCapture cap2("nvcamerasrc sensor-id=2 ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480, format=(string)I420, framerate=(fraction)30/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink", CAP_GSTREAMER); //output closest to center of board
 
