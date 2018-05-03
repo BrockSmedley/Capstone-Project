@@ -34,21 +34,11 @@
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
-\lstset{frame=tb,
-  %language=Java,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  %numberstyle=\tiny\color{gray},
-  %keywordstyle=\color{blue},
-  %commentstyle=\color{dkgreen},
-  %stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
+\usepackage{listings}
+\lstset{
+  frame=single,
+  language=C,
+  basicstyle=\small,
 }
 
 %% The following metadata will show up in the PDF properties
@@ -150,10 +140,7 @@ latency, the capabilities of our image processing, and testing performed so far.
 Then the work remaining for the project is elaborated on, which focuses on more 
 troubleshooting of our latency issues and finishing testing of our product. Then we will 
 discuss problems experienced and solutions where applicable. Finally the report concludes 
-with pictures or our hardware setup, the output of our image processing, and testing 
-performed. \\
-
-Adding snippets of code? If so add this sentence before or in the last sentence.\\
+with our three-camera GStreamer pipeline code and images of our software output. \\
 
 \section{Current Project Status}
 
@@ -246,16 +233,28 @@ it's expected due to GStreamer latency \\
 
 issues \\
 
-\section{Code Involved in the Project}
-%Include particularly interesting pieces of code \\
-
-insert code here \\
-
 \section{Conclusion}
 
 more words here\\
 
-\section{Images of our Hardware}
+\section{Code Involved in the Project}
+%Include particularly interesting pieces of code \\
+
+\begin{lstlisting}[
+  caption=Three-Camera GStreamer Pipeline,
+  label=lst1:mxm,
+]
+DISPLAY=:0 gst-launch-1.0 nvcamerasrc sensor-id=0 fpsRange="30 30" ! 
+'video/x-raw(memory:NVMM), width=(int)640, height=(int)480, format=(string)I420, 
+framerate=(fraction)30/1' ! nvegltransform ! nveglglessink  nvcamerasrc sensor-id=2 
+fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)640, height=(int)480, 
+format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! nveglglessink 
+nvcamerasrc sensor-id=1 fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)640, 
+height=(int)480, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! 
+nveglglessink -e
+\end{lstlisting}
+
+\section{Images of our Software Output}
 %Include images of your project - screen shots, photos, etc \\
 
 \begin{figure}[H]
@@ -263,37 +262,6 @@ more words here\\
 	\label{fig:TX2 module on the development kit.}
 	\includegraphics[width=10cm]{images/devkit.eps}
 	\caption{TX2 module on the development kit. \label{overflow}}
-\end{figure}
-
-
-\begin{figure}[H]
-	\centering
-	\label{fig:TX2 module on the development kit with the Auvidea J20 module.}
-	\includegraphics[width=10cm]{images/devkit_J20.eps}
-	\caption{TX2 module on the development kit with the Auvidea J20 module. \label{overflow}}
-\end{figure}
-
-
-\begin{figure}[H]
-	\centering
-	\label{fig:TX2 module connected to the Auvidea J106 carrier board and M110 motherboard, utilizing the development kit's WiFi antennas.}
-	\includegraphics[width=10cm]{images/J106-M110_1.eps}
-	\caption{TX2 module connected to the Auvidea J106 carrier board and M110 motherboard, utilizing the development kit's WiFi antennas. \label{overflow}}
-\end{figure}
-
-
-\begin{figure}[H]
-	\centering
-	\label{fig:A closer look at the TX2 module connected to the Auvidea J106 carrier board and M110 motherboard.}
-	\includegraphics[width=10cm]{images/J106-M110_2.eps}
-	\caption{A closer look at the TX2 module connected to the Auvidea J106 carrier board and M110 motherboard. \label{overflow}}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\label{fig:TX2 mounted on the Spacely Carrier Board with two CSI cameras attached.}
-	\includegraphics[width=10cm]{images/spacely.eps}
-	\caption{TX2 mounted on the Spacely Carrier Board with two Leopard CSI cameras attached. \label{overflow}}
 \end{figure}
 
 %\nocite{*}
