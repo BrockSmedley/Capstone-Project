@@ -105,7 +105,7 @@ The software produced will perform image processing and edge computing on the
 camera input to display a visually enhanced and stitched video output. 
 Size, weight, power, and cost (SWaP-C) requirements for the project are due 
 to its application being for UAS and VR/AR, and from our system utilizing a 
-mass-produced SoM, particularly the Jetson TX1 or TX2. \\
+mass-produced SoM, particularly the Jetson TX2. \\
 
 \subsection{Scope}
 
@@ -116,7 +116,7 @@ system created specifically for producing customized imaging, installed on a
 GPU-accelerated dual-core CPU with dual Image Signal Processors (ISPs). \\
 
 L4T, being an Ubuntu variant, provides a friendly development interface with 
-access to a large repository of additional software.NVIDIA provides the Jetson 
+access to a large repository of additional software. NVIDIA provides the Jetson 
 Software Development Pack (JetPack) 3.1 which has L4T 28.1 
 and is capable of supporting a multitude of multimedia and image processing 
 application program interfaces (APIs). Jetpack 
@@ -129,33 +129,35 @@ A carrier board will connect the cameras to the Jetson TX2 that also provides
 additional application-specific interfaces and peripherals. \\
 
 The software materials for this project will support the NVIDIA Jetson TX2 and 
-be able to produce stitched images from cameras in near real-time. The media inputs 
-from cameras are sent through  the CSI and carrier board, and then arrive at our 
-software in the TX2 in raw-pixel form. The pixels are then processed through our 
+be able to produce stitched images from cameras in near real-time. The data input 
+from cameras are sent through the CSI and carrier board, and then arrive at our 
+software in the TX2 in raw pixel form. The pixels are then processed through our 
 GStreamer pipelines for distributing and transforming their data to the image 
 processor. OpenCV libraries in our software is used to access the data in the image 
-processor to produce our desired image output. The process avoids writing and 
-therefore reading our input data to storage to reduce latency. The image processing 
-software will utilize the images from media stream and produce streaming video 
+processor to produce our desired image output. Due to 
+using CSI cameras the process avoids writing to memory and 
+therefore reading our input data to storage which reduces latency. The image processing 
+software will utilize the images from media stream and produce a streaming video 
 to the display device.  \\
 
 \subsection{Overview}
 
 This document provides a recap of the progress made on our project through the first half
-of the Spring 2018 term. The group so far has been focused on \\
+of the Spring 2018 term. This term the group has been focused on getting rid of our 
+issues surrounding latency when streaming video before and after image processing. 
+For our current project status we discuss what we have done to test and troubleshoot 
+latency, the capabilities of our image processing, and testing performed so far. 
+Then the work remaining for the project is elaborated on, which focuses on more 
+troubleshooting of our latency issues and finishing testing of our product. Then we will 
+discuss problems experienced and solutions where applicable. Finally the report concludes 
+with pictures or our hardware setup, the output of our image processing, and testing 
+performed. \\
 
-EDIT:
-getting the TX2 module to produce a multi-camera output with a CSI (Camera Serial Interface) module attached to the TX2 module, which allows us to connect multiple cameras to the device.
-Shu-Ping Chien and W Keith Striby Jr have primarily been working in tandem so their 
-contributions will be similar. Brock has spent most of the term doing research about the software we use so that it may later be scripted in order to save development time. The following 
-sections reflect this progress with each group member explaining where their involvement 
-with the project currently is, work remaining, problems experienced 
-with solutions if applicable, and images of the hardware setups. \\ 
-
+Adding snippets of code? If so add this sentence before or in the last sentence.\\
 
 \section{Current Project Status}
 
-intro?\\
+intro\\
 
 \subsection{Image Processing}
 
@@ -172,36 +174,71 @@ words\\
 \section{Work Remaining for Project}
 %Describe what you have left to do \\
 
+In the remaining weeks that we have to work on the software of our project we hope to 
+solve the latency in our GStreamer pipeline and image processing. Questions surrounding 
+our existing pipelines will continued to be asked and therefore adjusted. If our 
+troubleshooting fails or after the hopeful success of fixing it, we will complete latency 
+and frame rate testing of our software. This section elaborates on our plan of attack to 
+complete these tasks.\\
+
 \subsection{Troubleshooting Latency}
 
-continue troubleshooting\\
+Although we have scoured the internet in search of solutions to our latency issues we must 
+continue this effort until we are no longer allowed to. Troubleshooting has isolated the 
+issue in two areas, the first being our GStreamer pipelines, and the second being during 
+image processing. This is how our troubleshooting will continue to be isolated and attacked, 
+and this will continue until further isolation is determined or if our software requires 
+any major overhaul. \\
 
-\subsection{Finish Re-build of Extra TX2}
+In GStreamer pipelines commands are noted with the exclamation mark, and these denote 
+filters or pads. The pipelines in our software have several of these pads to mutate 
+the input coming from the cameras so the data ready for image processing. We are continuing 
+to tinker with and manipulate our pads to see if there is any change in system response. \\
 
-content \\
+Research surrounding more solutions to our GStreamer latency has not turned up much 
+due to the lack of elaboration we are able to find. Resources on GStreamer tend to show 
+only examples with limited explanation, making it difficult for us to determine where 
+our issue is. Our search for answers will continue looking for resources elaborating on 
+GStreamer pipelines. \\
 
-\subsection{Scripts to Build Extra TX2}
-
-more stuff \\
+Latency surrounding our image processing software will be sought after when we solve the 
+issue of our GStreamer pipelines. We are unable to determine the effect our latency has 
+on image processing of stitched and tiled videos and therefore would be an ineffective 
+use of our time. Solutions have been found regarding our slow image processing but not 
+implemented, and we will determine what path to take when our GStreamer latency issues 
+are solved based on how much latency remains, if any. \\
 
 \subsection{Finish Latency and Frame Rate Tests}
 
-testing 1-2 \\
+The completion of our latency testing has been delayed in hopes of finding a solution to 
+the latency in our GStreamer pipeline. Since we know and understand the amount of latency 
+that exists in the GStreamer pipeline all that is remaining is determining the amount of 
+latency in our stitching and tiling software. \\
+
+Our latency tests are fairly simple to setup and perform. With the software running and 
+producing a video output, a running stop-watch is placed on the output screen in a window 
+next to it. With the cameras pointed at the output screen showing the stop-watch we then 
+take a picture of these two windows side-by-side. The difference in time captured in our 
+picture shows the amount of latency between the stop-watch in real-time and following 
+image processing. \\
+
+Accompanied with our latency tests we have decided to also produce frame rate testing for 
+our client. The frame rate of our software was questioned during the troubleshooting of 
+our latency issues, and since frame rate is part of our GStreamer pipeline it is easily 
+adjusted and displayed on the output display. This test has been performed with a two and 
+three-camera setup of our GStreamer output and produces the expected result of 30 frames 
+per second.  \\
 
 \section{Problems Experienced and Solutions (if applicable)}
 %Describe any problems that have impeded your progress, with any solutions \\
 
-intro?\\
+intro\\
 
 \subsection{Latency in our GStreamer Pipelines}
 
 it's slow \\
 
-\subsection{Stitcher Program Lag}
-
-it's wicked slow \\
-
-\subsection{Latency in our Tiled Program}
+\subsection{Latency in our Image Processing}
 
 it's expected due to GStreamer latency \\
 
