@@ -195,15 +195,16 @@ complete these tasks.\\
 
 Although we have scoured the internet in search of solutions to our latency issues we must 
 continue this effort until we are no longer allowed to. Troubleshooting has isolated the 
-issue in two areas, the first being our GStreamer pipelines, and the second being during 
-image processing. This is how our troubleshooting will continue to be isolated and attacked, 
-and this will continue until further isolation is determined or if our software requires 
-any major overhaul. \\
+issue in two areas, the first being in our GStreamer pipelines, and the second occurring 
+in image processing. This is how our troubleshooting will continue to be isolated and 
+attacked, and this will continue until further isolation is determined or if our 
+software requires any major overhaul. \\
 
 In GStreamer pipelines commands are noted with the exclamation mark, and these denote 
 filters or pads. The pipelines in our software have several of these pads to mutate 
-the input coming from the cameras so the data ready for image processing. We are continuing 
-to tinker with and manipulate our pads to see if there is any change in system response. \\
+the input coming from the cameras so the data ready for image processing. We are 
+continuing to tinker with and manipulate our pads to see if there is any change in 
+system response. \\
 
 Research surrounding more solutions to our GStreamer latency has not turned up much 
 due to the lack of elaboration we are able to find. Resources on GStreamer tend to show 
@@ -212,8 +213,9 @@ our issue is. Our search for answers will continue looking for resources elabora
 GStreamer pipelines. \\
 
 Latency surrounding our image processing software will be sought after when we solve the 
-issue of our GStreamer pipelines. We are unable to determine the effect our latency has 
-on image processing of stitched and tiled videos and therefore would be an ineffective 
+issue of our GStreamer pipelines. We are unable to determine the amount of latency that 
+our image processing of stitched and tiled videos have and therefore would be an 
+ineffective 
 use of our time. Solutions have been found regarding our slow image processing but not 
 implemented, and we will determine what path to take when our GStreamer latency issues 
 are solved based on how much latency remains, if any. \\
@@ -226,7 +228,8 @@ that exists in the GStreamer pipeline all that is remaining is determining the a
 latency in our stitching and tiling software. \\
 
 Our latency tests are fairly simple to setup and perform. With the software running and 
-producing a video output, a running stop-watch is placed on the output screen in a window 
+producing a video output, a running internet stop-watch is placed on the output screen 
+in a window 
 next to it. With the cameras pointed at the output screen showing the stop-watch we then 
 take a picture of these two windows side-by-side. The difference in time captured in our 
 picture shows the amount of latency between the stop-watch in real-time and following 
@@ -239,34 +242,43 @@ adjusted and displayed on the output display. This test has been performed with 
 three-camera setup of our GStreamer output and produces the expected result of 30 frames 
 per second.  \\
 
-\section{Problems Experienced and Solutions (if applicable)}
+\section{Problems Experienced and Solutions if Applicable}
 %Describe any problems that have impeded your progress, with any solutions \\
 
-This section details the various problems we have encountered during the course of development, 
-and our attempts and ideas about solutions to these problems.
+Over the duration of the spring term the team has been battling with fine tuning and 
+improving software created for image processing. The initial versions of our software to 
+produce software that stitches and tiles video output were not what our client expected 
+of our product. The team has had trouble improving the software so that the output is 
+near real-time. This section details the various problems we have encountered during 
+the course of development during the term thus far, and our attempts and ideas about 
+solutions to these problems.
 
 \subsection{Latency in our Image Processing}
-Our image processing software, namely our "stitching" program, which combines two overlapping 
+Our image processing software developed to stitch or combine two overlapping 
 images into one wider image, suffers from high latency and low frame rate. The team has 
-identified three potential culprits:
+identified three potential culprits that are elaborated on below: the GStreamer pipeline, 
+a GStreamer plugin \testtt{nvcamerasrc}, and the OpenCV stitcher class and function. 
 
 \paragraph*{GStreamer} It is possible that GStreamer is incapable of processing the camera 
-data at the bandwidth required to produce a fair-quality image (1280x720) at a reasonable frame 
-rate ($\ge$24 fps). Although GStreamer is a widely-used image-processing software, and should be 
-able to handle the bandwidth, we have not had the chance to look into alternatives until recently. 
-OpenCV allows for the use of Video4Linux, but since we only had one working build, we decided not 
-to test an alternate configuration for fear of ruining our only working version. We also have the 
-option of using libargus instead of GStreamer, and there is also the option to run a native V4L2 
-application (which appears to offer the lowest latency by way of structure; see Figure 1).
+data at the bandwidth required to produce a fair-quality image (1280x720) at a reasonable 
+frame rate ($\ge$30 fps). Although GStreamer is a widely-used image processing software 
+and should be able to handle the bandwidth, we have not had the chance to look into 
+alternatives until recently. OpenCV allows for the use of Video4Linux, but since we only 
+had one working build we decided not to test an alternate configuration for fear of 
+ruining our only working version. We also have the option of using libargus instead of 
+GStreamer, and there is also the option to run a native V4L2 (Video4Linux 2) application 
+(which appears to offer the lowest latency by way of structure; see Figure 1).
 
-\paragraph*{nvcamerasrc} A GStreamer plugin which is designed to deliver the video stream to our 
-image-processing software, may not be suitable for high-bandwidth processing. nvcamerasrc offers 
-Image Signal Processor control, which allows us to adjust cameras for lighting and color conditions, 
-so it does seem useful, but there are other options available. 
+\paragraph*{nvcamerasrc} The GStreamer plugin \testtt{nvcamerasrc} is designed to deliver 
+the video stream to our image processing software, and may not be suitable for 
+high-bandwidth processing. The \testtt{nvcamerasrc} plugin offers Image Signal Processor 
+control, which allows us to adjust cameras for lighting and color conditions. 
+However, for our product this may not be useful and other options available should be 
+pursued. 
 
-In Figure 1 we see alternatives 
-like v4l2src, which is also a GStreamer plugin. v4l2src connects directly to the V4L Mediacontroller 
-(bypassing the "Camera Core" software layer), and libargus, which is completely separate from GStreamer.
+In Figure 1 we see an alternatives, the \testtt{v4l2src} GStreamer plugin. The 
+\texttt{v4l2src} plugin connects directly to the V4L Mediacontroller framework bypassing 
+the Camera Core software layer and libargus, which is completely separate from GStreamer.
 
 \begin{figure}[H]
   	\centering
@@ -275,26 +287,28 @@ like v4l2src, which is also a GStreamer plugin. v4l2src connects directly to the
 	\caption{TX2 Camera Interface Architecture \label{overflow}}
 \end{figure}
 
-\paragraph*{OpenCV Stitcher} It is possible that our implementation of the OpenCV Stitcher class may 
-be less-than-optimal. While the group did program it to use the GPU (which should be the fastest), 
-there are still a lot of moving parts, so to speak, that could be inhibiting the system's performance. 
-In the official OpenCV 3.3 documentation, there is a "mode" option that specifies 
-whether to use a 'panorama' or a 'scan.' According to the documentation, panoramas, which we currently 
-use, are best used for photographic panoramas. The 'scan' option uses an Affine Transformation 
-algorithm, which may offer better performance. OpenCV Stitcher also allows for fine-tuned control, 
-as described in the documentation.
+\paragraph*{OpenCV Stitcher} It is possible that our implementation of the OpenCV Stitcher 
+class and function may be less-than-optimal. While the group did program it to use the GPU 
+which is expected to be the fastest option, there are still a lot of moving parts that 
+could be inhibiting the system's performance. In the official OpenCV 3.3 documentation, 
+there is a "mode" option that specifies whether to use a 'panorama' or a 'scan.' According 
+to the documentation, panoramas, which we currently 
+use, are best used for photographic panoramas. The 'scan' option uses an Affine 
+Transformation algorithm, which may offer better performance. OpenCV Stitcher also allows 
+for fine-tuned control, as described in the documentation.
 
 \subsection{TX2 Rebuild}
-Rebuilding the TX2 was an arduous task. Our original system, as mentioned previously, was built 
-collaboratively, with all changes being recorded into a Google Doc. In order to build a new, 
-reliable system, we had to pore through our progress document (which grew to ~30 pages) and cipher 
-out which bits were needed and which were not. Unfortunately, some software conflicts arose 
-between our configuration and the configuration described in various bits of official documentation, 
-and the system had to be slowly, gradually built up. In the interest of saving time, the group 
-recorded all working configuration changes; software [dependency] installs, environment variable 
-settings, and the order which they should run in; into bash scripts, which ensured that the 
-configuration could be repeatedly rebuilt without any discrepancies in the process, which are 
-caused by human error.
+Rebuilding the TX2 was an arduous task. Our original system, as mentioned previously, 
+was built collaboratively, with all changes being recorded into a Google Doc. In order 
+to build a new, reliable system, we had to pore through our progress document 
+(which grew to ~30 pages) and cipher out which bits were needed and which were not. 
+Unfortunately, some software conflicts arose between our configuration and the 
+configuration described in various bits of official documentation, and the system had 
+to be slowly, gradually built up. In the interest of saving time, the group recorded all 
+working configuration changes; software [dependency] installs, environment variable 
+settings, and the order which they should run in; into bash scripts, which ensured that 
+the configuration could be repeatedly rebuilt without any discrepancies in the process, 
+which are caused by human error.
 
 \section{Conclusion}
 
@@ -302,6 +316,11 @@ more words here\\
 
 \section{Code Involved in the Project}
 %Include particularly interesting pieces of code \\
+
+Below is our GStreamer pipeline that processes a three-camera input and displays 
+their feed to an output screen. Each camera input starts with 
+\texttt{nvcamerasrc sensor-id=} and then is manipulated and filtered through 
+their respective series of pads. \\
 
 \begin{lstlisting}[
   caption=Three-Camera GStreamer Pipeline,
@@ -324,42 +343,42 @@ nveglglessink -e
 	\centering
 	\label{fig:Video output of three cameras using GStreamer.}
 	\includegraphics[width=10cm]{images/threeCam-Gstream.eps}
-	\caption{TX2 module on the development kit. \label{overflow}}
+	\caption{Video output of three cameras using GStreamer. \label{overflow}}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\label{fig:Video output of our stitching program using OpenCV.}
 	\includegraphics[width=10cm]{images/stitched_image.eps}
-	\caption{TX2 module on the development kit. \label{overflow}}
+	\caption{Video output of our stitching program using OpenCV. \label{overflow}}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\label{fig:The result of our one-camera latency test.}
 	\includegraphics[width=10cm]{images/oneCam-latTest.eps}
-	\caption{TX2 module on the development kit. \label{overflow}}
+	\caption{The result of our one-camera latency test. \label{overflow}}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\label{fig:The result of our two-camera latency test.}
 	\includegraphics[width=10cm]{images/twoCam-latTest.eps}
-	\caption{TX2 module on the development kit. \label{overflow}}
+	\caption{The result of our two-camera latency test. \label{overflow}}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\label{fig:The result of our three-camera latency test.}
 	\includegraphics[width=10cm]{images/threeCam-latTest.eps}
-	\caption{TX2 module on the development kit. \label{overflow}}
+	\caption{The result of our three-camera latency test. \label{overflow}}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\label{fig:The result of our frame per second test.}
 	\includegraphics[width=10cm]{images/fps2.eps}
-	\caption{TX2 module on the development kit. \label{overflow}}
+	\caption{The result of our frame per second test. \label{overflow}}
 \end{figure}
 
 %\nocite{*}
