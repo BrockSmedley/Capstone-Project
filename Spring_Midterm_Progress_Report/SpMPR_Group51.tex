@@ -1,10 +1,9 @@
 \documentclass[letterpaper,10pt,serif,draftclsnofoot,onecolumn,compsoc,titlepage]{IEEEtran}
 
-\usepackage{graphicx}                                        
 \usepackage{amssymb}                                         
 \usepackage{amsmath}                                         
 \usepackage{amsthm}                                          
-\usepackage{cite}
+%\usepackage{cite}
 %\addbibresource{SpMPR\_Group51.bib}
 \usepackage{alltt}                                           
 \usepackage{float}
@@ -33,6 +32,7 @@
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
+\usepackage{graphicx}                                        
 \usepackage{listings}
 \lstset{
   frame=single,
@@ -257,20 +257,28 @@ able to handle the bandwidth, we have not had the chance to look into alternativ
 OpenCV allows for the use of Video4Linux, but since we only had one working build, we decided not 
 to test an alternate configuration for fear of ruining our only working version. We also have the 
 option of using libargus instead of GStreamer, and there is also the option to run a native V4L2 
-application (which appears to offer the lowest latency by way of structure) 
-[see TX2 architecture figure].
+application (which appears to offer the lowest latency by way of structure; see Figure 1).
 
 \paragraph*{nvcamerasrc} A GStreamer plugin which is designed to deliver the video stream to our 
 image-processing software, may not be suitable for high-bandwidth processing. nvcamerasrc offers 
 Image Signal Processor control, which allows us to adjust cameras for lighting and color conditions, 
-so it does seem useful, but there are other options available. In [this figure] we see alternatives 
+so it does seem useful, but there are other options available. 
+
+In Figure 1 we see alternatives 
 like v4l2src, which is also a GStreamer plugin. v4l2src connects directly to the V4L Mediacontroller 
 (bypassing the "Camera Core" software layer), and libargus, which is completely separate from GStreamer.
+
+\begin{figure}[H]
+  	\centering
+	\label{fig:tx2arch}
+	\includegraphics[width=10cm]{images/tx2arch.eps}
+	\caption{TX2 Camera Interface Architecture \label{overflow}}
+\end{figure}
 
 \paragraph*{OpenCV Stitcher} It is possible that our implementation of the OpenCV Stitcher class may 
 be less-than-optimal. While the group did program it to use the GPU (which should be the fastest), 
 there are still a lot of moving parts, so to speak, that could be inhibiting the system's performance. 
-In the official OpenCV 3.3 documentation \cite{Stitcher}, there is a "mode" option that specifies 
+In the official OpenCV 3.3 documentation, there is a "mode" option that specifies 
 whether to use a 'panorama' or a 'scan.' According to the documentation, panoramas, which we currently 
 use, are best used for photographic panoramas. The 'scan' option uses an Affine Transformation 
 algorithm, which may offer better performance. OpenCV Stitcher also allows for fine-tuned control, 
@@ -355,7 +363,7 @@ nveglglessink -e
 \end{figure}
 
 %\nocite{*}
-\newpage
-\bibliographystyle{ieeetr}
-\bibliography{SpMPR_Group51}
+%\newpage
+%\bibliographystyle{ieeetr}
+%\bibliography{SpMPR_Group51}
 \end{document}
