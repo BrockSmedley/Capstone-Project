@@ -5,6 +5,7 @@
 \usepackage{amsmath}                                         
 \usepackage{amsthm}                                          
 \usepackage{cite}
+%\addbibresource{SpMPR\_Group51.bib}
 \usepackage{alltt}                                           
 \usepackage{float}
 \usepackage{color}
@@ -25,11 +26,9 @@
 \usepackage{breakurl}
 %\usetikzlibrary{shapes, positioning, calc}
 \usepackage{caption}
-\usepackage{listings}
 %\usepackage[utf8]{inputenc}
 %pull in the necessary preamble matter for pygments output
 
-\usepackage{listings}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -241,21 +240,53 @@ three-camera setup of our GStreamer output and produces the expected result of 3
 per second.  \\
 
 \section{Problems Experienced and Solutions (if applicable)}
-%Describe any problems that have impeded your progress, with any solutions \\
+escribe any problems that have impeded your progress, with any solutions \\
 
-intro\\
-
-\subsection{Latency in our GStreamer Pipelines}
-
-it's slow \\
+This section details the various problems we have encountered during the course of development, 
+and our attempts and ideas about solutions to these problems.
 
 \subsection{Latency in our Image Processing}
+Our image processing software, namely our "stitching" program, which combines two overlapping 
+images into one wider image, suffers from high latency and low frame rate. The team has 
+identified three potential culprits:
 
-it's expected due to GStreamer latency \\
+\paragraph*{GStreamer} It is possible that GStreamer is incapable of processing the camera 
+data at the bandwidth required to produce a fair-quality image (1280x720) at a reasonable frame 
+rate ($\ge$24 fps). Although GStreamer is a widely-used image-processing software, and should be 
+able to handle the bandwidth, we have not had the chance to look into alternatives until recently. 
+OpenCV allows for the use of Video4Linux, but since we only had one working build, we decided not 
+to test an alternate configuration for fear of ruining our only working version. We also have the 
+option of using libargus instead of GStreamer, and there is also the option to run a native V4L2 
+application (which appears to offer the lowest latency by way of structure) 
+[see TX2 architecture figure].
 
-\subsection{Scripts to Build Extra TX2}
+\paragraph*{nvcamerasrc} A GStreamer plugin which is designed to deliver the video stream to our 
+image-processing software, may not be suitable for high-bandwidth processing. nvcamerasrc offers 
+Image Signal Processor control, which allows us to adjust cameras for lighting and color conditions, 
+so it does seem useful, but there are other options available. In [this figure] we see alternatives 
+like v4l2src, which is also a GStreamer plugin. v4l2src connects directly to the V4L Mediacontroller 
+(bypassing the "Camera Core" software layer), and libargus, which is completely separate from GStreamer.
 
-issues \\
+\paragraph*{OpenCV Stitcher} It is possible that our implementation of the OpenCV Stitcher class may 
+be less-than-optimal. While the group did program it to use the GPU (which should be the fastest), 
+there are still a lot of moving parts, so to speak, that could be inhibiting the system's performance. 
+In the official OpenCV 3.3 documentation \cite{Stitcher}, there is a "mode" option that specifies 
+whether to use a 'panorama' or a 'scan.' According to the documentation, panoramas, which we currently 
+use, are best used for photographic panoramas. The 'scan' option uses an Affine Transformation 
+algorithm, which may offer better performance. OpenCV Stitcher also allows for fine-tuned control, 
+as described in the documentation.
+
+\subsection{TX2 Rebuild}
+Rebuilding the TX2 was an arduous task. Our original system, as mentioned previously, was built 
+collaboratively, with all changes being recorded into a Google Doc. In order to build a new, 
+reliable system, we had to pore through our progress document (which grew to ~30 pages) and cipher 
+out which bits were needed and which were not. Unfortunately, some software conflicts arose 
+between our configuration and the configuration described in various bits of official documentation, 
+and the system had to be slowly, gradually built up. In the interest of saving time, the group 
+recorded all working configuration changes; software [dependency] installs, environment variable 
+settings, and the order which they should run in; into bash scripts, which ensured that the 
+configuration could be repeatedly rebuilt without any discrepancies in the process, which are 
+caused by human error.
 
 \section{Conclusion}
 
@@ -324,7 +355,7 @@ nveglglessink -e
 \end{figure}
 
 %\nocite{*}
-%\newpage
-%\bibliographystyle{ieeetr}
-%\bibliography{SpMPR_Group51}
+\newpage
+\bibliographystyle{ieeetr}
+\bibliography{SpMPR_Group51}
 \end{document}
