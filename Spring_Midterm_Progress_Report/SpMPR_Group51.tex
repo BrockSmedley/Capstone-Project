@@ -257,7 +257,7 @@ solutions to these problems.
 Our image processing software developed to stitch or combine two overlapping 
 images into one wider image, suffers from high latency and low frame rate. The team has 
 identified three potential culprits that are elaborated on below: the GStreamer pipeline, 
-a GStreamer plugin \testtt{nvcamerasrc}, and the OpenCV stitcher class and function. 
+a GStreamer plugin \texttt{nvcamerasrc}, and the OpenCV stitcher class and function. 
 
 \paragraph*{GStreamer} It is possible that GStreamer is incapable of processing the camera 
 data at the bandwidth required to produce a fair-quality image (1280x720) at a reasonable 
@@ -269,23 +269,23 @@ ruining our only working version. We also have the option of using libargus inst
 GStreamer, and there is also the option to run a native V4L2 (Video4Linux 2) application 
 (which appears to offer the lowest latency by way of structure; see Figure 1).
 
-\paragraph*{nvcamerasrc} The GStreamer plugin \testtt{nvcamerasrc} is designed to deliver 
+\paragraph*{nvcamerasrc} The GStreamer plugin \texttt{nvcamerasrc} is designed to deliver 
 the video stream to our image processing software, and may not be suitable for 
-high-bandwidth processing. The \testtt{nvcamerasrc} plugin offers Image Signal Processor 
+high-bandwidth processing. The \texttt{nvcamerasrc} plugin offers Image Signal Processor 
 control, which allows us to adjust cameras for lighting and color conditions. 
 However, for our product this may not be useful and other options available should be 
 pursued. 
 
-In Figure 1 we see an alternatives, the \testtt{v4l2src} GStreamer plugin. The 
+In Figure 1 we see an alternatives, the \texttt{v4l2src} GStreamer plugin. The 
 \texttt{v4l2src} plugin connects directly to the V4L Mediacontroller framework bypassing 
 the Camera Core software layer and libargus, which is completely separate from GStreamer.
 
-\begin{figure}[H]
-  	\centering
-	\label{fig:tx2arch}
-	\includegraphics[width=10cm]{images/tx2arch.eps}
-	\caption{TX2 Camera Interface Architecture \label{overflow}}
-\end{figure}
+%\begin{figure}[H]
+%  	\centering
+%	\label{fig:tx2arch}
+%	\includegraphics[width=10cm]{images/tx2arch.eps}
+%	\caption{TX2 Camera Interface Architecture \label{overflow}}
+%\end{figure}
 
 \paragraph*{OpenCV Stitcher} It is possible that our implementation of the OpenCV Stitcher 
 class and function may be less-than-optimal. While the group did program it to use the GPU 
