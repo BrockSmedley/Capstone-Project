@@ -156,12 +156,31 @@ stuff\\
 
 \subsection{Troubleshooting Latency}
 
+stuff\\
+
 \subsubsection{GStreamer research}
 
-\subsubsection{TX2 Rebuild}
-Due to the loosely structured nature of non-versioned project collaboration, our first TX2 system build was a bit unstable. To resolve any system configuration errors and ensure that the new build was properly configured, the team decided to procure another TX2 and rebuild it from scratch. In order to do this reliably, the team dedicated one member to build the new system and document the details in order to verify 1. That the system wasn't causing issues with our stitching software, and 2. That we could reliably rebuild a working module without any system errors.
+stuff\\
 
-The first part was the simplest to verify: once the new build was completed, we tested the new module against our image processing software and verified that the problem did in fact lie within our implementation, and not in the system configuration. The second part, documenting the process, was also very simple. Bash scripts can be used to automate a large portion of the build process, including launching Jetpack, flashing the module with the Spacely board support image, and installing software libraries on the newly-installed operating system. We simply copied the commands which we originally used to build the platform into an executable file, which we then could run with one simple command.
+\subsubsection{TX2 Rebuild}
+
+Due to the loosely structured nature of non-versioned project collaboration, our 
+first TX2 system build was a bit unstable. To resolve any system configuration errors 
+and ensure that the new build was properly configured, the team decided to procure 
+another TX2 and rebuild it from scratch. In order to do this reliably, the team 
+dedicated one member to build the new system and document the details in order to 
+verify 1. That the system wasn't causing issues with our stitching software, and 2. 
+That we could reliably rebuild a working module without any system errors.\\
+
+The first part was the simplest to verify: once the new build was completed, we 
+tested the new module against our image processing software and verified that the 
+problem did in fact lie within our implementation, and not in the system 
+configuration. The second part, documenting the process, was also very simple. Bash 
+scripts can be used to automate a large portion of the build process, including 
+launching Jetpack, flashing the module with the Spacely board support image, and 
+installing software libraries on the newly-installed operating system. We simply 
+copied the commands which we originally used to build the platform into an executable 
+file, which we then could run with one simple command.\\
 
 \section{Work Remaining for Project}
 %Describe what you have left to do \\
