@@ -143,23 +143,81 @@ with our three-camera GStreamer pipeline code and images of our software output.
 
 \section{Current Project Status}
 
-intro\\
+In the middle week of the spring term, the group has met mos requirements from the 
+requirements document of the base goal on the project. Based on the requirements document,
+ the project ask the group to build a multi-camera input utilizing an NVIDIA Jetson TX2 
+ to provide a video output at near real-time. Since the hardware has almost set up from 
+ last term, the group focused on image processing through OpenCV, testing on latency and 
+ framerate, and troubleshooting to improve latency. This section describes details on the 
+ process of this project the group has been done from the beginning of the spring term. \\
 
 \subsection{Image Processing}
 
-types\\
+The application program was executed with OpenCV to handle image processing using c++ 
+language and cmake to compile. The program aims to stitch the images from different cameras 
+in order to generate a single video output, and the group has figure out two ways for image 
+stitching. The first method was applied to combine two overlapping images by the built-in 
+stitch function in OpenCV, and it worked well by automatically removing same areas from two 
+images but in slow speed. The following code showed how the stitch function works: \\
+
+\begin{lstlisting}
+    imgs.push_back(fr1);
+    imgs.push_back(fr2);
+    Ptr<Stitcher> test = Stitcher::create(mode, try_use_gpu);
+    Stitcher::Status status = test->stitch(imgs, pano);
+
+    if (status != Stitcher::OK)
+    {
+        cout << "Error stitching - Code: " <<int(status)<<endl;
+        return -1;
+    }
+    imshow("Stitched Image", pano);
+\end{lstlisting}
+
+With the second method, the group tile images with the hconcat built-in function. How the 
+hconcat worked just combined the two images horizontally without any edition, so it required 
+the group to adjust the cameras in correct location and direction. By doing the same thing 
+twice, three images were stitched in one image finally. This function worked more efficiently, 
+and the code below tiles three camera images into one wide image. \\
+
+\begin{lstlisting}
+    cap1 >> fr1;
+    cap2 >> fr2;
+    cap3 >> fr3;
+    hconcat(fr1, fr2, tile);          
+    hconcat(tile, fr3, out);
+    imshow("Tiled Image", out);
+\end{lstlisting}
 
 \subsection{Testing}
 
-stuff\\
+In order to improve the efficiency in the project, the group also had some testing to record 
+data with latency and frame rate with different number of cameras. The latency was observed by 
+comparing time from real world and captured images. The group utilized online timing tool on 
+an computer, then run the program to acquire video output. In the final test, the group got 
+the data with one camera in 0.088 sec, two cameras in 0.293 sec , and 0.52 sec for three 
+cameras. \\
+
+The group tested for the frame rate for the cameras timing before and after the program 
+captured the image from camera. The results the group got from one to three cameras were 
+almost the same as what was set up in the GStreamer pipeline with fps between 30 and 31. \\
 
 \subsection{Troubleshooting Latency}
-
-stuff\\
+Since a specific requirement in the project was asked for the video output with near real-time 
+performance, the group then had different attempts on troubleshooting for latency. The two main 
+topics were proposed on GStreamer pipeline research and TX2 rebuild in order to accelerate the 
+image capturing speed with more potential functionalities. \\
 
 \subsubsection{GStreamer research}
 
-stuff\\
+The first attempt for the group was to have progression on GStreamer pipeline research and 
+manipulation. In this project, the nvcamerasrc was used to capture video input in the GStreamer 
+pipeline, so most of resources about nvcamerasrc and GStreamer were available from NVIDIA. Then 
+some test about breaking and adjustment on the current pipeline was also processed through the 
+Accelerated GStreamer User Guide from NVIDIA developer in order to collect more data and 
+comparisons. However, there was not much suggestion on improving latency throup the web 
+researches. On the other hand, the group asked for help on the NVIDIA forum and expected for 
+response if there would be a proper element in the GStreamer. \\
 
 \subsubsection{TX2 Rebuild}
 
@@ -312,7 +370,17 @@ which are caused by human error.
 
 \section{Conclusion}
 
-more words here\\
+With the latest progression with the project, the group currently had a compatible carrier board 
+and CSI-2 cameras with the TX2, and which was able to achieve multi-camera image processing. The 
+software stitched a video output from two cameras and produced a two and three-camera tiled video 
+output. Also, the latency and frame rate has been estimated for image capturing through GStreamer 
+pipeline. \\
+
+During the sprint term, the group had most attempts on improving the latency problem and provided 
+several potential solutions. Although the current result on the project was still hard to achieve 
+near real-time, the group has had some progression on latency. Once the final test would be done 
+with the latest program, the group then calculated the latency for stitched and tiled video o
+utput. \\
 
 \section{Code Involved in the Project}
 %Include particularly interesting pieces of code \\
