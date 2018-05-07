@@ -68,12 +68,9 @@
 
 This document highlights the group's progress made during the first half of the 
 Spring 2018 term. The project is introduced along with an explanation of the 
-hardware and software surrounding our product's planned solution. \\
-
-EDIT THIS:\\
-Then each group member
-explains their contributions to the project, what they have remaining to complete
-the projects requirements, and problems experienced with solutions if applicable. \\
+hardware and software surrounding our product's planned solution. Then details of 
+the project's status, work remaining for the team, and problems experienced are 
+elaborated on. \\
 
 
 \thispagestyle{empty}
@@ -98,7 +95,7 @@ mass-produced SoM, particularly the Jetson TX2. \\
 
 \subsection{Scope}
 
-Application specific hardware and software are vital for the project due the the 
+Application specific hardware and software are vital for the project due the 
 system requirements and constraints of the project.
 The NVIDIA Jetson TX2 runs on an Ubuntu based Linux for Tegra (L4T) operating 
 system created specifically for producing customized imaging, installed on a 
@@ -134,31 +131,30 @@ to the display device.  \\
 This document provides a recap of the progress made on our project through the first half
 of the Spring 2018 term. This term the group has been focused on getting rid of our 
 issues surrounding latency when streaming video before and after image processing. 
-For our current project status we discuss what we have done to test and troubleshoot 
+For our current project status, we discuss what we have done to test and troubleshoot 
 latency, the capabilities of our image processing, and testing performed so far. 
 Then the work remaining for the project is elaborated on, which focuses on more 
 troubleshooting of our latency issues and finishing testing of our product. Then we will 
-discuss problems experienced and solutions where applicable. Finally the report concludes 
+discuss problems experienced and solutions where applicable. Finally, the report concludes 
 with our three-camera GStreamer pipeline code and images of our software output. \\
 
 \section{Current Project Status}
 
-In the middle week of the spring term, the group has met mos requirements from the 
-requirements document of the base goal on the project. Based on the requirements document,
- the project ask the group to build a multi-camera input utilizing an NVIDIA Jetson TX2 
- to provide a video output at near real-time. Since the hardware has almost set up from 
- last term, the group focused on image processing through OpenCV, testing on latency and 
- framerate, and troubleshooting to improve latency. This section describes details on the 
- process of this project the group has been done from the beginning of the spring term. \\
+Most base goals of the project established by the Requirements Document have been met, 
+and are waiting to complete the rest following additional troubleshooting. So far this term 
+the main focus has been working on reducing and eliminating issues with latency in 
+video processing. This section elaborates on the current status of image processing, 
+testing, and troubleshooting latency. \\
 
 \subsection{Image Processing}
 
-The application program was executed with OpenCV to handle image processing using c++ 
-language and cmake to compile. The program aims to stitch the images from different cameras 
-in order to generate a single video output, and the group has figure out two ways for image 
-stitching. The first method was applied to combine two overlapping images by the built-in 
-stitch function in OpenCV, and it worked well by automatically removing same areas from two 
-images but in slow speed. The following code showed how the stitch function works: \\
+The image processing for both stitching and tiling applications executes with OpenCV, 
+which is a C++ library intended for real-time programs. The stitching application 
+combines two overlapping images by the built-in 
+\texttt{stitch} function in OpenCV, and it works well by automatically combining the same pixels 
+from two video streams. Unfortunately the speed of this application is no where near 
+real-time, which is expected by the Requirements Document. 
+The following code shows how the stitch function works. \\
 
 \begin{lstlisting}
     imgs.push_back(fr1);
@@ -174,11 +170,12 @@ images but in slow speed. The following code showed how the stitch function work
     imshow("Stitched Image", pano);
 \end{lstlisting}
 
-With the second method, the group tile images with the hconcat built-in function. How the 
-hconcat worked just combined the two images horizontally without any edition, so it required 
-the group to adjust the cameras in correct location and direction. By doing the same thing 
-twice, three images were stitched in one image finally. This function worked more efficiently, 
-and the code below tiles three camera images into one wide image. \\
+The second application tiles video streams with the built-in \texttt{hconcat} and 
+\texttt{vconcat} functions in OpenCV. The hconcat function combines two and three 
+video streams horizontally, and the \texttt{vconcat} combines them vertically.  
+These functions worked more efficient and there was little latency added by these
+image processing applications. The code below shows how three camera inputs are tiled 
+into a single window. \\
 
 \begin{lstlisting}
     cap1 >> fr1;
@@ -191,33 +188,38 @@ and the code below tiles three camera images into one wide image. \\
 
 \subsection{Testing}
 
-In order to improve the efficiency in the project, the group also had some testing to record 
-data with latency and frame rate with different number of cameras. The latency was observed by 
-comparing time from real world and captured images. The group utilized online timing tool on 
-an computer, then run the program to acquire video output. In the final test, the group got 
-the data with one camera in 0.088 sec, two cameras in 0.293 sec , and 0.52 sec for three 
+In order to prove the efficiency of the image processing applications, 
+testing to record latency is required to be performed. The latency is proven by 
+comparing the stop-watch time output on a display connected to the Jetson TX2 before and after 
+image processing. Testing on the image processing applications have yet to be performed 
+due to the latency that exists before the \texttt{stitch}, \texttt{hconcat}, and 
+\texttt{vconcat} parts of the programs.
+The GStreamer pipelines have latency that increases when more cameras are added for 
+input, with one camera in 0.088 sec, two cameras in 0.293 sec, and 0.52 sec for three 
 cameras. \\
 
-The group tested for the frame rate for the cameras timing before and after the program 
-captured the image from camera. The results the group got from one to three cameras were 
-almost the same as what was set up in the GStreamer pipeline with fps between 30 and 31. \\
+Due to the issues in latency frame rate testing has been added to check the speed that 
+images in the video stream are displayed.
+The frame rate testing has been setup to show the timing of the cameras before and after 
+the GStreamer pipelines. The results for all camera setups were nearly the same with 
+frames per second being between 30 and 31. \\
 
 \subsection{Troubleshooting Latency}
 Since a specific requirement in the project was asked for the video output with near real-time 
-performance, the group then had different attempts on troubleshooting for latency. The two main 
-topics were proposed on GStreamer pipeline research and TX2 rebuild in order to accelerate the 
+performance, different angles to troubleshoot for latency has been performed. The two main 
+topics were proposed on GStreamer pipeline research and a TX2 rebuild in order to accelerate the 
 image capturing speed with more potential functionalities. \\
 
 \subsubsection{GStreamer research}
 
 The first attempt for the group was to have progression on GStreamer pipeline research and 
-manipulation. In this project, the nvcamerasrc was used to capture video input in the GStreamer 
-pipeline, so most of resources about nvcamerasrc and GStreamer were available from NVIDIA. Then 
+manipulation. In this project, the \texttt{nvcamerasrc} was used to capture video input in the GStreamer 
+pipeline, so most of resources about \texttt{nvcamerasrc} and GStreamer were available from NVIDIA. Then 
 some test about breaking and adjustment on the current pipeline was also processed through the 
 Accelerated GStreamer User Guide from NVIDIA developer in order to collect more data and 
-comparisons. However, there was not much suggestion on improving latency throup the web 
-researches. On the other hand, the group asked for help on the NVIDIA forum and expected for 
-response if there would be a proper element in the GStreamer. \\
+comparisons. However, there was very little found on improving latency following web 
+researches. Help was pursued on the NVIDIA developer forum but no 
+guidance has been given. \\
 
 \subsubsection{TX2 Rebuild}
 
@@ -334,7 +336,7 @@ control, which allows us to adjust cameras for lighting and color conditions.
 However, for our product this may not be useful and other options available should be 
 pursued. 
 
-In Figure 1 we see an alternatives, the \texttt{v4l2src} GStreamer plugin. The 
+In Figure 1 we see alternatives, the \texttt{v4l2src} GStreamer plugin. The 
 \texttt{v4l2src} plugin connects directly to the V4L Mediacontroller framework bypassing 
 the Camera Core software layer and libargus, which is completely separate from GStreamer.
 
@@ -359,7 +361,7 @@ for fine-tuned control, as described in the documentation.
 Rebuilding the TX2 was an arduous task. Our original system, as mentioned previously, 
 was built collaboratively, with all changes being recorded into a Google Doc. In order 
 to build a new, reliable system, we had to pore through our progress document 
-(which grew to ~30 pages) and cipher out which bits were needed and which were not. 
+(which grew to ~30 pages) and cipher out which bits were needed, and which were not. 
 Unfortunately, some software conflicts arose between our configuration and the 
 configuration described in various bits of official documentation, and the system had 
 to be slowly, gradually built up. In the interest of saving time, the group recorded all 
@@ -379,8 +381,7 @@ pipeline. \\
 During the sprint term, the group had most attempts on improving the latency problem and provided 
 several potential solutions. Although the current result on the project was still hard to achieve 
 near real-time, the group has had some progression on latency. Once the final test would be done 
-with the latest program, the group then calculated the latency for stitched and tiled video o
-utput. \\
+with the latest program, the group then calculated the latency for stitched and tiled video output. \\
 
 \section{Code Involved in the Project}
 %Include particularly interesting pieces of code \\
