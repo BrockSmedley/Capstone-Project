@@ -1,3 +1,6 @@
+/*
+Added to show the edge detection works for our TX2 builds.
+*/
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
@@ -32,9 +35,7 @@ int main() {
 		GaussianBlur(gray, gray, Size(3 ,3 ), 0, 0);
 		Canny(gray, dst1, 50, 150, 3);
 		addWeighted(frame1, 0.5, frame2, 0.5, 0, add);		
-	
-		//cout << frame1.channels() << " " << gray.channels() << endl;
-		
+			
 		imshow("Display1", frame1);
 		imshow("Edge Detection", dst1);
 		imshow("Added Two images", add);
@@ -45,6 +46,5 @@ int main() {
 				break;
 		}
 	}
-
 	return 0;
 }

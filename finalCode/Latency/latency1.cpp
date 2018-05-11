@@ -1,3 +1,6 @@
+/*
+Latency testing for GStreamer pipeline, one camera output.
+*/
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <time.h>
@@ -23,9 +26,6 @@ int main() {
 		putText(frame1, format("Latency = %f sec",(long long) (end.tv_sec-begin.tv_sec) + (end.tv_nsec-begin.tv_nsec)/1e9), Point(30, 30), FONT_HERSHEY_SIMPLEX, 0.8, Scalar(0,0,255));
 		imshow("Display", frame1);
 		waitKey(1);		
-		//cout << (end.tv_sec - begin.tv_sec) + (end.tv_nsec - begin.tv_nsec) / 1e9 << " sec " << endl;
-
 	}
-
 	return 0;
 }

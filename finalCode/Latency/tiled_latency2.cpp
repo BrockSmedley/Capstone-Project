@@ -1,3 +1,7 @@
+/*
+	Two camera input -> output into one window/tiled video output latency testing
+*/
+
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <time.h>
