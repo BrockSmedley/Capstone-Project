@@ -1,5 +1,9 @@
 \documentclass[letterpaper,10pt,serif,draftclsnofoot,onecolumn,compsoc,titlepage]{IEEEtran}
 
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+\patchcmd{\thebibliography}{\addcontentsline{toc}{section}{\refname}}{}{}{}
+
 \usepackage{graphicx}                                        
 \usepackage{amssymb}                                         
 \usepackage{amsmath}                                         
@@ -29,26 +33,34 @@
 %\usepackage[utf8]{inputenc}
 %pull in the necessary preamble matter for pygments output
 
+\newcommand{\subparagraph}{}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\titleformat{\paragraph} [hang] {\normalfont\normalsize\bfseries} {\theparagraph} {1em} {}
+
 \usepackage{listings}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
-\lstset{frame=tb,
-  %language=Java,
+\lstset{
+  %frame=tb,
+  language=C++, %added
   aboveskip=3mm,
   belowskip=3mm,
   showstringspaces=false,
   columns=flexible,
   basicstyle={\small\ttfamily},
   numbers=none,
-  %numberstyle=\tiny\color{gray},
-  %keywordstyle=\color{blue},
-  %commentstyle=\color{dkgreen},
-  %stringstyle=\color{mauve},
+  %added
+  backgroundcolor=\color{black!5}, % set backgroundcolor
+  basicstyle=\footnotesize,% basic font setting
+  %added
   breaklines=true,
   breakatwhitespace=true,
-  tabsize=3
+  tabsize=4
 }
 
 %% The following metadata will show up in the PDF properties
@@ -102,9 +114,9 @@ Write me \\
 
 \section{Requirements Document}
 
-\section{Introduction}
+\subsection{Introduction}
 
-\subsection{Purpose}
+\subsubsection{Purpose}
 
 This software requirements specification is intended to define the requirements of the 
 project for developing a multi-camera, multispectral image processing system, that 
@@ -114,7 +126,7 @@ developers, and Rockwell Collins, our client, on what Rockwell Collins wants us 
 deliver in their desired software. This document is intended for review and reference 
 by both the developers and the clients.\\
 
-\subsection{Scope}
+\subsubsection{Scope}
 
 The product outlined in this requirements document will be the multi-camera, SoM based,
  near real-time video processing for UAS and VR/AR applications. This product will need to 
@@ -139,9 +151,9 @@ low visibility conditions during the day, night, and inclement weather for all p
 of flight. The video input from infrared and visible band cameras combined with 
 on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 
-\subsection{Definitions, Acronyms, Abbreviations}
+\subsubsection{Definitions and Acronyms}
 
-\subsubsection{Definitions}
+\paragraph{Definitions}
 
 \begin{tabular}{|l|p{11cm}|}
 	\hline
@@ -173,7 +185,7 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	\hline
 \end{tabular}
 
-\subsubsection{Acronyms}
+\paragraph{Acronyms}
 
 \begin{tabular}{|l|l|}
 	\hline
@@ -213,7 +225,7 @@ on-board sensor input, and databases will enhance a pilot's vision for a UAS.\\
 	\hline
 \end{tabular}
 
-\subsection{Overview}
+\subsubsection{Overview}
 
 This project aims to create a product that is capable of combining the video input from 
 two or more cameras and produce an output at near real-time. Our proposed solution 
@@ -232,9 +244,9 @@ cameras on different spectral bands to create one image of one subject that is t
 combination of all images captured by the cameras.\\
 
 
-\section{Overall Description}
+\subsection{Overall Description}
 
-\subsection{Product Perspective}
+\subsubsection{Product Perspective}
 
 The system will be self-contained and consists of three parts: one NVIDIA TX1/2, 
 one carrier board, and at least two cameras. The cameras connect to the carrier board, 
@@ -249,7 +261,7 @@ execute the software for image processing and combining images from multiple cam
 	\caption{Product Block Diagram \label{overflow}}
 \end{figure}
 
-\subsection{Product Functions}
+\subsubsection{Product Functions}
 
 The basic functionality of the product will be to produce stitched images on a video 
 output that is provided by multiple camera inputs capable of sensing visible and 
@@ -265,7 +277,7 @@ Output display functional stretch goals will be to provide indications from IMU 
 orientation tracking data, GPS data, and geolocate imagery and have them displayed 
 with the video output provided by the camera input. \\
 
-\subsection{Constraints}
+\subsubsection{Constraints}
 
 The client requires that the product's SoM be an NVIDIA TX1/2 to utilize its GPU 
 and CSI ports. Due this product's application being on a UAS, its hardware must be 
@@ -278,7 +290,7 @@ NVIDIA TX1/2 should process each frame before the next one arrives to be process
 For example, when recording at 30 fps each output frame should be processed in 
 less than 1/30 of a second.\\
 
-\subsection{Assumptions \& Dependencies}
+\subsubsection{Assumptions \& Dependencies}
 
 Software will be implemented on an NVIDIA TX1/2, and will be deployed with NVIDIA 
 Jetpack software running on an Ubuntu machine. The NVIDIA TX1/2 is assumed to be 
@@ -291,11 +303,11 @@ All cameras in use should be aimed at same subject, capturing approximately the 
 image. Each camera should work independently of the system; if one fails, the others 
 will still operate.\\
 
-\section{Specific Requirements}
+\subsection{Specific Requirements}
 
-\subsection{Hardware Specifications}
+\subsubsection{Hardware Specifications}
 
-\subsubsection{NVIDIA Jetson TX1/2}
+\paragraph{NVIDIA Jetson TX1/2}
 
 \begin{enumerate}[label=\alph*]
 	\item The NVIDIA TX1/2 will receive image data through its CSI interface from
@@ -305,7 +317,7 @@ will still operate.\\
 	operating system, and the module supports software for image processing.\\ 
 	\end{enumerate}
 
-\subsubsection{Carrier Board}
+\paragraph{Carrier Board}
 
 \begin{enumerate}[label=\alph*]
 	\item The carrier board should contain a CSI interface, which is used to transfer the
@@ -315,7 +327,7 @@ will still operate.\\
 	\item The carrier board will be compatible with the NVIDIA TX1/2.\\
 \end{enumerate}
 
-\subsubsection{Cameras}
+\paragraph{Cameras}
 
 \begin{enumerate}[label=\alph*]
 	\item Cameras that use the CSI interface are required in order to transfer image data to 
@@ -331,7 +343,7 @@ will still operate.\\
 	carrier board does not appear to exist at this time.\\
 \end{enumerate}
 
-\subsection{Software Specifications}
+\subsubsection{Software Specifications}
 
 \begin{enumerate}[label=\alph*]
 	\item The software running on the TX1/2 should be able to decode the data streams 
@@ -353,7 +365,7 @@ will still operate.\\
 	\end{enumerate} 
 \end{enumerate}
 
-\section{Development Schedule}
+\subsection{Development Schedule}
 	\begin{ganttchart}
     	[hgrid, x unit=0.77mm, y unit chart=9.0mm, title label font=\normalsize, time slot format=isodate]
     	{2017-11-01}{2018-05-31}
@@ -373,7 +385,7 @@ will still operate.\\
 	Fig. 2: Project Schedule
 \end{center}	
 
-\subsection{Development Schedule Tasks}
+\subsubsection{Development Schedule Tasks}
 Task 1: Have hardware procured and assembled when received.\\
 Task 2: Produce stitched video output from the input of two and three cameras, 
 and have latency estimates produced.\\
@@ -386,35 +398,37 @@ Task 6: Package the system hardware for flight (stretch goal).\\
 Task 7: Produce a software interface for the system to accomodate higher 
 quality cameras (stretch goal).\\
 
-\section{Final Gantt Chart}
+\subsection{Final Gantt Chart}
 % record of what happened
+
+add me\\
 
 \newpage 
 
 \section{Design Document}
-\section{Frontispiece}
+\subsection{Frontispiece}
 
-\subsection{Date of issue and status}
+\subsubsection{Date of issue and status}
 
 01 December 2017, In-progress \\
 
-\subsection{Issuing Organization}
+\subsubsection{Issuing Organization}
 
 Rockwell Collins, CS Capstone Group 51, Oregon State University \\
 
-\subsection{Authorship}
+\subsubsection{Authorship}
 
 Shu-Ping Chien, Brock Smedley, W Keith Stirby Jr \\
 
-\section{Introduction}
+\subsection{Introduction}
 
-\subsection{Purpose}
+\subsubsection{Purpose}
 
 This document is a general description of design concepts that will be used for our 
 multi-camera, SoM based, real-time video processing for UAS and VR/AR applications. 
 It is a reference to guide the development of our product.  \\
 
-\subsection{Scope}
+\subsubsection{Scope}
 
 Our product will receive input from multiple cameras and then provide a video output at 
 near real-time. Our software will receive the pixel data from the cameras and format 
@@ -423,7 +437,7 @@ the multiple streams of pixels being received to create a combined output. The s
 will be flashed onto the NVIDIA TX1/2, which receives input from the carrier 
 board that is connected to the cameras. \\
 
-\subsection{Overview}
+\subsubsection{Overview}
 
 The development and design of our product requires: hardware interface and system 
 architecture, receiving camera input and formatting for image processing, and image 
@@ -431,12 +445,12 @@ processing for video output. The structure of our document reflects these three 
 of our software required for our product. \\ 
 
 \newpage
-\section{References}
+\subsection{Design Document References}
 
 \bibliographystyle{ieeetr}
 \bibliography{SDD_Group51}
 
-\subsection{Definitions, Acronyms, Abbreviations}
+\subsection{Definitions and Acronyms}
 
 \subsubsection{Definitions}
 
@@ -491,23 +505,23 @@ of our software required for our product. \\
 \end{tabular}
 
 \newpage
-\section{System Overview}  
+\subsection{System Overview}  
 
-\subsection{Identified Stakeholders and Design Concerns}
+\subsubsection{Identified Stakeholders and Design Concerns}
 
 Rockwell Collins is the primary customer of this product. The company provides 
 engineering products in the aviation industry for commercial and military customers. 
 Rockwell Collins is the primary user of the product and it is contributing 
 to the development of a system that will be used in UAS and VR/AR applications. \\
 
-\subsection{Hardware Context}
+\subsubsection{Hardware Context}
 
 The hardware used in our product will be the NVIDIA Jetson TX1/2 as our SoM, 
 a carrier board, and cameras. The input from cameras will be transferred through 
 carrier boards, and the TX1/2 will format and process the input to produce a 
 video output. The software we're developing will be on the TX1/2. \\
 
-\subsection{Software Context}
+\subsubsection{Software Context}
 
 The software pieces in this project include: GStreamer for transforming video input 
 from CSI for image processing, and OpenGL development environment for image processing 
@@ -515,9 +529,9 @@ to produce the video output. The pipeline feature in GStreamer will reduce
 cost on time and storage to help achieve near real-time image processing. The OpenGL 
 will stitch input images from GStreamer and print the output to the display device. \\
 
-\section{System Architecture}
+\subsection{System Architecture}
 
-\subsection{Interfaces}
+\subsubsection{Interfaces}
 
 The NVIDIA TX1/2 is an SoM with an ARM processor and an NVIDIA GPU. It includes several 
 interfaces that can be used to exchange data with the module such as Ethernet, USB, 
@@ -525,7 +539,7 @@ I2C, and GPIO, among others. These connect to the TX1/2 via a 400-pin connector 
 attaches to a carrier board, which has a set of ports to interface with. These 
 interfaces will be used in our implementation of the project for varying purposes. \\
 
-\subsubsection{Ethernet}
+\paragraph{Ethernet}
 
 Ethernet is essential for development. It will allow us to connect to the internet and 
 will also allow us to control the system remotely using SSH. Ethernet will likely not 
@@ -536,7 +550,7 @@ may not have an Ethernet connection, but if it does not have it, we can attach t
 to the dev board that it came with, which has at least one connection for every 
 interface that the TX1/2 supports. \\
 
-\subsubsection{USB}
+\paragraph{USB}
 
 USB will be necessary for flashing the TX1/2 with a new image. This only needs to be 
 done once at the start of development, and possibly again when a production image is 
@@ -547,7 +561,7 @@ we will not be using USB for any system-critical functions. The TX1/2 can always
 plugged into the dev board if changes to the system need to be made, and then 
 re-attached to the final-product board with the new data on it.\\
 
-\subsubsection{I2C \& GPIO}
+\paragraph{I2C \& GPIO}
 
 I2C and GPIO will be used in later phases of the project which we may not actually 
 work on. These interfaces can be used for connecting things like environmental sensors 
@@ -555,9 +569,9 @@ and control interfaces like buttons and knobs. Our portion of the project will f
 solely on creating the camera system on the TX1/2 which can then be expanded upon by 
 other teams. \\
 
-\subsection{Architecture}
+\subsubsection{Architecture}
 
-\subsubsection{Operating Systems}
+\paragraph{Operating Systems}
 
 The TX1/2 supports ARM Linux 4 operating systems, and the OS we will be using for this 
 project is L4T. L4T is an ubuntu variant that comes preloaded with a 
@@ -566,7 +580,7 @@ the TX1/2 has to offer. L4T is simply an Ubuntu ARM image with NVIDIA drivers
 pre-installed. Using L4T takes the guesswork out of developing the software 
 environment so that more time can be spent developing the core solution. \\
 
-\subsubsection{Deployment Software}
+\paragraph{Deployment Software}
 
 L4T will be flashed onto the TX1/2 system memory using NVIDIA Jetpack. Jetpack allows 
 us to choose the operating system and software to be installed on the TX1/2. It runs on 
@@ -576,7 +590,7 @@ after creating an account. Ubuntu is not required to run Jetpack, but NVIDIA str
 recommends it, and Ubuntu is a very user-friendly and robust operating system, so it 
 will suit our development needs perfectly. \\
 
-\subsubsection{Development}
+\paragraph{Development}
 
 Once L4T is flashed to the TX1/2 from Jetpack, we can use the TX1/2 like a normal 
 computer, using USB to connect a mouse \& keyboard, and HDMI to connect a monitor. 
@@ -590,9 +604,9 @@ parts of the project simultaneously without interfering with other group members
 work. Most Linux variants come with a version of Git, but if L4T does not, then we 
 can always install it using Ubuntu's package manager. \\
 
-\subsection{Making Camera Input Ready for Image Processing}
+\subsubsection{Making Camera Input Ready for Image Processing}
 
-\subsubsection{Multimedia API}
+\paragraph{Multimedia API}
 
 The raw pixel data from the cameras will be sent through the CSI and must be converted 
 to the BRG color space in the VI unit before being sent to the ISPs. 
@@ -609,13 +623,14 @@ our software.  \\
 		\caption{Jetson TX1/2 Camera Subsystem\cite{CSubDia} \label{overflow}}
 	\end{figure}
 
-\subsubsection{GStreamer}
+\paragraph{GStreamer}
 
 GStreamer architecture utilizes pipelines to process media and connect the processing 
 elements. An additional architecture GStreamer uses is plugin, which provides each 
 processing element. \\
 
-\paragraph{Installing GStreamer}\mbox{} \\ 
+\begin{itemize}
+	\item Installing GStreamer 
 
 To install GStreamer 1.0 and plugins the following commands will be entered in the 
 command line in order\cite{GStmUG}: \\
@@ -632,7 +647,7 @@ command line in order\cite{GStmUG}: \\
 		libgstreamer-plugins-good1.0-dev libgstreamer-plugins-bad1.0-dev} \\
 	\end{enumerate}
 
-\paragraph{GStreamer Plugins}\mbox{} \\ 
+	\item GStreamer Plugins
 
 To display what a camera is capturing \texttt{nvcamerasrc} included in the piping, 
 and is a plugin that allows options for our software to control ISP properties. \\
@@ -641,25 +656,27 @@ For converting video frames from the CSI camera the \texttt{videoconvert} plugin
 be included in piping, along with \texttt{video/x-raw, format=(string){}} to specify 
 details on the conversion input and output. \\
 
-\subsection{Image Processing for Video Output}
+\end{itemize}
+
+\subsubsection{Image Processing for Video Output}
 
 Since the  NVIDIA Jetpack includes OpenGL 4.3, 4.4, and 4.5, the program will use 
 OpenGL and the OpenGL Shading Language for image processing to detect edge and draw on 
 images, and the output will be sent to a display device. \\
 
-\subsubsection{OpenGL Environment Setup}
+\paragraph{OpenGL Environment Setup}
 
 Before drawing anything with OpenGL, the OpenGL environment need to be set up at first 
 in order to specify the size of screen window and viewing features. Then the output 
 images will be generated in display function, where the program does image processing 
 and draws to. \\
 
-\subsubsection{Bind Video Input as Textures}
+\paragraph{Bind Video Input as Textures}
 
 The video output will be read as textures and processed in the shaders. The OpenGL 
 binds a texture with the following code:\\
 
-\begin{tabular}{|p{15cm}|}
+%\begin{tabular}{|p{15cm}|}
 	\begin{lstlisting}
 		GLuint tex;
 		glGenTextures(1, &tex);
@@ -670,7 +687,7 @@ binds a texture with the following code:\\
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 	\end{lstlisting}
-\end{tabular}
+%\end{tabular}
 
 Where the image is the a loaded texture image from video output, and it is composed of 
 2D arrays of pixels. Then the texture can be used in the OpenGL Shading Language with 
@@ -681,7 +698,7 @@ vertex shader needs to be modified so that the texture coordinates can be interp
 over the fragments, and with the output from the vertex shader, the fragment shader 
 fused images as output. \\
 
-\subsubsection{Vertex Shader}
+\paragraph{Vertex Shader}
 
 Since textures are sampled using texture coordinates, which are represented as s and 
 t, the vertex shader uses the input to modify the texture coordinates and pass to 
@@ -689,22 +706,22 @@ fragment shader as output. In order to provide access to the texture in the frag
 shader, the program will set the texture as uniform variable of type sampler2D in the 
 fragment shader.\\
 
-\subsubsection{Fragment Shader}
+\paragraph{Fragment Shader}
 
 The fragment shader renders an image by filling color in pixels. The color filled in a 
 pixel will be determined based on the texture, where the program read the RGB 
 information with output of texture coordinate from vertex shader.\\
 
 In OpenGL:\\
-\begin{tabular}{|p{15cm}|}
+%\begin{tabular}{|p{15cm}|}
 	\begin{lstlisting}
 		glUniform1i(glGetUniformLocation(shaderProgram, "texName"), 0);
 	\end{lstlisting}
-\end{tabular}
-\\
-\\
+%\end{tabular}
+%\newline
+%\newline
 In Fragment Shader:\\
-\begin{tabular}{|p{15cm}|}
+%\begin{tabular}{|p{15cm}|}
 	\begin{lstlisting}
    		in vec2 Texcoord;    //from vertex shader
    		out vec4 outColor;
@@ -715,7 +732,7 @@ In Fragment Shader:\\
         	outColor = texture(tex, Texcoord);
    		}
 	\end{lstlisting}
-\end{tabular}
+%\end{tabular}
 
 In this code in the fragment shader, the output, outColor, will be the color from 
 function texture(tex, Texcoord). By controlling the Texcoord, the fragment shader 
