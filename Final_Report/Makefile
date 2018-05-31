@@ -12,7 +12,7 @@ ps: dvi
 dvi: $(TARGET).tex
 	$(TEX) $(TARGET).tex
 	#uncomment below for bibliography to compile
-	#bibtex $(TARGET)
+	bibtex $(TARGET)
 	$(TEX) $(TARGET).tex
 	$(TEX) $(TARGET).tex
 

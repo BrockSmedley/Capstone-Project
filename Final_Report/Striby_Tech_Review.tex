@@ -1,0 +1,354 @@
+\section{Introduction}
+
+The client for our project has requested that we design software for multi-camera video 
+streaming, which will be used for UAS (Unmanned Aerial Systems) and VR/AR applications. 
+The video output is expected to operate near real-time following image processing, and the multi-camera inputs are 
+expected to be stitched and fused on the output display. There are SWaP-C (Size, Weight, Power,
+and Cost) constraints and edge computation requirements due to our project's applications. \\
+
+For the duration of the project my role will be to:
+\begin{itemize}
+	\itemsep-2em
+	\item Fulfill the role as liaison between our group and the client. \\
+	\item Research and procure hardware required for the product. \\
+	\item Assist in software development for stitching and fusing video output. \\
+	\item Assist in software development for image processing. \\
+\end{itemize}
+
+The remainder of this document investigates three technological areas involved with 
+our project. Each section gives a brief description of the technology, explains the 
+criteria our choices needed to meet due to the product's application, and displays why 
+we would consider each of them. A discussion then follows to compare and contrast each 
+technology, and a conclusion then explains why we made our final selection.\\
+
+\section{System-on-Module}
+
+\subsection{Overview}
+
+Selecting our SoM will be the foundation for our project's hardware 
+and software choices because of its influence on computational performance, image 
+processing, and future product development and expansion. A SoM is capable of offering 
+specialized applications a dense computer system in a small package while
+maintaining the nature of a microcontroller. SoMs are typically built on a single 
+circuit board roughly the size of a credit card, have low power consumption, and 
+need to be tethered to a carrier board for input and output peripherals.\\
+
+\subsection{Criteria}
+
+The project requires near real-time image processing to occur in a system that is 
+standalone, and conforms to our client's requirements for SWaP-C due to its intended application. For the image processing to 
+occur anywhere a UAS travels, the performance of the SoM 
+needs to be capable of edge computing while it's up in the clouds.
+Multiple camera inputs will be processed through our SoM and their images will be 
+stitched, fused, analyzed, and have high-resolution video output. This requires our 
+SoM to have a fast, efficient CPU (Central Processing Unit) complex, GPU 
+(Graphics Processing Unit)-accelerated computing capable for multimedia streaming, and 
+a sizable amount of RAM (Random Access Memory) to aid in computational performance 
+and therefore minimize latency.\\
+
+\subsection{Potential Choices}
+
+\subsubsection{NVIDIA Jetson TK1}
+
+The NVIDIA Jetson TK1 is a developer kit built around the Tegra K1 SoC (System 
+on Chip (CPU, GPU, ISP (In-system programming) in a single chip)), NVIDIA's first 
+mobile processor featuring the same capabilities as a 
+modern desktop GPU\cite{JetsonTK1, TK1Wiki}. The Jetson TK1 has the Linux4Tegra (L4T)
+OS (operating system) pre-installed, and similar features that you would find on a 
+Raspberry Pi and a PC such as GPIO, USB, display interface, SATA, mini-PCIe, and a
+fan\cite{RPiHDWR, TK1Wiki}. The Tegra TK1 is built with NVIDIA's Kepler core which 
+provides three times the performance than previous NVIDIA GPUs which enables high 
+performance computing (HPC) architecture. It also has the NVIDIA CUDA platform to 
+create compute-intensive software applications\cite{KeplerArch}. NVIDIA's BSP (board 
+support package) and software stack for the Jetson TK1 features Linux Kernel version 
+3.10.40 and OpenGL, OpenCL, and CUDA media APIs (Application Program Interfaces)
+\cite{TK1L4T}. \\
+
+\subsubsection{NVIDIA Jetson TX1}
+
+The NVIDIA Jetson TX1 is an embedded SoM capable of supporting GPU computing, computer 
+vision, graphics, and deep learning making it ideal for embedded AI computing
+on an edge device. This SoM has a CPU with four 64-bit A57 ARM cores, and a GPU with 
+NVIDIA Maxwell architecture and 256 CUDA cores that provides over 1 TeraFLOPs (floating 
+point operations per second) of performance\cite{TX1Wiki, JetsonGenius}. The entire module 
+draws just 10W of power making it very energy efficient, and can encode and decode 4K 
+video. With 4 GB of RAM and 16 GB of eMMC storage, this module can load software 
+applications to on-board storage and process data in RAM\cite{LinuxDot}. The module has 
+a 400-pin Samtec board-to-board socket that allows it to connect to NVIDIA's development
+board to make use of miscellaneous I/O ports, or to connect to carrier boards that are 
+smaller and designed for specific-use applications.\\
+
+NVIDIA provides the Jetson Software Development Pack (JetPack) 3.1, which introduces 
+L4T 28.1. Key features in the JetPack 3.1 are TensorRT 2.1, cuDNN 6.0, VisionWorks 1.6, 
+CUDA 8.0, Multimedia API, and L4T has Kernel 4.4 for the Jetson TX1. JetPack Developer 
+Kit is flashed by the JetPack installer to load the latest OS image, which will install 
+developer tools in the host PC and Developer Kit. The host PC is required to have 
+Ubuntu Linux x64 (v14.04) to run the JetPack installer\cite{JetPack, JetPackRel}.\\ 
+
+\subsubsection{NVIDIA Jetson TX2}
+
+The NVIDIA Jetson TX2 is the latest SoM by NVIDIA, making it their fastest computing edge
+device with 8 GB of RAM and 32 GB of eMMC, twice the memory and storage on the TX1. The 
+module has a GPU with NVIDIA Pascal architecture and two NVIDIA Denver2 CPUs plus four 
+ARM Cortex-A57 CPUs\cite{TX2Wiki, JetsonFAQ}. The Jetson TX2 can be optimized for 
+real-time processing on a UAS, and is 
+still power-efficient and small\cite{JetsonGenius}. Additionally, the TX2 has 
+Dual Operating Modes, MAX-Q for maximum efficiency and MAX-P for maximum performance, 
+where the module can draw 7.5 watts or 15 watts, respectively\cite{TechnoByte}. The TX2 
+module has the same 400-pin Samtec board-to-board socket for connection to NVIDIA's 
+Developer Kit or carrier board. \\
+
+NVIDIA's JetPack 3.1 is also compatible with the TX2, but features Linux kernel 
+4.4\cite{TX2Wiki, JetPackRel}.\\
+
+\subsection{Discussion}
+
+\begin{tabular}{|l|p{5cm}|p{5cm}|p{5cm}|}
+	\hline
+	\textbf{} & \textbf{Jetson TK1} & \textbf{Jetson TX1} & \textbf{Jetson TX2}\\
+	\hline
+	\textbf{CPU} & NVIDIA 4-Plus-1 Quad Core ARM Cortex-A15 "r3" @ 2.3 GHz & ARM Cortex-A57 (quad-core) @ 1.73GHz & ARM Cortex-A57 (quad-core) @ 2GHz + NVIDIA Denver2 (dual-core) @ 2GHz\\
+	\hline
+	\textbf{GPU} & NVIDIA Kepler GK20a with 192 CUDA Cores & 256-core Maxwell @ 998 MHz & 256-core Pascal @ 1300 MHz\\
+	\hline
+	\textbf{Memory} & 2GB DDR3L 933MHz EMC x16 using 64-bit Width & 4GB 64-bit LPDDR4 @ 1600MHz | 25.6 GB/s & 8GB 128-bit LPDDR4 @ 1866MHz | 59.7 GB/s\\
+	\hline
+	\textbf{Storage} & 16Gb eMMC 4.51 & 16Gb eMMC 5.1 & 32Gb eMMC 5.1\\
+	\hline
+	\textbf{Video} & 1080p30 (2x) & 4K x 2K 30 Hz Encode (HEVC), 4K x 2K 60 Hz Decode (10-Bit Support) & 4K x 2K 60 Hz Encode (HEVC), 4K x 2K 60 Hz Decode (12-Bit Support)\\
+	\hline
+	\textbf{CSI} & 2 fast CSI-2 MIPI camera ports (1x4 + 1x1) & 12 lanes MIPI CSI-2 | 1.5 Gb/s per lane | 1400 megapixels/sec ISP & 12 lanes MIPI CSI-2 | 2.5 Gb/s per lane | 1400 megapixels/sec ISP\\
+	\hline
+	\textbf{Display} & 1 full-size port & 2x HDMI 2.0 / DP 1.2 / eDP 1.2 | 2x MIPI DSI & 2x HDMI 2.0 / DP 1.2 / eDP 1.2 | 2x MIPI DSI\\
+	\hline
+	\textbf{Wireless} & 802.11a/b/g/n/ac 2x2 867 Mbps Bluetooth 4.0 & 802.11a/b/g/n/ac 2x2 867 Mbps | Bluetooth 4.0 & 802.11a/b/g/n/ac 2x2 867 Mbps | Bluetooth 4.1\\
+	\hline
+	\textbf{USB} & USB 3.0 + micro-AB 2.0 & USB 3.0 + 2.0 & USB 3.0 + 2.0\\
+	\hline
+	\textbf{PCIe} & x1 Lane & Gen 2 | 1x4 + 1X1 & Gen 2 | 1x4 + 1X1 or 2x1 + 1x2\\
+	\hline
+	\textbf{Other} & UART, I2C, GPIOs & UART, SPI, I2C, I2S, GPIOs & CAN, UART, SPI, I2C, I2S, GPIOs\\
+	\hline
+	\textbf{Socket} & & 400-pin Samtec board-to-board connector, 50x87mm & 400-pin Samtec board-to-board connector, 50x87mm\\
+	\hline
+	\textbf{Thermals} & & -25\degree C to 80\degree C & -25\degree C to 80\degree C\\
+	\hline
+	\textbf{Power} & 15W & 10W & 7.5W\\
+	\hline
+	\textbf{Dimensions} & 5" x 5" board & 1.96" x 3.42" module & 1.96" x 3.42" module\\
+	\hline
+	\textbf{Weight} & 120 grams & 88 grams & 85 grams\\
+	\hline
+	\textbf{Cost} & \$192 each (Developer Kit) & \$299 at 1K units (module) & \$399 at 1K units (module)\\
+	\hline
+\end{tabular}
+\newline
+\newline
+\newline
+Note: Operating Lifetime is 5 years for Jetson Commercial Products.\\
+Table References: \cite{TK1Wiki, TK1Power, TK1Rev, JetsonFAQ, TegraK1, TK12Comp, JetsonGenius, TX1PS, TX2DS}\\
+
+NVIDIA's Jetson TK1 Development Kit (dev kit) was used in comparison to the Jetson TX1 
+and Jetson TX2 modules because the NVIDIA Tegra K1 processor is not available on a 
+module. The size of the Jetson TK1 dev kit puts it at a 
+disadvantage when comparing it to the size, weight, and max power draw of the Jetson 
+TX1 and TX2 modules. The major disadvantage that the TK1 has in comparison to the TX1 
+and TX2 is the amount of CSI cameras it can accommodate. \\
+
+NVIDIA was capable of doubling or enhancing all active processing components on the 
+TX2 in comparison to the TX1, and both modules have the same dimensions. With NVIDIA's 
+latest release of Jetpack 3.1 being compatible for both TX1 and TX2 both modules 
+have near-equal software support, where most differences are application 
+versions\cite{TX1Wiki, TX2Wiki, JetPackRel}. \\  
+
+\subsection{Conclusion}
+
+The final selection for our product's SoM is between the Jetson TX1 and TX2, and will 
+be dependent on the software development and carrier board testing. Both the 
+Jetson TX1 and TX2 offer great SWaP-C requirements for our product's application and 
+are compatible with the carrier boards that have been selected to test. Additionally, 
+both the Jetson TX1 and TX2 are capable of supporting up to six cameras through their 
+12 CSI(Cameral Serial Interface)-2 lanes. \\
+
+\section{Carrier Board}
+
+\subsection{Overview}
+
+Carrier boards (also known as baseboards) are designed with application-specific 
+interfaces and peripherals, and offer scalability and flexibility due to the target 
+application only being supported. A carrier board is always used in tandem with a SoM, 
+and by separating the two a SoM can be upgraded without the possible redesign of the 
+carrier board\cite{ToradexSBC, ArrowCB, ToradexCBQ}.\\
+
+\subsection{Criteria}
+
+The application of our product requires a carrier board that is capable of interfacing 
+with multiple high-resolution cameras to produce a quality video output. The NVIDIA Jetson TX1 
+and TX2 allow camera input through: USB 2.0 and 3.0 ports, MIPI CSI-2 camera ports, and 
+potentially through the mini-PCIe ports\cite{JetsonCams}. MIPI CSI-2 cameras are roughly a few millimeters 
+in size and allow for quick image processing due to the images being processed directly 
+through the SoM's ISP. The MIPI CSI-2 camera interface is capable of supporting 1080p, 
+4k, 8k video and it's the most widely used camera interface for mobile 
+applications\cite{MIPIOverview}. With that, our carrier board must be capable of interfacing  
+six CSI-2 camera inputs simultaneously. \\
+
+\subsection{Potential Choices}
+
+\subsubsection{Auvidea J106 Carrier Board}
+
+The Auvidea J106 carrier board plugs into the 400-pin Samtec board-to-board connector 
+on the Jetson TX1 and TX2, and is the same shape and size as both modules. 
+It supports up to six MIPI CSI-2 15 pin camera input connections to our 
+desired NVIDIA Jetpack SoM and also has an IMU (inertial measurement Unit). Additional 
+interfaces featured on the J106 are: microSD, USB 
+3.0, Micro USB, UART, 1 Gb Ethernet, I2C, SATA, 4x PCIe, CAN, and a mini 
+HDMI\cite{AuvideaJ106}. The J106 board costs \$240 each at 1K units\cite{AuvideaQuote}.\\
+
+The Auvidea M100 and M110 motherboards connects to the J106 board and all are the same 
+size. Both motherboards are port extenders for the J106, which can allow the use of 
+additional peripherals for input processing in the Jetson TX1 or 
+TX2\cite{AuvideaMBoards}. \\
+
+\subsubsection{Colorado Engineering, Inc X-Carrier Board}
+
+The X-Carrier Board designed and by Colorado Engineering, Inc (CEI) is capable of 
+supporting six 15 pin MIPI CSI-2 cameras through the Auvidea J20-2 camera adapter. The 
+J20-2 board plugs into the bottom of the X-Carrier, and the Jetson TX1 or TX2 plugs 
+into the 400-pin Samtec board-to-board connector on top. A Jetson TX1 or TX2 board does 
+mount to the X-Carrier board but the X-Carrier is slightly larger. The X-Carrier has a built-in IMU 
+and the following interfaces: HDMI 2.0, MicroSD, SATA 2.0, USB 2.0, USB 3.0, 1 Gb 
+Ethernet, x1 and x4 PCIe Gen 2, 2x UART, 2x SPI, 3x I2C, 3x I2S, and GPIOs. CEI is  
+developing various I/O modules to connect to the X-Carrier and include: radar, comms, 
+active IR, passive IR, CANBus, and others\cite{CEIXpdf, J20TechRef, AuvideaJ20}. The X-Carrier costs \$285 each 
+and the J20-2 costs \$129 each, both at 1K units\cite{SpacelyQuote, AuvideaQuote}. \\
+	
+\subsubsection{Connect Tech, Inc Spacely Carrier}
+
+The Spacely Carrier designed by Connect Tech, Inc has six built-in MIPI CSI-2 camera 
+inputs with 30 pins and offers a built-in expansion for a GPS/GNSS module. The NVIDAIA 
+Jetson TX1 or TX2 module plugs into the 400-pin Samtec board-to-board connector on top 
+of the Spacely Carrier. The following interfaces are on the Spacely Carrier: HDMI, 2x 
+Gigabit Ethernet, 2x Micro USB 3.0, 2x USB 2.0, 1x USB OTG, 1x USB 2.0 to Mini-PCIe 
+Slot, 1x mSATA, 2x 3.3V from Jetson UART0 and UART1, 1x Mini-PCIe, 1x microSD, 1x CAN 2.b 
+Port, 1x I2C Link, 1x SPI Channel, and 14x GPIO\cite{SpacelyUG}. The Spacely Carrier 
+costs \$411 each at 1K units.\\
+
+\subsection{Discussion}
+
+\begin{tabular}{|l|p{5cm}|p{5cm}|p{5cm}|}
+	\hline
+	\textbf{} & \textbf{J106 Carrier} & \textbf{X-Carrier} & \textbf{Spacely Carrier}\\
+	\hline
+	\textbf{CSI} & 6 2-lane CSI-2 (15 pin) & 6 2-lane CSI & 6 x2 Lane MIPI CSI-2 or 3 x4 Lane MIPI CSI-2 (30 pin)\\
+	\hline
+	\textbf{USB} & 2x USB 3.0, 1x Micro USB & 1x USB 3.0, 1x Mini-USB 2.0 & 2x Micro USB 3.0, 2x USB 2.0, 1x USB OTG, 1x USB 2.0 to Mini-PCIe Slot \\
+	\hline
+	\textbf{SATA} & 1x SATA & 1x SATA 2.0 & 1x mSATA Full Size \\
+	\hline
+	\textbf{Display} & 1x mini HDMI & 1x HDMI 2.0 & 1x HDMI \\
+	\hline
+	\textbf{PCIe} & 4x PCIe & x1 and x4 PCIe Gen 2 & 1x Mini-PCIe \\
+	\hline
+	\textbf{Other} & UART, Gb Ethernet, I2C, 1x CAN & MicroSD, 1 Gb Ethernet, 2x UART, 2x SPI, 3x I2C, 3x I2S, and GPIOs & 2x 3.3V from Jetson UART0 and UART1, 1x MicroSD, 1x CAN 2.b Port, 1x I2C Link, 1x SPI Channel, and 14x GPIO \\
+	\hline
+	\textbf{Thermals} &  & -20\degree C to 55\degree C & -40\degree C to 85\degree C \\
+	\hline
+	\textbf{Voltage} & 12V (4 pin), range: 7V to 17V & 12V to 19V & 12V to 22V \\
+	\hline
+	\textbf{Dimensions} & 1.96" x 3.42" board & 3.43" x 2.8" board & 4.92" x 3.74" board \\
+	\hline
+	\textbf{Weight} & 2.6 grams & 6.5 grams & 90.7 grams \\
+	\hline
+	\textbf{Cost} & \$240 each at 1K units & \$285 each at 1K units & \$411 each at 1K units \\
+	\hline
+\end{tabular}	
+\newline
+\newline
+\newline
+Note: The Auvidea M100 and M110 motherboards are \$129 each at 1K units, and the 
+J20-2 board is \$129 each at 1K units. \\
+Table References: \cite{AuvideaJ106, MouserJ106, CEIX, CEIXpdf, SpacelyUG, SpacelyQuote, CEIQuote, AuvideaQuote}\\
+
+The J106 carrier board size is form fitting with the Jetson TX1 or TX2 modules and 
+maintains this size when even used with the Auvidea M100 or M110 motherboards, unlike 
+the X-Carrier's and Spacely Carrier's larger board dimensions. However, the J106 carrier board 
+offers limited interfaces in comparison to the X-Carrier and Spacely Carrier boards due 
+to its size and relies on its 4x PCIe slots for future options like a GPS/GNSS module. The 
+X-Carrier does rely on the Auvidea J20-2 board to connect to for supporting  
+camera input whereas the J106 and Spacely Carrier have all six MIPI CSI-2 ports directly 
+installed. The major benefit to the Spacely Carrier's size is that it has a large 
+amount of USB ports and miscellaneous I/O ports and a built-in expansion for a 
+GPS/GNSS module. Although, the J106 and X-Carrier Boards have built-in IMUs whereas the 
+Spacely Carrier does not.\\
+
+\subsection{Conclusion}
+
+The final selection for our product's carrier board is dependent on multiple variables, 
+all of which will be determined during software development and testing. All three of 
+the companies 
+designed and developed their carrier boards for specific use with the Jetson TX1 and 
+TX2 modules. Each carrier board offers subtle and unique 
+advantages over the other, and it's difficult to say which one will be capable of 
+providing the best solution without adequate testing. \\
+
+\section{Camera Case}
+
+\subsection{Overview}
+
+The Raspberry Pi (v2) cameras selected for developing our software have an exposed circuit 
+board and camera lens. These cameras should be enclosed for protection and mounted to 
+provide consistent testing of the software being produced. Camera mounting and positioning
+will need to remain in the same known setup while developing software for multiple camera 
+input. \\
+
+\subsection{Criteria}
+
+The case needs to be capable of performing two basic functions for the camera, which 
+are protecting the camera and holding the camera securely. The case should be specifically 
+designed for our Raspberry Pi cameras to ensure these two basic functions are easily 
+met. For mounting of the case to another object it will be beneficial for it to 
+have screw holes on it. \\
+
+\subsection{Potential Choices}
+
+\subsubsection{Adjustable Pi Camera Mount}
+
+This camera mount made by Pimoroni is as basic as they come and are \$5 each. The mount 
+consists of a two-piece bracket, one to mount the camera to and another to fix the 
+mount. However, the support bracket and camera bracket snap together. This camera 
+mount includes screws and hex-nuts to secure the camera to the bracket\cite{AdjCamMt}. \\
+
+\subsubsection{Raspberry Pi Camera Case/Enclosure}
+
+SB Components created a camera case specifically designed for the Raspberry Pi camera 
+and snaps together to firmly hold the camera in place. The case has two screw holes for 
+mounting, comes with screws and tape, and are \$6 each\cite{BlueCase}. \\
+
+\subsubsection{Adafruit Raspberry Pi Camera Board Case}
+
+This Adafruit Raspberry Pi enclosure is sleek, snaps closed, and has four pegs inside making a 
+secure hold on the camera. To mount the case are two slots and a 
+one-quarter inch tripod mount nut. A hole on the lid of the case to prevents 
+distorting camera images. Our Raspberry Pi Camera v2 is slightly thicker than the 
+original camera that the case was designed for, and it is recommended to remove a spacer from 
+the circuit board to prevent blurry images. These cases are priced at \$3 each\cite{adafruitCase}.\\
+
+\subsection{Discussion}
+
+Each option provides a different stance on simplicity, caters to custom mounting 
+options, and is specifically designed for Raspberry Pi. The adjustable mount 
+by Pimoroni offers no protection unlike SB Components and Adafruit's cases. The 
+mounting holes on SB Components enclosure does come with screws for them but with 
+just a little extra effort the Adafruit case can be just as secure. Adafruit's 
+case has a sleek and minimalist design and may be more versatile for mounting, but 
+the big blocky SB Components case positions the camera vertically and has the 
+screw holes on its horizontal surface. \\
+
+\subsection{Conclusion}
+
+The SB Components camera case was chosen because its enclosure can hold the camera's 
+field of view vertical while the mounting holes are on the horizontal axis. Pimoroni's
+mount was ruled out since the two camera cases have the best mounting options for 
+securing the cameras in place. The Adafruit's case will require 
+more effort and creativity to mount the cameras securely for testing stitched or 
+fused camera inputs, and is why SB Components case is slightly more appealing.\\
