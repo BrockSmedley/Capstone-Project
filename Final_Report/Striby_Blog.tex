@@ -302,20 +302,22 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Continue work on the project, and figure out how to get more than one camera working. 
+		\item Finish transitioning everything to the KEC 2098 lab. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Finished all Fall term, CS461 requirements.
+		\item Capable of getting the camera on the NVIDIA TX2 development kit to produce an output. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Running into compiling errors and warnings every time I'm trying to follow Wiki's on getting camera outputs. 
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent
+    \noindent Transitioned everything to the KEC 2098 lab for everyone to have access to the project hardware. Put three solid days in on the project, trying to figure everything out. Due to warning messaged with the module it was re-flashed. Still unable to get multiple cameras to work with the dev kit and Auvidea J20 board. 
 \end{adjustwidth} 
 
 \paragraph{Week 3}
@@ -323,20 +325,22 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Converse with Kevin about an effective way splitting up troubleshooting our current issues with multi-camera output.
+    	\item Continue to work on getting multiple cameras to provide input through the J20 Auvidea board connected to the dev kit. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Finished all Fall term, CS461 requirements.
+		\item Capable of getting the camera on the NVIDIA TX2 development kit to produce an output.  
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Getting the group to collaborate on the current hardware issues hasn't been easy due to everyone's schedule. 
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent This week there was a decent amount figured out with getting the TX2 development kit to work with the Auvidea J20 board. Patches to make this happen were requested and obtained from Ridge Run, but they're for a different version of JetPack and also the J106, TX2 setup. 
 \end{adjustwidth} 
 
 \paragraph{Week 4}
@@ -344,20 +348,23 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Flash the TX2 module with JetPack 3.0 due to patches requiring that version.
+		\item Setup the TX2 with the Auvidea J106 board and get two cameras working with it.  
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item The host laptop is being setup for various flashings of the TX2 so that each carrier board has its own directory. 
+		\item We're capable of getting input from one camera using the dev kit.  
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item We haven't been able to get any type of multi-camera input to work. 
+		\item We are having lots of issues with the hardware working together and have come to a lot of dead ends, unsure where to go.  
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent This project has been extremely frustrating and I'm beginning to have little to no faith that we'll be capable of producing anything with the Auvidea hardware. We've obtained patches from Ridge Run to get the TX2 working with the J106 but there's a patch that we're unsure of the result it's programmed to solve. 
 \end{adjustwidth} 
 
 \paragraph{Week 5}
@@ -365,20 +372,23 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Have the TX2 module working with the Auvidea J106 and M110 boards for our demo on Wednesday. 
+		\item Have the patches from Ridge Run figured out and working. 
+		\item Try to figure out what our errors mean when running GStreamer pipelines. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Re-flashed the TX2 with JetPack 3.1.
+		\item Installed the Ridge Run patches obtained in an email.  
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item We're still unable to get any type of multi-camera capture to work following two different setups with the TX2 module and Auvidea hardware. 
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent Following a few flashes to make this happen, the TX2 is working independent of the dev kit and is setup with the Auvidea J106 carrier board and M110 motherboard. We installed patches from Auvidea to make this work. Our attempts to get camera input to work with this setup have failed. When we obtained patches from Ridge Run their email said that the J106 and TX2 setup with this patches would only capture with v4l2src in the GStreamer pipeline. So I followed a wiki by them to be capable of capturing this way, which had steps to add GStreamer support for RAW10. After making another attempt to capture video with some GStreamer pipelines this still did not work. Following our meeting with Dan, we need to come up with plans moving forward in the next couple of weeks and remain focused on revising our Design \& Requirements Documents. Started focusing on the Midterm Progress Report and Presentation at the end of the week. 
 \end{adjustwidth} 
 
 \paragraph{Week 6}
@@ -386,20 +396,26 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Writing an email to Carlo since he's unable to attend our meeting. The email will contain info about troubles thus far with project, what we've done, and plans moving forward.
+        \item Meet with the team to address the following: midterm progress report, midterm presentation regarding our progress, poster draft, making decisions regarding Expo signup. 
+		\item Work on the current hardware setup: TX2, J106, M110.
+		\item Try to figure out how to use v4l2src in a GStreamer pipeline.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Midterm progress report is started. 
+		\item Midterm presentation slides have started.
+		\item The TX2, J106, M110 setup has some functionality but does not produce a video output of any kind, yet.  
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Still waiting on the Leopard Imaging camera setup that should work with our other two carrier boards. 
+    	\item Still unable to achieve any type of multi-camera output. 
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent We made a few more attempts with the TX2, J106, M110 setup before breaking it down and getting one of the other carrier boards setup due to receiving the Leopard Imaging order. Moving towards working with the other two carrier boards was good because we started to coordinate all necessary steps to obtain everything needed for them to work with the TX2 module. I also needed to ensure that the Spacely carrier board also had a power supply. I emailed Colorado Engineering about firmware/BSPs/drivers because their website doesn't have this, and am still waiting for a reply. I asked Kevin for another TX2 module. A few days were spent on completing the midterm progress report and presentation. 
 \end{adjustwidth} 
 
 \paragraph{Week 7}
@@ -407,20 +423,20 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Multi-camera input with a different hardware setup other than the Auvidea stuff.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Single camera input with the dev kit. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item I've lost track.
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent Brock and Shu-Ping were capable of getting multi-camera output with the Spacely carrier connected to the module. They had a script for two-camera and then I modified it for three-camera output. 
 \end{adjustwidth} 
 
 \paragraph{Week 8}
@@ -428,20 +444,21 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Learn about OpenCV.
+		\item Output a stitched image and then video.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Multi-camera output with a GStreamer pipeline. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Understanding OpenCV is not easy on their website and through sources that I've found while searching. 
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent Continued to work with OpenCV. Need to start looking forward regarding our hardware setup for Expo. Called Colorado Engineering about our issues with their board. Told Kevin about the issues with the board and he's going to bring in the another X-Carrier board for us. 
 \end{adjustwidth} 
 
 \paragraph{Week 9}
@@ -449,20 +466,24 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Learn about OpenCV.
+		\item Output a stitched image and video.
+		\item Work with extra X-Carrier Board.
+		\item Contact Colorado Engineering again.
+		\item Get camera display ordered for Expo, it can be made with the following parts: camera mounts, base for Carrier board, brackets for cameras.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Multi-camera output with a GStreamer pipeline.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Getting to know and understand OpenCV.
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent This week I was capable of getting a stitched video output from two cameras. Unfortunately a three camera input did not work with the code when modified to accommodate three inputs. Following our meeting with Dan we're needing to modify our Design and Requirements Documents to reflect our progress for the term, and adjust accordingly due to issues we've had with hardware. Following the email that I sent out to the group neither has reached out to me informing me what they're planning to contribute to close out the term. 
 \end{adjustwidth} 
 
 \paragraph{Week 10}
@@ -470,20 +491,22 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Push for Alpha demo on the following: tiled output of two to three cameras, stitch three cameras, speed up two camera stitch, and latency estimates.
+    	\item Getting ready for Expo by addressing these issues or ideas: brackets for cameras - CAD drawings needed, 3D printing,something to mount/encase the carrier board and TX2 on/in - CAD drawings, machining because we need to weigh down the board to prevent from falling over, a display of some type for example previous Rockwell Collins group made a runway.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Multi-camera output of three cameras.
+		\item Stitched camera output of two cameras.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Communication issues between the group and I continue to be non-existant. 
     \end{itemize} 
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent We had a virtual meeting with Carlo, the first in a while, maybe the first for the term. He's been extremely busy and on the road a lot. He wanted us to focus on making sure the camera streams are fast before stitching them, because we told him how slow the video feed was when stitching. He was happy with our progress and the work achieved following the delay in getting the hardware to work. I worked mostly with logistics this week for the project by getting camera mounts ordered for testing and displaying, and coordinated with Brock to design the Spacely board mount. I received the extra X-Carrier from Kevin but its response to power is the same as the other so he's contacting Colorado Engineering Inc. I did a little work with the project to get tiled output of multiple cameras. Also worked on the final progress report for the term. 
 \end{adjustwidth} 
 
 \subsubsection{Spring 2018}
@@ -493,20 +516,21 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Speed up video streaming.
+		\item Look over GStreamer pipelines again. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Multi-camera input in separate windows and in one window, these are stitched and tiled.  
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Current progress with the project.  
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent I worked on researching how to optimize GStreamer pipeline process for our software. I was unsuccessful in my efforts because I didn't find any new knowledge on GStreamer. Resources found on GStreamer to not provide elaboration on how things work, and are mostly examples of pipelines. 
 \end{adjustwidth}
 
 \paragraph{Week 2}
@@ -514,20 +538,27 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Speed up video streaming.
+		\item Look over GStreamer pipelines again.
+		\item Research Jetpack and software application utilization on TX2.
+		\item Contribute to poster board. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Multi-camera input in separate windows and in one window, these are stitched and tiled. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item I haven't heard much of anything from anyone regarding the improvement of our software. 
+		\item Our streaming video feed with GStreamer has a 0.5 second lag. 
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent
+    \noindent I wrote emails to the group, Carlo, and Kevin regarding the project. The email to the group was a request that we pull things together and get the project straightened as much as possible because we're on the final stretch. This included a request that we communicate more often and better than we have in the past. My email to Carlo was just a status update and ensuring that we were going to have our virtual meeting, and an email to Kevin was regarding my constant confusion with GStreamer. \\
+			  Posted a question to NVIDIA's forum. Received a reply and still awaiting a reply. \\
+			  Following our meeting with Carlo, we made some short term goals regarding what needs to occur with troubleshooting to complete the project. Dan informed us that we have until week 5 for getting our code to work and having testing. \\
+			  We performed more tests regarding latency and framerates being processes on the output screen. Brock is in the process of building the extra TX2 to work with the Spacely carrier. \\
 \end{adjustwidth} 
 
 \paragraph{Week 3}
@@ -535,20 +566,25 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Continue troubleshooting our latency issues.
+		\item Have the extra TX2 built \& working with the Spacely Carrier. This involves scripts for installing Jetpack and all other required software. 
+		\item Work on poster for Expo.
+		\item Work on writing up WIRED interview assignment of Nathan Love. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Multi-camera input in separate windows and in one window, these are stitched and tiled.  
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Still unable to get information regarding GStreamer \& our latency issues. 
+		\item Worried about having something to show during Expo. 
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent This week I was minimally involved with the software of the project, because this week I spent a decent amount of time writing my WIRED interview and working on the Expo poster. Following our TA meeting we worked on troubleshooting the extra TX2 rebuild. After looking over things and talking about it we figured out the issue. I asked and confirmed with Brock that he installed the newest version of JetPack 3.2, which isn't compatible with our drivers or firmware from Connect Tech Inc to get the Spacely Carrier to work with the TX2. He'll need to rebuild again with JetPack 3.1. \\
+			  I received a follow-up to a forum post regarding our issues with latency and the massive lag for stitching and there is no helpful information. I then posted a reply to hopefully receive a helpful post. \\
 \end{adjustwidth} 
 
 \paragraph{Week 4}
@@ -556,20 +592,24 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Continue troubleshooting our latency issues.
+		\item Test the extra TX2 built \& work with the Spacely Carrier. Hopefully this will solve our latency issues. 
+		\item Work on \& submit poster for Expo.
+		\item Complete and submit WIRED interview write-up. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Multi-camera input in separate windows and in one window, these are stitched and tiled. 
+		\item Most latency tests are complete.  
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Still waiting on Brock to finish the re-build of the extra TX2.  
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent I completed the entire poster board for Expo without any help from the group. Kirsten's assistance was extremely helpful and amazing after I had all the content on it. She helped me trim the fat and make it more appealing to an audience. My group was non-responsive to my emails and Google Doc created to organize us working on it. Brock was busy and Shu-Ping was non-responsive until after submitting the poster. I communicated to Brock asking about the completion of him rebuilding the extra TX2, and his response was he'll get to it tomorrow. Time frame information, he hadn't touched it in a week nor did he communicate this to the group. Friday I commenced creating all Google Doc and Latex files for our Midterm Progress Report. 
 \end{adjustwidth} 
 
 \paragraph{Week 5}
@@ -577,20 +617,22 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Finish latency tests.
+		\item Unsure what to troubleshoot anymore.
+		\item Work on midterm progress report and presentation. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Laggy streaming and stitching.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Still waiting on Brock to finish the re-build of the extra TX2. 
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent This week I submitted the final draft of the project's poster board for printing, and for the remainder of the week I spent coordinating and completing the midterm progress report and presentation. Brock finally completed the rebuild of the second TX2 with scripts.
 \end{adjustwidth} 
 
 \paragraph{Week 6}
@@ -598,20 +640,24 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Give a couple more tries at reducing latency.
+		\item Completing all latency estimates \& frame rate tests.
+		\item Clean-up all code before code freeze.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item  
+        \item Poster board and progress reports complete.
+		\item Slow software with high latency when image processing takes place. 
+		\item Rebuild of second TX2 complete. 
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item No solution to latency in GStreamer pipelines.
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent Performed testing on the rebuilt TX2. Met in class to talk about Expo. Shu-Ping placed all final versions of our programs into a designated directory and pushed it to GitHub, and I went through and checked everything.
 \end{adjustwidth} 
 
 \paragraph{Week 7}
@@ -619,18 +665,19 @@
     \vspace{-0.5cm}\textbf{Plans:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Finalize project for display at Expo.
+		\item Attend Expo.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Progress:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Completed project implementation due to code freeze.
     \end{itemize} 
     \vspace{-0.3cm}\textbf{Problems:}
     \vspace{-0.5cm}
     \begin{itemize}
-        \item 
+        \item Yes.
     \end{itemize}  
     \vspace{-0.3cm}\noindent\textbf{Summary:}\\
-    \noindent 
+    \noindent Tried to make a few feature additions to the project to make it more appealing during Expo but was unable to. Attended \& completed Expo! 
 \end{adjustwidth}
