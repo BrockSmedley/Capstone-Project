@@ -1,5 +1,5 @@
-\subsection{Data storage}
-\subsubsection{Overview}
+\subsubsection{Data storage}
+\paragraph{Overview}
 NVIDIA Jetson TX1 and TK1 provides 16 GB data storage with eMMC, SDIO, and SATA, and NVIDIA 
 Jetson TX2 provides larger storage with 32 GB. In our project, 16 to 32 GB should be enough to 
 hold our program because our program receives input video then computes for output will achieve 
@@ -7,33 +7,35 @@ near real-time, which means that we do not be able to store many data in our mem
 we will choose suitable data storage and cost SWAP-C. \\
 
 
-\subsubsection{Criteria}
+\paragraph{Criteria}
 There is not much limitation on data storage since our alternative modules only support eMMC, SDIO, 
 and SATA for data storage. Therefore, the chosen data storage requires low size, weight, power, and
  cost (SWAP-C), and we also look for adequate reading speed and stability from a data storage. We 
  will discuss and compare each of these options in the following paragraph. \\
 
-\subsubsection{Potential Choices}
-\paragraph{eMMC}
+\paragraph{Potential Choices}
+\begin{enumerate}
+\item{eMMC}
 The eMMC is embedded MMC (MultiMediaCard) as an embedded non-volatile memory system, and MMC is a 
 memory card standard used for solid-state storage. The embedded card (eMMC) is widely used in the 
 industry as a primary means of integrated storage in portable devices because of saved space, and 
 almost all mobile phones and tablets used this form of flash for main storage. \\
 
-\paragraph{SDIO}
+\item{SDIO}
 A SDIO is Secure Digital Input Output card, which is an extension of the SD specification to cover 
 Input and Output functions. SDIO cards are functional in host devices designed to support their 
 input-output functions, and these devices can support some electronics such as GPS receiver, and 
 also interfaces to Wi-Fi, Bluetooth, and Ethernet. The standard size of SDIO is 32.0×24.0×2.1 mm. \\
 
-\paragraph{SATA}
+\item{SATA}
 The SATA is Serial AT Attachment, which is a computer bus interface used to connect mass storage 
 devices such as hard disk drives and solid-state drives. SATA host adapters and devices communicate 
 via a high-speed serial cable over two pairs of conductors, so the efficiency and stability for 
 reading and writing data between devices can not be exceed by other data storage. With the advantage
 , which is usually used in personal computer or embedded in laptop. \\
+\end{enumerate}
 
-\subsubsection{Discussion}
+\paragraph{Discussion}
 Compare the three data storage cards, each technology with different functionalities will be used 
 depending different purpose, the SDIO support various input-output functions, and the SATA provides high 
 speed for reading and writing data. Since the goal of this project does not require to connect to host 
@@ -41,7 +43,7 @@ devices or optimize the speed of reading and writing data, the chosen technology
 SWAP-C. The SDIO and SATA are external cards, so we need extra cost and space if we choose to use them. 
 In contrast, because the eMMC is already embedded inside the module, this is the cheapest choice.\\
 
-\subsubsection{Conclusion}
+\paragraph{Conclusion}
 We choose to use eMMC because it is already embedded inside every potential SoM in our project, so we do 
 not need to have additional space and cost for another data storage. Since our program aims to achieve 
 near real-time computation, it will not take much space to store data nor require high reading and 
@@ -50,37 +52,38 @@ the eMMC takes the lowest SWaP-C.\\
 
 
 
-\subsection{Image processing software}
-\subsubsection{Overview}
+\subsubsection{Image processing software}
+\paragraph{Overview}
 This software intend to transfer input images into a suitable format for image processing in GPU
 , which will stitch images from infrared and visible light spectral bands as 2D video output. 
 These softwares are usually included in the Jetpack or other development toolkit. In this case, 
 the alternative image processing softwares we focus on are available from Jetpack, which are CUDA, 
 OpenCV, and OpenGL.\\
 
-\subsubsection{Criteria}
+\paragraph{Criteria}
 Each software would be supported by the chosen module, NVIDIA Jetson TX1/2 or TK1, and where 
 the operating system are typically on Ubuntu. In order to fulfil near real-time Latency of 
 the data-processing, so the programming will be implemented by the parallel processing. On 
 the other hand, considered about the stretch goal, the software will be able to fuse up to 
 six camera input.\\
 
-\subsubsection{Potential Choices}
-\paragraph{CUDA}
+\paragraph{Potential Choices}
+\begin{enumerate}
+\item{CUDA}
 The Jetpack includes CUDA toolkit for Ubuntu, which is a parallel computing platform and 
 allows developers to use a GPU for general purpose processing. The CUDA platform is designed 
 to work with programming language C and C++. The advantages of CUDA can accelerate download 
 and readback to and from the GPU, but there are also some limitations of Interoperability 
 with rendering language such as OpenGL.\\
 
-\paragraph{OpenCV}
+\item{OpenCV}
 The Jetpack includes OpenCV library mainly aimed at real-time computer version. OpenCV is 
 Open Source Computer Vision Library, which provides basic image processing and video 
 processing with build-in algorithm library such as edge detect. Image processing in OpenCV 
 can be easier to change images between different color spaces and apply different geometric 
 transformations to images.\\
 
-\paragraph{OpenGL}
+\item{OpenGL}
 The Jetpack includes OpenGL 4.3, 4.4 and 4.5 to support GPU developing. OpenGL is Open Graphics Library, 
 which is typically used to interact with GPU to achieve accelerated rendering 2D and 3D vector graphics 
 with C language. We can handle the image processing with pixel processing path, which the program 
@@ -88,8 +91,9 @@ acquires pixels and textures and allow us to operate on those to generate fused 
 hand, OpenGL also contains the compiler and runtime environment for shaders written in the GLSL shader 
 language. The small program of shader runs on the GPU to modify the images depending on the taken input 
 from OpenGL textures \cite{shader}.\\ 
+\end{enumerate}
 
-\subsubsection{Discussion}
+\paragraph{Discussion}
 In order to achieve the goals of image processing for this project, to fulfil near real-time latency and 
 stitch multiple images as one 2D video output, the software we choose should fuse images efficiently. 
 Comparing OpenGL with CUDA and OpenCV, the latter softwares provide higher efficiency on reading data and 
@@ -98,7 +102,7 @@ quality images, and the system is more convenient for developer to control more 
 we may have multiple input values.\\
 
 
-\subsubsection{Conclusion}
+\paragraph{Conclusion}
 Based on the discussion, we choose to use OpenGL in this project because it is the better choice for 
 image processing with multiple video inputs. Since we will have different number and kind of inputs, 
 shader language in OpenGL allow us easily to contribute different situations. At the same time, in order 
@@ -106,43 +110,45 @@ to accelerate computing vector and pixel information of images, we may include O
 the program, or we will write our own algorithm for edge detect. \\
 
 
-\subsection{Media streaming}
-\subsubsection{Overview}
+\subsubsection{Media streaming}
+\paragraph{Overview}
 We need a media streaming software in this project because we have multiple input cameras, and the image 
 processing will be implemented with images rather than videos. Therefore, we need a tool to transfer the 
 format from input video to image format for image processing and transfer the format back when it is done. 
 For instance, we expect the software to read data from the chosen camera, then processes and transfers 
 the format and export in the platform for image processing.\\
 
-\subsubsection{Criteria}
+\paragraph{Criteria}
 The chosen media streaming software is also required to be developed on our SoM and the operating 
 system. Also, the software should support the format of our video input and be able to connect to 
 the image processing software. In the following potential choices, GStreamer and Libargus are 
 already included in the Jetpack, so we should be more careful on the limitations when programming 
 if we choose to use FFMpeg. \\
 
-\subsubsection{Potential Choices}
-\paragraph{GStreamer}
+\paragraph{Potential Choices}
+\begin{enumerate}
+\item{GStreamer}
 GStreamer is a pipeline-based multimedia framework which links together a wide variety of media processing systems to complete complex workflows. GStreamer is open-source software object and has
  a range of bindings for various languages such as Python and C++. GStreamer processes media
   by connecting a number of processing elements into a pipeline, each element will be grouped and 
   used to different execution \cite{gstreamer}.\\
 
-\paragraph{FFMpeg}
+\item{FFMpeg}
 FFmpeg is an open-source multimedia manipulation library of plugins and programs that can be applied to 
 various parts of the audio and video processing pipelines \cite{ffmpeg}. FFMpeg includes libav library 
 to handle a great quantity of different formats, and the ffmpeg command line program for transcoding 
 multimedia files. The FFMpeg supports native NVIDIA GPU hardware accelerated video encoding and decoding 
 through the integration of the NVIDIA Video Codec SDK \cite{nvidia}.\\
 
-\paragraph{MEncoder}
+\item{MEncoder}
 MEncoder is a free command line transcoding tool, which can convert and compress general video, audio, 
 and image formats, which is usually used with MPlayer as a companion program \cite{mplay}. The same as MPlayer, 
 MEncoder is also written in C language, and it features to filter and transform the video and audio 
 streams. The filters include cropping, scaling, vertical flipping, etc, the functionality enable user to 
 transform and edit their input streams at the same time.\\
+\end{enumerate}
 
-\subsubsection{Discussion}
+\paragraph{Discussion}
 Compare the three technologies, FFMpeg supports the most kinds of formats, and GStreamer provides most 
 convenient operation to implement streaming at the same time with pipeline system. In contrast, MEncoder 
 doesn’t support many formats nor have pipeline interface. Since it is even used with MPlayer, there are 
@@ -150,7 +156,7 @@ more limitations to transform data with MEncoder in this project. Then compare F
 number of supporting formats is not a trouble for GStreamer because the disadvantage can be modified with 
 plug-in libraries.\\
 
-\subsubsection{Conclusion}
+\paragraph{Conclusion}
 We choose to use GStreamer because the pipeline-based framework lets us easier to control and distribute 
 inputs from different cameras. With the arranged input data in order, it allows us to handle processing 
 in different conditions if are more than two cameras as input. Moreover, since GStreamer uses a plug-in 
