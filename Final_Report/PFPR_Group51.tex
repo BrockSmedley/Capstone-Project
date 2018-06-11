@@ -184,6 +184,49 @@ Write me \\
 
 \section{Project Documentation}
 %Shu-Ping will do 
+\begin{figure}[H]
+  \centering
+  \label{fig: The product flow diagram.}
+  \includegraphics[width=5cm]{images/diagram2.eps}
+  \caption{The product flow diagram. \label{overflow}}
+\end{figure}
+
+This product was established on the TX2 module, which supported the operating system on Linux and 
+connected with three CSI IMX274CS-X cameras from Leopard Imaging through the Connect Tech Inc. 
+Spacely Carrier as in the figure. Therefore, there were some required devices used to make the 
+system work which were listed in the table below. \\
+
+\begin{tabular}{|p{0.3\linewidth}|p{0.5\linewidth}|}
+   \hline
+   \textbf{Requirements} & \textbf{Notes} \\ 
+   \hline
+	Pluggable Terminal Contact & Input Voltage Range: +12V to +22V DC \\
+   \hline
+   USB 2.0 Hub & Connect to Keyboard and Mouse \\
+   \hline
+   Micro HDMI Type D to HDMI & Connect to Display Device \\
+   \hline
+\end{tabular}
+
+The user need to connect the product with power, USB mouse and keyboard, and a display device in 
+order to enable all programs created in the application. Once the power was on, the user needed 
+to activate the fan and use nvpmodel to change the environment mode to adequate CPU and GPU usage 
+setup before executing any programs. \\
+
+Software in the product was accompanied with Jetpack of NVIDIA software development kit is a host 
+of open-source programming libraries and APIs to assist our software development.Multiple video 
+process programs were created using GStreamer and OpenCV and were available in the finalCode 
+directory and could be run with the camke compiler, and the existed functionalities were stitching 
+from two cameras, tiling video streaming with two or three cameras, edge detection, and some 
+testing cases which display information such as in program latency and framerate in the output 
+window. \\
+
+The stitching program would stitch two images captured from two cameras by computing the overlapping 
+frames in homography and making transformation so it was able to generate one video streaming with 
+wider range. The tiling program combined adjusted input frames from two or three different cameras 
+and combined frames together horizontally as video output. Although the latency of tiling performed 
+better than stitching, the user had to adapt the camera angles physically to acquire side by side 
+image. \\
 
 \newpage
 
