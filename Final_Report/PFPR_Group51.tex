@@ -91,10 +91,10 @@
 
 \begin{abstract}
 
-This document provides insight on our Capstone Senior Project at Oregon State University. 
+This document provides insite on our Capstone Senior Project at Oregon State University. 
 Over the course of 2017-2018 academic school year, we developed a platform which combines 
 live images together using two CSI-based cameras connected to an NVIDIA Jetson TX2 
-system-on-module. The video streams are handled by GStreamer which is a streaming media 
+system-on-module. The video streams are handled by GStreamer a streaming media 
 framework, and then using OpenCV we merge the data streams of up to three cameras and 
 display the feedback on a live monitor. The software produced outputs a stitched and 
 tiled video stream, along with latency estimates. \\
@@ -235,16 +235,25 @@ image. \\
 \section{Recommended Technical Resources for Learning More}
 \subsection{Helpful sites}
 \begin{itemize}
-\item elinux.org wiki \url{https://elinux.org/Jetson_TX2}
-\item OpenCV Documentation: \url{https://docs.opencv.org/2.4/modules/refman.html}
-\item OpenCV Stitcher docs: \url{https://docs.opencv.org/3.4/d8/d19/tutorial_stitcher.html}
-\item GStreamer Documentation: \url{https://gstreamer.freedesktop.org/documentation/}
-\item JetsonHacks Blog: \url{https://www.jetsonhacks.com/}
-\item Peter Moran's Blog: \url{http://petermoran.org/csi-cameras-on-tx2/}
-\item NVIDIA Virtual Workshops: \url{https://developer.nvidia.com/embedded/learn/tutorials}
+	\item elinux.org NVIDIA Jetson TX2 Wiki: \url{https://elinux.org/Jetson_TX2}
+	\item JetPack L4T SDK Documentation: \url{https://docs.nvidia.com/jetpack-l4t/index.html}
+	\item NVIDIA Virtual Workshops: \url{https://developer.nvidia.com/embedded/learn/tutorials}
+	\item GStreamer Documentation: \url{https://gstreamer.freedesktop.org/documentation/}
+	\item NVIDIA's Accelerated GStreamer User Guide: \url{http://developer2.download.nvidia.com/embedded/L4T/r27_Release_v1.0/Docs/Jetson_TX2_Accelerated_GStreamer_User_Guide_Release_27.1.pdf?fSyt4imvrsQwLjQGC26vQUGnjIpmNf3Vrk5X6wiq_iq_Si7a8CUcXNWJuUYybsCzRvpyrOn8HnRFun5klMtCdkBc-8jVUWjD4NdnH6zIq68jxY3VKDvV1nkWa1WC6hEak9I1YqkWtmeEiUyhebU47KZi9n-tXr5vpZbhiwLVIaKWEV8bvdLOYG5MQzYkl_WNxL-2zyjDrwFEocDRUgc}
+	\item OpenCV Documentation: \url{https://docs.opencv.org/2.4/modules/refman.html}
+	\item OpenCV Stitcher docs: \url{https://docs.opencv.org/3.4/d8/d19/tutorial_stitcher.html}
+	\item JetsonHacks Blog: \url{https://www.jetsonhacks.com/}
+	\item Peter Moran's Blog: \url{http://petermoran.org/csi-cameras-on-tx2/}
 \end{itemize}
 
-With so many variables involved (OpenCV configuration, GStreamer pipelines, cmake configuration, hardware configuration; endless combinations), it's important to be thoughtful and meticulous in your attention to detail. Study the official documentation deliberately, because one very small, very easily-overlooked detail can indirectly derail a whole build. Also make sure you understand core concepts -- it's easy to overlook minor flaws in StackOverflow answers when you don't understand how their solution actually works.
+With so many potential variables involved (OpenCV configuration, GStreamer pipelines, 
+cmake configurations, hardware configurations, and other endless variables), 
+it's important to be thoughtful and meticulous in your attention to detail. 
+Study the official documentation 
+deliberately, because one very small overlooked detail can indirectly 
+derail a whole build. Also, make sure you understand core concepts -- it's easy to 
+overlook minor flaws in forum discussion answers when you don't understand how their 
+solution actually works.  \\
 
 \newpage
 
