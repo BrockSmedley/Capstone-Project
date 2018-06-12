@@ -1,17 +1,30 @@
 \subsubsection{What technical information did you learn?}
-%\paragraph{if necessary}
+\paragraph{Building from scratch} I learned a lot about building programs from source, namely during the process of installing OpenCV on the TX2. I specifically learned about cmake, which is practically just a more advanced version of make. The most interesting thing about cmake is all the options you can pass it. For example:
+\begin{lstlisting}
+cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DWITH_CUDA=ON \
+    ...
+\end{lstlisting}
+This snippet shows just how deep you can go -- it specifies a release-type build, changes the directory in which the program is built, and enables NVIDIA CUDA in the program.
+
+\paragraph{LaTeX} Doing all these reports in \LaTeX taught me quite a lot about TeX in general. It's amazing how versatile or simple you make it.
+
+\paragraph{Image processing}
+I never knew how graphics were rendered or manipulated in on-screen applications until working on this project and using gstreamer and OpenCV. The pipelining methodology used in gstreamer is very intriguing, albeit having an ugly syntax. It opened my mind to learn about OpenCV, especially. I spent some time reading the documentation for OpenCV's Canvas and Mat objects, and their various transformation functions, and suddenly, all the math lectures I thought I forgot started to ring bells.
 
 \subsubsection{What non-technical information did you learn?}
-%\paragraph{if necessary}
+In terms of nontechnical lessons, I learned a lot about the importance of effective communication. A lot of details and valuable bits of information slipped through the cracks due to trivial misunderstandings. 
 
 \subsubsection{What have you learned about project work?}
-%\paragraph{if necessary}
+Project work involves a lot of coordination. As a result, there have to be clear objectives and a common vision. In the times where each team member had a clear short-term goal in sight, every one of us performed relatively effectively. However, when efforts were not carefully coordinated, we ended up stepping on each other's toes a lot.
 
 \subsubsection{What have you learned about project management?}
-%\paragraph{if necessary}
+Like I said in the previous paragraph, a team project needs a clear direction. In terms of project management, that means that either the team needs a leader with a knack for planning and execution, or the team needs to be very deliberate and openly collaborative in its planning. If each member does not have a strong idea about what it is they're supposed to be working on, productivity can sag.
 
 \subsubsection{What have you learned about working in teams?}
-%\paragraph{if necessary}
+Working on a team for this 9-month project has been an illuminating experience. I learned a lot about how different personalities and leadership styles can (or cannot) work together. I also learned a lot about what motivates people. I think the biggest take-away I can identify from this experience is the necessity of understanding and compassion. There were several times where deadlines were coming fast and we felt like fish in a barrel. Needless to say, tensions rose, but in the end, we had to put our disagreements aside and work as a team. I think the best way to make the most of that type of situation is to thoughtfully consider the other person's point of view, accept your responsibility for your portion of the work (or the blame), and move on with an optimistic attitude.
 
 \subsubsection{If you could do it all over, what would you do differently?}
-%\paragraph{if necessary}
+If I could do it all over, I probably would have established best practices as early as possible; best practices in terms of software development, version control methodology/strategies, email format, document organization formats, and so on. It can cause a lot of issues to have inconsistent practices when working on the same codebase, and we've certainly witnessed the truth of that statement firsthand.
