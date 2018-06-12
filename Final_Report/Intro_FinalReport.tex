@@ -3,23 +3,33 @@
 % 2-3 paragraphs, minimum
 
 Our project is required to provide a video output at near real-time from a 
-multi-camera input utilizing an NVIDIA Jetson TX2 system-on-module (SoM).
-Another hardware requirement established by our client is that the cameras used in
-the project utilize a CSI (cameral serial interface) for its input specification.   
+multi-camera input utilizing an NVIDIA Jetson TX2 system-on-module (SoM). 
+The project is intended for UAS (Unmanned Aerial Systems) and VR/AR applications, 
+and the requirements were established by Carlo Tianna of Rockwell Collins. 
 The software produced is requested to perform image processing and edge computing on the 
-camera input to display a stitched and tiled video output. 
+camera input to display a stitched and tiled video output.  \\
 
-The project's client, Carlo Tianna of Rockwell Collins has established size, weight, 
-power, and cost (SWaP-C) contraints for a few reasons. 
-The project's application is for UAS (Unmanned Aerial Systems) and VR/AR, and therefore 
-the hardware for the project must be light-weight and compact and have a low power 
-draw. Our cost constraint is met by the hardware is using an off-the-shelf SoM, 
-carrier board, and cameras, and the software developed is using free open-source 
-programming libraries, multimedia framework, and operating system. 
+Specific size, weight, power, and cost (SWaP-C) contraints that were required of our 
+product established a certain path for the project. Due to the project's applications  
+the hardware for the project had to be light-weight and compact, and have a low power 
+draw. Therefore, it was specified that the product utilize the Jetson TX2 without its 
+development kit and instead with a compatible carrier board. Our cost constraint is 
+met by the hardware being off-the-shelf, and the software developed using free 
+open-source programming libraries, multimedia framework, and operating system.  \\
+
+Another hardware requirement established by our client was that the cameras used in
+the project utilize a CSI (cameral serial interface) for its input specification to our 
+carrier board due to how fast it is capable of transferring image data to the Jetson TX2. 
+This requirement therefore influenced our carrier board selection to support a CSI 
+connection to the cameras in our final product.  \\
 
 The importance of our project comes from the cost constraint established by our client. 
-
-
+Mr. Tianna is seeking a low-cost product to perform image processing and edge computing 
+through the use of off-the-shelf hardware and open-source software to reduce the cost 
+of a fully developed and tested solution. The software requested to be developed for 
+the project is giving our client a glimpse of the full potential when using the Jetson 
+TX2. With our project Mr. Tianna has a better understanding of the capabilities of our 
+hardware selected and other similar hardware.  \\
 
 \subsection{Persons Involved and Their Role}
 % talk about: 1) members of the team, roles, restate client & state his role
