@@ -27,6 +27,11 @@
 %\usetikzlibrary{shapes, positioning, calc}
 \usepackage{caption}
 \usepackage{listings}
+\lstset{
+  frame=single,
+  language=C,
+  basicstyle=\small,
+}
 %\usepackage[utf8]{inputenc}
 %pull in the necessary preamble matter for pygments output
 
@@ -209,6 +214,8 @@ from two cameras, tiling video streaming with two or three cameras, edge detecti
 testing cases which display information such as in program latency and framerate in the output 
 window. \\
 
+\newpage
+
 The stitching program would stitch two images captured from two cameras by computing the overlapping 
 frames in homography and making transformation so it was able to generate one video streaming with 
 wider range. The tiling program combined adjusted input frames from two or three different cameras 
@@ -257,8 +264,58 @@ With so many variables involved (OpenCV configuration, GStreamer pipelines, cmak
 
 \section{Appendix 1: Essential Code Listings}
 % doesn't have to be everything, but there should be stuff here for someone to learn from
-%Shu-Ping will do this
+\begin{lstlisting}[
+  caption=Three-Camera GStreamer Pipeline,
+  label=lst1:mxm,
+]
+	DISPLAY=:0 gst-launch-1.0 nvcamerasrc sensor-id=0 fpsRange="30 30" ! 
+	'video/x-raw(memory:NVMM), width=(int)640, height=(int)480, format=(string)I420, 
+	framerate=(fraction)30/1' ! nvegltransform ! nveglglessink  nvcamerasrc sensor-id=2 
+	fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)640, height=(int)480, 
+	format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! nveglglessink 
+	nvcamerasrc sensor-id=1 fpsRange="30 30" ! 'video/x-raw(memory:NVMM), width=(int)640, 
+	height=(int)480, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! 
+	nveglglessink -e
+\end{lstlisting}
 
+\begin{lstlisting}[
+  caption=Partition Code of Stitching,
+  label=lst1:mxm,
+]
+	Ptr<Stitcher> test = Stitcher::create(mode, try_use_gpu);
+    Stitcher::Status status = test->stitch(imgs, pano);
+  
+    if (status != Stitcher::OK)
+    {
+        cout << "Error stitching - Code: " <<int(status)<<endl;
+        return -1;
+    }
+\end{lstlisting}
+
+\begin{lstlisting}[
+  caption=Partition Code of Tiling with Three Cameras,
+  label=lst1:mxm,
+]
+	fr1 = fr1(Range(0, fr1.rows), Range(fr1.cols/5-1, 2*fr1.cols/5-1));
+	fr2 = fr2(Range(0, fr2.rows), Range(fr2.cols/5-1, 2*fr2.cols/5-1));
+	fr3 = fr3(Range(0, fr3.rows), Range(fr3.cols/5-1, 2*fr3.cols/5-1));
+	//apply horizontal concatenation on inputs/matrices
+	hconcat(fr1, fr2, tile);        	
+	hconcat(tile, fr3, out);
+    imshow("Tiled Image", out);
+\end{lstlisting}
+
+\begin{lstlisting}[
+  caption=Partition Code of Edge Detection,
+  label=lst1:mxm,
+]
+	cvtColor(frame2, gray, CV_BGR2GRAY);
+	GaussianBlur(gray, gray, Size(3 ,3 ), 0, 0);
+	Canny(gray, dst1, 50, 150, 3);
+		
+	imshow("Display1", frame1);
+	imshow("Edge Detection", dst1);
+\end{lstlisting}
 
 \nocite{*}
 \newpage
