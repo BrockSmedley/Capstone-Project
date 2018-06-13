@@ -280,6 +280,11 @@ solution actually works.  \\
 
 \section{Appendix 1: Essential Code Listings}
 % doesn't have to be everything, but there should be stuff here for someone to learn from
+\subsection{GStreamer Pipeline}
+The segment code below was the GStreamer pipelines in the program, which allowed three cameras 
+to capture videos in specific height and width in thirty frames per second. Once the script was 
+executed, videos will be displayed in different windows on the display device. \\
+
 \begin{lstlisting}[
   caption=Three-Camera GStreamer Pipeline,
   label=lst1:mxm,
@@ -293,6 +298,11 @@ solution actually works.  \\
 	height=(int)480, format=(string)I420, framerate=(fraction)30/1' ! nvegltransform ! 
 	nveglglessink -e
 \end{lstlisting}
+
+\subsection{Stitching Program}
+The stitching program was created with a built-in class in OpenCV, stitcher. The program created 
+a stitcher at beginning and set up the mode and if to use GPU, then it stitched two images 
+together into single output if stitching successfully. \\
 
 \begin{lstlisting}[
   caption=Partition Code of Stitching,
@@ -308,6 +318,11 @@ solution actually works.  \\
     }
 \end{lstlisting}
 
+\newpage
+\subsection{Tiling Program}
+The tiling program below worked to combined three size-adjusted images together horizontally, 
+so there would be one video output sent to the display device. \\
+
 \begin{lstlisting}[
   caption=Partition Code of Tiling with Three Cameras,
   label=lst1:mxm,
@@ -320,6 +335,11 @@ solution actually works.  \\
 	hconcat(tile, fr3, out);
     imshow("Tiled Image", out);
 \end{lstlisting}
+
+\subsection{Edge Detection Program}
+In the edge detection program, a frame was translated into grayscale in order to be applied 
+on Canny edge detection function. Then the processed output generated an image in black 
+background and the white framework of objects. \\
 
 \begin{lstlisting}[
   caption=Partition Code of Edge Detection,
